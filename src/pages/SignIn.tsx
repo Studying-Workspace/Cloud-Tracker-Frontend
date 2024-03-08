@@ -1,5 +1,8 @@
+import FormContainer from "../ui/FormContainer" ; 
 const SignIn = () => {
-  return <div>SignIn</div>;
+  return(
+    <FormContainer/>
+  );
 };
 
 export default SignIn;
