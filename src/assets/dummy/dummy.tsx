@@ -1,9 +1,5 @@
-import React from 'react'
-
 const dummy = () => {
-  return (
-    <div>dummy</div>
-  )
-}
+  return <div>dummy</div>;
+};
 
-export default dummy
+export default dummy;
