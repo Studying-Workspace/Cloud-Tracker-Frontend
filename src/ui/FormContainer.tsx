@@ -9,7 +9,7 @@ interface Props {
 
 const FormContainer = ({ children }: Props) => {
   return (
-    <div className="relative flex h-screen flex-col gap-10 px-16 py-8">
+    <div className="relative flex h-screen flex-col px-16 py-8 bg-gray-100">
       {/* Vectors */}
       <img
         src={formVectorTop}
@@ -28,8 +28,8 @@ const FormContainer = ({ children }: Props) => {
       </div>
 
       {/* Form */}
-      <div className="z-50 flex items-center justify-between">
-        <p>Form</p>
+      <div className="z-50 flex items-center justify-between h-full">
+        {children}
       </div>
     </div>
   );
