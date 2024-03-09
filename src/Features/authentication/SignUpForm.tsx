@@ -55,7 +55,7 @@ const SignUpForm = () => {
 
           {/* Password */}
           <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
-            <MdLockOutline className=" font text-4xl text-linearBlue-1" />
+            <MdLockOutline className="text-3xl text-linearBlue-1" />
             <input
               type={showPassword ? "text" : "password"}
               className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
@@ -69,7 +69,7 @@ const SignUpForm = () => {
 
           {/* Confirm Password */}
           <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
-            <MdLockOutline className=" font text-4xl text-linearBlue-1" />
+            <MdLockOutline className="text-3xl text-linearBlue-1" />
             <input
               type={showPassword ? "text" : "password"}
               className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
