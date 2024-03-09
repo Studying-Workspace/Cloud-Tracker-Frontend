@@ -1,0 +1,114 @@
+import GoogleLogo from "../../assets/GoogleLogo.png";
+import AwsLogo from "../../assets/AwsLogo.png";
+
+import ShowPasswordButton from "../../ui/ShowPasswordButton";
+import Button from "../../ui/Button";
+
+import { IoLockClosedOutline } from "react-icons/io5";
+import { MdOutlineMail } from "react-icons/md";
+
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { FaRegUser } from "react-icons/fa";
+
+const SignUpForm = () => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  return (
+    <div className="flex w-full justify-between">
+      {/* Form */}
+      <div className="flex w-[40%] flex-col gap-5 mobile:w-full tablet:w-[50%]">
+        <div className="space-y-2 text-center">
+          <p className="text-5xl font-semibold mobile:text-3xl tablet:text-4xl">
+            Sign Up
+          </p>
+          <p className="text-ms font-medium tracking-wider mobile:text-xs tablet:text-xs">
+            Already have an account?{" "}
+            <Link
+              to="/signIn"
+              className=" text-linearBlue-1 underline transition-all duration-300 hover:text-black"
+            >
+              Sign in
+            </Link>
+          </p>
+        </div>
+
+        <form className="space-y-6 mobile:space-y-4">
+          {/* User Name */}
+          <div className="flex gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:py-1 tablet:py-2">
+            <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
+            <input
+              type="text"
+              className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
+              placeholder="User Name"
+            />
+          </div>
+
+          {/* Email */}
+          <div className="flex gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:py-1 tablet:py-2">
+            <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
+            <input
+              type="text"
+              className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
+              placeholder="E-mail"
+            />
+          </div>
+
+          {/* Password */}
+          <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
+            <IoLockClosedOutline className=" font text-3xl text-linearBlue-1" />
+            <input
+              type={showPassword ? "text" : "password"}
+              className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
+              placeholder="Password"
+            />
+            <ShowPasswordButton
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
+            />
+          </div>
+
+          {/* Confirm Password */}
+          <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
+            <IoLockClosedOutline className=" font text-3xl text-linearBlue-1" />
+            <input
+              type={showPassword ? "text" : "password"}
+              className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
+              placeholder="Password"
+            />
+            <ShowPasswordButton
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
+            />
+          </div>
+
+          {/* Submit */}
+          <div className="flex flex-col items-center justify-center gap-1">
+            <Button size="full">Sign Up</Button>
+            <p className=" text-xl text-gray-400">or login via</p>
+            <div className="flex gap-5">
+              <img src={GoogleLogo} alt="google" className="h-14 w-14" />
+              <img src={AwsLogo} alt="aws" className="h-14 w-14" />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {/* discreption */}
+      <div className=" flex w-[40%] flex-col items-center justify-center gap-5 mobile:hidden">
+        <p className="text-center text-4xl font-bold tablet:text-3xl">
+          Welcome To <br />{" "}
+          <span className=" tracking-widest text-linearOrange-200">
+            Cloud Tracker!
+          </span>
+        </p>
+        <p className="text-center text-xl font-medium tablet:w-full tablet:text-xs">
+          We're delighted to have you here. Get ready to simplify your workflow
+          and maximize efficiency with our seamless integration with AWS.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default SignUpForm;
