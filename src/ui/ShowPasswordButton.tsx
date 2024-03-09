@@ -8,7 +8,7 @@ interface Props {
 const ShowPasswordButton = ({ showPassword, setShowPassword }: Props) => {
   return (
     <button
-      className="text-3xl text-linearBlue-1"
+      className="text-3xl text-linearBlue-1 mobile:text-2xl"
       onClick={() => setShowPassword(!showPassword)}
     >
       {showPassword ? <LiaEyeSlashSolid /> : <LiaEyeSolid />}
