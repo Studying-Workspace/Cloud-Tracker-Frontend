@@ -9,17 +9,17 @@ interface Props {
 
 const FormContainer = ({ children }: Props) => {
   return (
-    <div className="relative flex h-screen flex-col px-16 py-8 bg-gray-100">
+    <div className="relative flex h-screen flex-col bg-gray-100 px-16 py-8">
       {/* Vectors */}
       <img
         src={formVectorTop}
         alt="vector"
-        className="absolute right-0 top-0 w-[600px]"
+        className="absolute right-0 top-0 w-[600px] tablet:w-[450px]"
       />
       <img
         src={formVectorBottom}
         alt="vector"
-        className=" absolute bottom-0 right-0 w-[600px]"
+        className=" absolute bottom-0 right-0 w-[600px] tablet:w-[450px]"
       />
 
       {/* Logo */}
@@ -28,7 +28,7 @@ const FormContainer = ({ children }: Props) => {
       </div>
 
       {/* Form */}
-      <div className="z-50 flex items-center justify-between h-full">
+      <div className="z-50 flex h-full items-center justify-between">
         {children}
       </div>
     </div>
