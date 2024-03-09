@@ -39,7 +39,7 @@ const SignUpForm = () => {
             <input
               type="text"
               className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
-              placeholder="User Name"
+              placeholder="Username"
             />
           </div>
 
@@ -73,7 +73,7 @@ const SignUpForm = () => {
             <input
               type={showPassword ? "text" : "password"}
               className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
-              placeholder="Password"
+              placeholder="Confirm Password"
             />
             <ShowPasswordButton
               showPassword={showPassword}
