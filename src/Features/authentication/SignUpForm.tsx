@@ -4,8 +4,7 @@ import AwsLogo from "../../assets/AwsLogo.png";
 import ShowPasswordButton from "../../ui/ShowPasswordButton";
 import Button from "../../ui/Button";
 
-import { IoLockClosedOutline } from "react-icons/io5";
-import { MdOutlineMail } from "react-icons/md";
+import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -56,7 +55,7 @@ const SignUpForm = () => {
 
           {/* Password */}
           <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
-            <IoLockClosedOutline className=" font text-3xl text-linearBlue-1" />
+            <MdLockOutline className=" font text-4xl text-linearBlue-1" />
             <input
               type={showPassword ? "text" : "password"}
               className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
@@ -70,7 +69,7 @@ const SignUpForm = () => {
 
           {/* Confirm Password */}
           <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
-            <IoLockClosedOutline className=" font text-3xl text-linearBlue-1" />
+            <MdLockOutline className=" font text-4xl text-linearBlue-1" />
             <input
               type={showPassword ? "text" : "password"}
               className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
