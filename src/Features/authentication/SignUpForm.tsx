@@ -19,7 +19,7 @@ const SignUpForm = () => {
       {/* Form */}
       <div className="flex w-[40%] flex-col gap-5 mobile:w-full tablet:w-[50%]">
         <div className="space-y-2 text-center">
-          <p className="text-5xl font-semibold mobile:text-3xl tablet:text-4xl">
+          <p className="text-5xl font-medium mobile:text-3xl tablet:text-4xl">
             Sign Up
           </p>
           <p className="text-ms font-medium tracking-wider mobile:text-xs tablet:text-xs">
@@ -96,7 +96,7 @@ const SignUpForm = () => {
 
       {/* discreption */}
       <div className=" flex w-[40%] flex-col items-center justify-center gap-5 mobile:hidden">
-        <p className="text-center text-4xl font-bold tablet:text-3xl">
+        <p className="text-center text-4xl font-semibold tablet:text-3xl">
           Welcome To <br />{" "}
           <span className=" tracking-widest text-linearOrange-200">
             Cloud Tracker!
