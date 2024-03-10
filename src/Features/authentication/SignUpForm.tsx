@@ -1,7 +1,6 @@
 import GoogleLogo from "../../assets/GoogleLogo.png";
 import AwsLogo from "../../assets/AwsLogo.png";
 
-import ShowPasswordButton from "../../ui/Form/ShowPasswordButton";
 import Button from "../../ui/Button";
 
 import { MdLockOutline, MdOutlineMail } from "react-icons/md";
@@ -13,6 +12,7 @@ import SignupWelcomeMessage from "../../ui/Form/SignupWelcomeMessage";
 
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
+import InputField from "../../ui/Form/InputField";
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -62,77 +62,34 @@ const SignUpForm = () => {
           {(formik) => (
             <Form className="space-y-6 mobile:space-y-4">
               {/* User Name */}
-              <div className="flex flex-col">
-                <div className="flex gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:py-1 tablet:py-2">
-                  <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
-                  <input
-                    type="text"
-                    className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
-                    placeholder="Username"
-                    {...formik.getFieldProps("username")}
-                  />
-                </div>
-                {formik.touched.username && formik.errors.username && (
-                  <div>{formik.errors.username}</div>
-                )}
-              </div>
-
+              <InputField name="username" placeholder="Username" type="text">
+                <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
+              </InputField>
               {/* Email */}
-              <div className="flex flex-col">
-                <div className="flex gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:py-1 tablet:py-2">
-                  <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
-                  <input
-                    type="text"
-                    className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
-                    placeholder="E-mail"
-                    {...formik.getFieldProps("email")}
-                  />
-                </div>
-                {formik.touched.email && formik.errors.email && (
-                  <div>{formik.errors.email}</div>
-                )}
-              </div>
-
+              <InputField name="email" placeholder="E-mail" type="email">
+                <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
+              </InputField>
               {/* Password */}
-              <div className="flex flex-col">
-                <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
-                  <MdLockOutline className="text-3xl text-linearBlue-1" />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
-                    placeholder="Password"
-                    {...formik.getFieldProps("password")}
-                  />
-                  <ShowPasswordButton
-                    showPassword={showPassword}
-                    setShowPassword={setShowPassword}
-                  />
-                </div>
-                {formik.touched.password && formik.errors.password && (
-                  <div>{formik.errors.password}</div>
-                )}
-              </div>
+              <InputField
+                type="password"
+                name="password"
+                placeholder="Password"
+                showPassword={showPassword}
+                setShowPassword={setShowPassword}
+              >
+                <MdLockOutline className="text-3xl text-linearBlue-1" />
+              </InputField>
 
               {/* Confirm Password */}
-              <div>
-                <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
-                  <MdLockOutline className="text-3xl text-linearBlue-1" />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
-                    placeholder="Confirm Password"
-                    {...formik.getFieldProps("confirmPassword")}
-                  />
-                  <ShowPasswordButton
-                    showPassword={showPassword}
-                    setShowPassword={setShowPassword}
-                  />
-                </div>
-                {formik.touched.confirmPassword &&
-                  formik.errors.confirmPassword && (
-                    <div>{formik.errors.confirmPassword}</div>
-                  )}
-              </div>
+              <InputField
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                showPassword={showPassword}
+                setShowPassword={setShowPassword}
+              >
+                <MdLockOutline className="text-3xl text-linearBlue-1" />
+              </InputField>
 
               {/* Submit */}
               <div className="flex flex-col items-center justify-center gap-1">
