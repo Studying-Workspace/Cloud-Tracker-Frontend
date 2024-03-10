@@ -1,6 +1,6 @@
-import formVectorTop from "../assets/formVectorTop.png";
-import formVectorBottom from "../assets/formVectorBotton.png";
-import Logo from "./Logo";
+import formVectorTop from "../../assets/formVectorTop.png";
+import formVectorBottom from "../../assets/formVectorBotton.png";
+import Logo from "../Logo";
 import { ReactNode } from "react";
 
 interface Props {

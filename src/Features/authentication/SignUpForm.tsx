@@ -1,7 +1,7 @@
 import GoogleLogo from "../../assets/GoogleLogo.png";
 import AwsLogo from "../../assets/AwsLogo.png";
 
-import ShowPasswordButton from "../../ui/ShowPasswordButton";
+import ShowPasswordButton from "../../ui/Form/ShowPasswordButton";
 import Button from "../../ui/Button";
 
 import { MdLockOutline, MdOutlineMail } from "react-icons/md";
@@ -9,6 +9,7 @@ import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaRegUser } from "react-icons/fa";
+import SignupWelcomeMessage from "../../ui/Form/SignupWelcomeMessage";
 
 const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -93,19 +94,7 @@ const SignUpForm = () => {
         </form>
       </div>
 
-      {/* discreption */}
-      <div className=" flex w-[40%] flex-col items-center justify-center gap-5 mobile:hidden">
-        <p className="text-center text-4xl font-semibold tablet:text-3xl">
-          Welcome To <br />{" "}
-          <span className=" tracking-widest text-linearOrange-200">
-            Cloud Tracker!
-          </span>
-        </p>
-        <p className="text-center text-xl font-medium tablet:w-full tablet:text-xs">
-          We're delighted to have you here. Get ready to simplify your workflow
-          and maximize efficiency with our seamless integration with AWS.
-        </p>
-      </div>
+      <SignupWelcomeMessage />
     </div>
   );
 };

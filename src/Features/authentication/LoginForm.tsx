@@ -1,12 +1,12 @@
-import CheckBox from "../../ui/CheckBox";
-import ShowPasswordButton from "../../ui/ShowPasswordButton";
+import CheckBox from "../../ui/Form/CheckBox";
+import ShowPasswordButton from "../../ui/Form/ShowPasswordButton";
 import Button from "../../ui/Button";
 
-import { IoLockClosedOutline } from "react-icons/io5";
 import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import LoginWelcomeMessage from "../../ui/Form/LoginWelcomeMessage";
 
 const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -44,6 +44,7 @@ const LoginForm = () => {
 
           {/* Password */}
           <div className="space-y-2">
+            
             {/* input field */}
             <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
               <MdLockOutline className="text-3xl text-linearBlue-1" />
@@ -71,14 +72,7 @@ const LoginForm = () => {
         </form>
       </div>
 
-      {/* discreption */}
-      <div className=" flex w-[40%] flex-col items-center justify-center gap-5 mobile:hidden">
-        <p className="text-4xl font-semibold tablet:text-3xl">Welcome Back!</p>
-        <p className="w-[70%] text-center text-xl font-medium tablet:w-full tablet:text-xs">
-          We've missed having you around. Get ready for an amazing experience
-          ahead!
-        </p>
-      </div>
+      <LoginWelcomeMessage />
     </div>
   );
 };

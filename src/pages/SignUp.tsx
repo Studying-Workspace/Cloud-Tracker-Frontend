@@ -1,10 +1,10 @@
 import SignUpForm from "../Features/authentication/SignUpForm";
-import FormContainer from "../ui/FormContainer";
+import FormContainer from "../ui/Form/FormContainer";
 
 const SignUp = () => {
-  return(
+  return (
     <FormContainer>
-      <SignUpForm/>
+      <SignUpForm />
     </FormContainer>
   );
 };
