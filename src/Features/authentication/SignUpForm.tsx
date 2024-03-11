@@ -72,12 +72,15 @@ const SignUpForm = () => {
           {({ errors, touched }) => (
             <Form className="space-y-6 mobile:space-y-4">
               {/* User Name */}
+              <div className="flex w-full justify-between items-center">
               <InputField name="username" placeholder="Username" type="text">
                 <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
               </InputField>
               {touched.username && errors.username && (
                 <div>{errors.username}</div>
               )}
+
+              </div>
               {/* Email */}
               <InputField name="email" placeholder="E-mail" type="email">
                 <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />

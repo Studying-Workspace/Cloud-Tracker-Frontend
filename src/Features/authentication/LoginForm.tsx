@@ -9,8 +9,7 @@ import LoginWelcomeMessage from "../../ui/Form/LoginWelcomeMessage";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "../../ui/Form/InputField";
-import { Slide, toast } from "react-toastify";
-import { RiErrorWarningFill } from "react-icons/ri";
+import HandleMessageForm from "../../ui/Form/HandleMessageForm";
 
 interface MyFormValues {
   email: string;
@@ -21,22 +20,6 @@ const LoginForm = () => {
   const initialValues: MyFormValues = { email: "", password: "" };
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-
-  const handleError = (error: string | undefined, type: string) => {
-    if (type === "warning") {
-      toast.warning(error, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        transition: Slide,
-      });
-    }
-  };
 
   return (
     <div className="flex w-full justify-between">
@@ -74,24 +57,20 @@ const LoginForm = () => {
           {({ errors, touched }) => (
             <Form className="space-y-8 mobile:space-y-6">
               {/* Email */}
-              <div className="flex w-full justify-between">
+              <div className="flex w-full items-center justify-between">
                 <InputField placeholder="E-mail" type="text" name="email">
                   <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
                 </InputField>
-                {touched.email && errors.email && (
-                  <button
-                    className="text-3xl text-red-600"
-                    type="button"
-                    onClick={() => handleError(errors.email, "warning")}
-                  >
-                    <RiErrorWarningFill />
-                  </button>
-                )}
+                <HandleMessageForm
+                  type="warning"
+                  error={errors.email}
+                  touched={touched.email}
+                />
               </div>
 
               {/* Password */}
               <div className="space-y-1">
-                <div className="flex w-full justify-between">
+                <div className="flex w-full items-center justify-between">
                   <InputField
                     type="password"
                     name="password"
@@ -102,15 +81,11 @@ const LoginForm = () => {
                     <MdLockOutline className="text-3xl text-linearBlue-1" />
                   </InputField>
 
-                  {touched.password && errors.password && (
-                    <button
-                      className="text-3xl text-red-600"
-                      type="button"
-                      onClick={() => handleError(errors.password, "warning")}
-                    >
-                      <RiErrorWarningFill />
-                    </button>
-                  )}
+                  <HandleMessageForm
+                    type="warning"
+                    error={errors.password}
+                    touched={touched.password}
+                  />
                 </div>
 
                 {/* Remember me and forget password */}
@@ -128,7 +103,7 @@ const LoginForm = () => {
                 <Button role="submit" size="full">
                   Sign in
                 </Button>
-                <p className="cursor-pointer px-5 text-lg text-gray-400 hover:text-linearBlue-1 hover:underline transition-all duration-300 mobile:text-sm">
+                <p className="cursor-pointer px-5 text-lg text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline mobile:text-sm">
                   Forget Password ?
                 </p>
               </div>
