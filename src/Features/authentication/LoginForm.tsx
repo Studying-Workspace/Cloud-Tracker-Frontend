@@ -10,6 +10,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "../../ui/Form/InputField";
 import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+import { handleToastMessage } from "../../utils/helper";
 
 interface MyFormValues {
   email: string;
@@ -50,8 +51,8 @@ const LoginForm = () => {
               .min(8, "Your Password Must Be At Least 8 Characters")
               .required("Please Enter Your Password"),
           })}
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={() => {
+            handleToastMessage("Login success !" , "success") ; 
           }}
         >
           {({ errors, touched }) => (

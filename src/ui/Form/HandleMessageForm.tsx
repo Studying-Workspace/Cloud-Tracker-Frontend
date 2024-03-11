@@ -1,6 +1,6 @@
 import { FaCheckCircle, FaMinusCircle } from "react-icons/fa";
 import { RiErrorWarningFill } from "react-icons/ri";
-import { Slide, toast } from "react-toastify";
+import { handleToastMessage } from "../../utils/helper";
 
 interface Props {
   error: string | undefined;
@@ -9,27 +9,12 @@ interface Props {
 }
 
 const HandleMessageForm = ({ error, touched, type }: Props) => {
-  const handleError = (error: string | undefined, type: string) => {
-    if (type === "warning") {
-      toast.warning(error, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        transition: Slide,
-      });
-    }
-  };
   return touched ? (
     error ? (
       <button
         className="text-3xl text-red-600 mobile:text-2xl"
         type="button"
-        onClick={() => handleError(error, type)}
+        onClick={() => handleToastMessage(error, type)}
       >
         <RiErrorWarningFill />
       </button>

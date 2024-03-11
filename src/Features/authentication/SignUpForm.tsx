@@ -13,6 +13,8 @@ import SignupWelcomeMessage from "../../ui/Form/SignupWelcomeMessage";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import InputField from "../../ui/Form/InputField";
+import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+import { handleToastMessage } from "../../utils/helper";
 
 interface MyFormValues {
   username: string;
@@ -65,51 +67,70 @@ const SignUpForm = () => {
               .required("Please Confirm Your Password")
               .oneOf([Yup.ref("password")], "Passwords Must Match"),
           })}
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={() => {
+            handleToastMessage("Login success !", "success");
           }}
         >
           {({ errors, touched }) => (
             <Form className="space-y-6 mobile:space-y-4">
               {/* User Name */}
-              <div className="flex w-full justify-between items-center">
-              <InputField name="username" placeholder="Username" type="text">
-                <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
-              </InputField>
-              {touched.username && errors.username && (
-                <div>{errors.username}</div>
-              )}
-
+              <div className="flex w-full items-center justify-between">
+                <InputField name="username" placeholder="Username" type="text">
+                  <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
+                </InputField>
+                <HandleMessageForm
+                  type="warning"
+                  error={errors.username}
+                  touched={touched.username}
+                />
               </div>
               {/* Email */}
-              <InputField name="email" placeholder="E-mail" type="email">
-                <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
-              </InputField>
-              <div>{errors.email}</div>
+              <div className="flex w-full items-center justify-between">
+                <InputField name="email" placeholder="E-mail" type="email">
+                  <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
+                </InputField>
+
+                <HandleMessageForm
+                  type="warning"
+                  error={errors.email}
+                  touched={touched.email}
+                />
+              </div>
               {/* Password */}
-              <InputField
-                type="password"
-                name="password"
-                placeholder="Password"
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
-              >
-                <MdLockOutline className="text-3xl text-linearBlue-1" />
-              </InputField>
-              <div>{errors.password}</div>
-
+              <div className="flex w-full items-center justify-between">
+                <InputField
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  showPassword={showPassword}
+                  setShowPassword={setShowPassword}
+                >
+                  <MdLockOutline className="text-3xl text-linearBlue-1" />
+                </InputField>
+                <HandleMessageForm
+                  type="warning"
+                  error={errors.password}
+                  touched={touched.password}
+                />
+              </div>
               {/* Confirm Password */}
-              <InputField
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
-              >
-                <MdLockOutline className="text-3xl text-linearBlue-1" />
-              </InputField>
-              <div>{errors.confirmPassword}</div>
+              <div className="flex w-full items-center justify-between">
+                <InputField
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  showPassword={showPassword}
+                  setShowPassword={setShowPassword}
+                >
+                  <MdLockOutline className="text-3xl text-linearBlue-1" />
+                </InputField>
 
+                <HandleMessageForm
+                  type="warning"
+                  error={errors.confirmPassword}
+                  touched={touched.confirmPassword}
+                />
+              </div>
               {/* Submit */}
               <div className="flex flex-col justify-center gap-1">
                 <Button role="submit" size="full">
