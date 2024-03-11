@@ -14,7 +14,20 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import InputField from "../../ui/Form/InputField";
 
+interface MyFormValues {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
 const SignUpForm = () => {
+  const initialValues: MyFormValues = {
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
@@ -36,13 +49,7 @@ const SignUpForm = () => {
         </div>
         {/* Form */}
         <Formik
-          initialValues={{
-            username: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-          }}
-          onSubmit={(values) => console.log(values)}
+          initialValues={initialValues}
           validationSchema={Yup.object({
             username: Yup.string()
               .min(3, "Username Should Be At Least 3 Characters")
@@ -58,17 +65,24 @@ const SignUpForm = () => {
               .required("Please Confirm Your Password")
               .oneOf([Yup.ref("password")], "Passwords Must Match"),
           })}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
         >
-          {(formik) => (
+          {({ errors, touched }) => (
             <Form className="space-y-6 mobile:space-y-4">
               {/* User Name */}
               <InputField name="username" placeholder="Username" type="text">
                 <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
               </InputField>
+              {touched.username && errors.username && (
+                <div>{errors.username}</div>
+              )}
               {/* Email */}
               <InputField name="email" placeholder="E-mail" type="email">
                 <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
               </InputField>
+              <div>{errors.email}</div>
               {/* Password */}
               <InputField
                 type="password"
@@ -79,6 +93,7 @@ const SignUpForm = () => {
               >
                 <MdLockOutline className="text-3xl text-linearBlue-1" />
               </InputField>
+              <div>{errors.password}</div>
 
               {/* Confirm Password */}
               <InputField
@@ -90,14 +105,19 @@ const SignUpForm = () => {
               >
                 <MdLockOutline className="text-3xl text-linearBlue-1" />
               </InputField>
+              <div>{errors.confirmPassword}</div>
 
               {/* Submit */}
-              <div className="flex flex-col items-center justify-center gap-1">
-                <Button size="full">Sign Up</Button>
-                <p className=" text-xl text-gray-400">or login via</p>
-                <div className="flex gap-5">
-                  <img src={GoogleLogo} alt="google" className="h-14 w-14" />
-                  <img src={AwsLogo} alt="aws" className="h-14 w-14" />
+              <div className="flex flex-col justify-center gap-1">
+                <Button role="submit" size="full">
+                  Sign Up
+                </Button>
+                <div className="flex flex-col items-center justify-between gap-2">
+                  <p className=" text-xl text-gray-400">or login via</p>
+                  <div className="flex gap-5">
+                    <img src={GoogleLogo} alt="google" className="h-14 w-14" />
+                    <img src={AwsLogo} alt="aws" className="h-14 w-14" />
+                  </div>
                 </div>
               </div>
             </Form>

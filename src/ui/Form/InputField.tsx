@@ -10,26 +10,32 @@ interface Props {
   showPassword?: boolean;
   setShowPassword?: Function;
 }
-const InputField = ({ children, type, ...props }: Props) => {
+const InputField = ({
+  children,
+  type,
+  showPassword,
+  setShowPassword,
+  ...props
+}: Props) => {
   if (type === "password") {
     return (
-      <div className="flex gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
+      <div className="flex w-[92%] gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
         {children}
-        <input
-          type={props.showPassword ? "text" : "password"}
+        <Field
+          type={showPassword ? "text" : "password"}
           className="tablet:text-ms mobile:text-ms w-full text-lg focus:outline-none"
           {...props}
         />
         <ShowPasswordButton
-          showPassword={props.showPassword}
-          setShowPassword={props.setShowPassword}
+          showPassword={showPassword}
+          setShowPassword={setShowPassword}
         />
       </div>
     );
   }
 
   return (
-    <div className="flex gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:py-1 tablet:py-2">
+    <div className="flex w-[92%] gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:py-1 tablet:py-2">
       {children}
       <Field
         type={type}

@@ -11,7 +11,11 @@ interface Props {
 const CheckBox = ({ children, check, setCheck }: Props) => {
   return (
     <div className="flex items-center gap-2">
-      <button onClick={() => setCheck(!check)} className="text-xl text-linearBlue-1">
+      <button
+        onClick={() => setCheck(!check)}
+        className="text-xl text-linearBlue-1"
+        type="button"
+      >
         {check ? <IoMdCheckboxOutline /> : <MdCheckBoxOutlineBlank />}
       </button>
       {children}

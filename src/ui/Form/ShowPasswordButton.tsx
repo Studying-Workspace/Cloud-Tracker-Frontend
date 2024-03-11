@@ -10,6 +10,7 @@ const ShowPasswordButton = ({ showPassword, setShowPassword }: Props) => {
     <button
       className="text-3xl text-linearBlue-1 mobile:text-2xl"
       onClick={() => setShowPassword?.(!showPassword)}
+      type="button"
     >
       {showPassword ? <LiaEyeSlashSolid /> : <LiaEyeSolid />}
     </button>
