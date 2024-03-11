@@ -19,7 +19,7 @@ const InputField = ({
 }: Props) => {
   if (type === "password") {
     return (
-      <div className="flex w-[92%] gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:py-1 tablet:py-2">
+      <div className="flex w-[92%] gap-4 rounded-full bg-white px-6 py-3 shadow-lg mobile:w-[90%] mobile:py-1 tablet:py-2">
         {children}
         <Field
           type={showPassword ? "text" : "password"}
@@ -35,7 +35,7 @@ const InputField = ({
   }
 
   return (
-    <div className="flex w-[92%] gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:py-1 tablet:py-2">
+    <div className="flex w-[92%] gap-4 rounded-full bg-white px-6 py-3 pr-14 shadow-lg mobile:w-[90%] mobile:py-1 tablet:py-2">
       {children}
       <Field
         type={type}
