@@ -13,7 +13,7 @@ const CheckBox = ({ children, check, setCheck }: Props) => {
     <div className="flex items-center gap-2">
       <button
         onClick={() => setCheck(!check)}
-        className="text-xl text-linearBlue-1"
+        className="text-xl text-linearBlue-1 mobile:text-lg"
         type="button"
       >
         {check ? <IoMdCheckboxOutline /> : <MdCheckBoxOutlineBlank />}

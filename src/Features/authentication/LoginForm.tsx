@@ -52,14 +52,19 @@ const LoginForm = () => {
               .required("Please Enter Your Password"),
           })}
           onSubmit={() => {
-            handleToastMessage("Login success !" , "success") ; 
+            handleToastMessage("Login success !", "success");
           }}
         >
           {({ errors, touched }) => (
             <Form className="space-y-8 mobile:space-y-6">
               {/* Email */}
               <div className="flex w-full items-center justify-between">
-                <InputField placeholder="E-mail" type="text" name="email">
+                <InputField
+                  placeholder="E-mail"
+                  type="text"
+                  name="email"
+                  error={touched.email ? errors.email : undefined}
+                >
                   <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
                 </InputField>
                 <HandleMessageForm
@@ -78,6 +83,7 @@ const LoginForm = () => {
                     placeholder="Password"
                     showPassword={showPassword}
                     setShowPassword={setShowPassword}
+                    error={touched.password ? errors.password : undefined}
                   >
                     <MdLockOutline className="text-3xl text-linearBlue-1" />
                   </InputField>
@@ -90,24 +96,22 @@ const LoginForm = () => {
                 </div>
 
                 {/* Remember me and forget password */}
-                <div className=" flex justify-between px-7 text-xl text-gray-400  mobile:text-sm tablet:text-sm">
+                <div className=" flex justify-between px-6 text-xl text-gray-400  mobile:text-sm tablet:text-sm">
                   <CheckBox check={rememberMe} setCheck={setRememberMe}>
-                    <p className="text-lg text-gray-400 mobile:text-sm">
+                    <p className="text-lg text-gray-400 mobile:text-[10px]">
                       Remember me
                     </p>
                   </CheckBox>
+                  <p className="cursor-pointer px-5 text-lg text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline mobile:text-[10px]">
+                    Forget Password ?
+                  </p>
                 </div>
               </div>
 
               {/* Submit */}
-              <div className="space-y-2">
-                <Button role="submit" size="full">
-                  Sign in
-                </Button>
-                <p className="cursor-pointer px-5 text-lg text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline mobile:text-sm">
-                  Forget Password ?
-                </p>
-              </div>
+              <Button role="submit" size="full">
+                Sign in
+              </Button>
             </Form>
           )}
         </Formik>

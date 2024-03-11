@@ -75,7 +75,12 @@ const SignUpForm = () => {
             <Form className="space-y-6 mobile:space-y-4">
               {/* User Name */}
               <div className="flex w-full items-center justify-between">
-                <InputField name="username" placeholder="Username" type="text">
+                <InputField
+                  name="username"
+                  placeholder="Username"
+                  type="text"
+                  error={touched.username ? errors.username : undefined}
+                >
                   <FaRegUser className=" text-2xl text-linearBlue-1 mobile:text-xl" />
                 </InputField>
                 <HandleMessageForm
@@ -86,7 +91,12 @@ const SignUpForm = () => {
               </div>
               {/* Email */}
               <div className="flex w-full items-center justify-between">
-                <InputField name="email" placeholder="E-mail" type="email">
+                <InputField
+                  name="email"
+                  placeholder="E-mail"
+                  type="email"
+                  error={touched.email ? errors.email : undefined}
+                >
                   <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
                 </InputField>
 
@@ -104,6 +114,7 @@ const SignUpForm = () => {
                   placeholder="Password"
                   showPassword={showPassword}
                   setShowPassword={setShowPassword}
+                  error={touched.password ? errors.password : undefined}
                 >
                   <MdLockOutline className="text-3xl text-linearBlue-1" />
                 </InputField>
@@ -121,6 +132,9 @@ const SignUpForm = () => {
                   placeholder="Confirm Password"
                   showPassword={showPassword}
                   setShowPassword={setShowPassword}
+                  error={
+                    touched.confirmPassword ? errors.confirmPassword : undefined
+                  }
                 >
                   <MdLockOutline className="text-3xl text-linearBlue-1" />
                 </InputField>
@@ -136,7 +150,7 @@ const SignUpForm = () => {
                 <Button role="submit" size="full">
                   Sign Up
                 </Button>
-                <div className="flex flex-col items-center justify-between gap-2">
+                <div className="flex w-[92%] flex-col items-center justify-between gap-2">
                   <p className=" text-xl text-gray-400">or login via</p>
                   <div className="flex gap-5">
                     <img src={GoogleLogo} alt="google" className="h-14 w-14" />
