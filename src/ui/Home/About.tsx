@@ -1,7 +1,18 @@
+import { useRef } from "react";
 import aboutVector from "../../assets/aboutVector.png";
 import aboutWave from "../../assets/aboutWave.png";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const About = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0.5 1", "1.3 1"],
+  });
+
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const opacityProgress = useTransform(scaleProgress, [0, 1], [0, 1]);
+
   return (
     <div className="relative z-40 mt-[200px] flex items-center justify-between py-28 pl-10 pr-32 mobile:flex-col mobile:gap-24 mobile:px-6 mobile:py-16 tablet:flex-col tablet:gap-24 tablet:px-24">
       <img
@@ -15,7 +26,14 @@ const About = () => {
         src={aboutVector}
         alt=""
       />
-      <div className="z-40 flex w-[45%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full">
+      <motion.div
+        ref={ref}
+        style={{
+          scale: scaleProgress,
+          opacity: opacityProgress,
+        }}
+        className="z-40 flex w-[45%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full"
+      >
         <div className="space-y-4">
           <p className="z-40 text-4xl font-semibold leading-[50px] tracking-widest mobile:text-center mobile:text-2xl  tablet:text-center tablet:text-3xl">
             What is{" "}
@@ -31,7 +49,7 @@ const About = () => {
             resources are utilized.
           </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
