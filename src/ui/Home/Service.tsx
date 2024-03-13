@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const HomeSection3 = () => {
+const Service = () => {
   return (
     <>
       {/* section 1 */}
@@ -18,7 +18,7 @@ const HomeSection3 = () => {
         <Section1 />
       </div>
 
-      <Section2/>
+      <Section2 />
     </>
   );
 };
@@ -33,27 +33,27 @@ const Section1 = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["0.5 1", "1.33 1"],
+    offset: ["0 1", "1.33 1"],
   });
 
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
   const opacityProgress = useTransform(scaleProgress, [0, 1], [0, 1]);
   return (
-    <div className="relative z-40 mt-[10px] flex items-center justify-between py-28 pl-10 pr-32 mobile:flex-col mobile:gap-12 mobile:px-8 tablet:flex-col tablet:gap-12 tablet:px-24">
+    <motion.div
+      ref={ref}
+      style={{
+        scale: scaleProgress,
+        opacity: opacityProgress,
+        translateX: scrollYProgress,
+      }}
+      className="relative z-40 mt-[10px] flex items-center justify-between py-28 pl-10 pr-32 mobile:flex-col mobile:gap-12 mobile:px-8 tablet:flex-col tablet:gap-12 tablet:px-24"
+    >
       <img
         className="z-40 w-[600px] mobile:w-[300px] tablet:w-[450px]"
         src={educationVector}
         alt=""
       />
-      <motion.div
-        ref={ref}
-        style={{
-          scale: scaleProgress,
-          opacity: opacityProgress,
-          translateX:scrollYProgress,
-        }}
-        className="z-40 flex w-[45%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full"
-      >
+      <div className="z-40 flex w-[45%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full">
         <div className="space-y-4">
           <p className="z-40 text-4xl font-semibold leading-[50px] tracking-[5px] mobile:text-center mobile:text-2xl mobile:tracking-wide tablet:text-center tablet:text-3xl">
             {" "}
@@ -71,8 +71,8 @@ const Section1 = () => {
         <Button size="xl" onClick={() => handleNavigate("blog")}>
           Explore Blog
         </Button>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
@@ -86,45 +86,47 @@ const Section2 = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["0.5 1", "1.33 1"],
+    offset: ["0 1", "1.33 1"],
   });
 
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
   const opacityProgress = useTransform(scaleProgress, [0, 1], [0, 1]);
   return (
-    <div className="relative z-40 mb-80 mt-[10px] flex items-center justify-between py-28 pl-32 pr-20 mobile:mb-64 mobile:flex-col-reverse mobile:gap-12 mobile:px-8 tablet:flex-col-reverse tablet:gap-12 tablet:px-24">
+    <div className="relative z-40 mb-80 mt-[10px] py-28 pl-32 pr-20 mobile:mb-64 mobile:px-8 tablet:px-24">
       <motion.div
         ref={ref}
         style={{
           scale: scaleProgress,
           opacity: opacityProgress,
         }}
-        className="z-40 flex w-[45%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full"
+        className="flex items-center justify-between mobile:flex-col-reverse mobile:gap-12 tablet:flex-col-reverse tablet:gap-12"
       >
-        <div className="space-y-4">
-          <p className="z-40 text-4xl font-semibold leading-[50px] tracking-[5px] mobile:text-center mobile:text-2xl mobile:tracking-wide tablet:text-center tablet:text-3xl">
-            {" "}
-            Cost & usage tracking{" "}
-          </p>
-          <p className=" text-xl text-stone-500 mobile:text-sm">
-            Optimize your AWS expenses effortlessly with Cloud Tracker. Our
-            advanced recommendation system analyzes your usage patterns and
-            suggests smart adjustments, such as resizing services to match
-            actual needs and identifying idle or unused components for potential
-            cost savings. Take control of your cloud costs and ensure efficient
-            resource allocation with personalized recommendations from Cloud
-            Tracker.
-          </p>
+        <div className="z-40 flex w-[45%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full">
+          <div className="space-y-4">
+            <p className="z-40 text-4xl font-semibold leading-[50px] tracking-[5px] mobile:text-center mobile:text-2xl mobile:tracking-wide tablet:text-center tablet:text-3xl">
+              {" "}
+              Cost & usage tracking{" "}
+            </p>
+            <p className=" text-xl text-stone-500 mobile:text-sm">
+              Optimize your AWS expenses effortlessly with Cloud Tracker. Our
+              advanced recommendation system analyzes your usage patterns and
+              suggests smart adjustments, such as resizing services to match
+              actual needs and identifying idle or unused components for
+              potential cost savings. Take control of your cloud costs and
+              ensure efficient resource allocation with personalized
+              recommendations from Cloud Tracker.
+            </p>
+          </div>
+          <Button size="xl" onClick={() => handleNavigate("dashboard")}>
+            Go To Dashboard
+          </Button>
         </div>
-        <Button size="xl" onClick={() => handleNavigate("dashboard")}>
-          Go To Dashboard
-        </Button>
+        <img
+          className="z-40 w-[450px] mobile:w-[250px] tablet:w-[350px]"
+          src={costReductionVector}
+          alt=""
+        />
       </motion.div>
-      <img
-        className="z-40 w-[450px] mobile:w-[250px] tablet:w-[350px]"
-        src={costReductionVector}
-        alt=""
-      />
       <img
         className="absolute bottom-[-130px] right-[-1px] z-0 w-[120px] mobile:w-[70px] tablet:w-[80px]"
         src={circleRight}
@@ -134,4 +136,4 @@ const Section2 = () => {
   );
 };
 
-export default HomeSection3;
+export default Service;
