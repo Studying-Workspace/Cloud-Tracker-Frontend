@@ -1,15 +1,20 @@
 import { render, screen } from "@testing-library/react";
 import Footer from "../ui/Footer";
+import { HashRouter } from "react-router-dom";
 
 describe("Footer", () => {
   beforeEach(() => {
-    render(<Footer />);
+    render(
+      <HashRouter>
+        <Footer />
+      </HashRouter>,
+    );
   });
 
-  it("should have wave vector" , () =>{
-    const wave = screen.getByTestId("waveVector") ; 
-    expect(wave).toBeVisible() ; 
-  })
+  it("should have wave vector", () => {
+    const wave = screen.getByTestId("waveVector");
+    expect(wave).toBeVisible();
+  });
 
   it("test copy rights section", () => {
     const logo = screen.getByTestId("logo");
