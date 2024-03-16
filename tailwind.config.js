@@ -18,11 +18,9 @@ export default {
         poppins: ["Poppins"],
       },
       screens:{
+        'tablet' : {'min': '769px' , 'max' : '1024px'},
         'mobile' : {'max' : '768px'} , 
-        'tablet' : {'min': '769px' , 'max' : '1400px'},
-      },
-      transitionProperty:{
-        'height': 'height',
+        'tablet' : {'min': '769px' , 'max' : '1024px'}
       }
     },
   },
