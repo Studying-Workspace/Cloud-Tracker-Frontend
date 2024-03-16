@@ -1,5 +1,7 @@
+import BlogsCotainer from "../ui/Blog/BlogsCotainer";
+
 const Blog = () => {
-  return <div>Blog</div>;
+  return <BlogsCotainer/>;
 };
 
 export default Blog;
