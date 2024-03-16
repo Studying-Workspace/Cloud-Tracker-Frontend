@@ -6,9 +6,9 @@ const BlogsCotainer = () => {
   const [value, setValue] = useState<number>(0);
 
   return (
-    <div className="h-full divide-y-2 divide-linearOrange-100 py-12">
+    <div className="h-full divide-y-2 py-12 px-24 mobile:px-4 tablet:px-8">
       <BlogNavigator value={value} setValue={setValue} />
-      <div className="h-full divide-y-2 overflow-auto px-24 mobile:px-4 tablet:px-8">
+      <div className="h-full divide-y-2 overflow-auto">
         <BlogElement />
         <BlogElement />
         <BlogElement />

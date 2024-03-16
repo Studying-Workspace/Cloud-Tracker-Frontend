@@ -11,7 +11,7 @@ const BlogNavigator = ({ value, setValue }: Props) => {
   };
 
   return (
-    <div className="px-24 mobile:px-4">
+    <div>
       <Tabs
         value={value}
         onChange={handleChange}
