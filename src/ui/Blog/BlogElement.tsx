@@ -44,7 +44,7 @@ const BlogElement = () => {
             <div className="flex items-center justify-center gap-2">
               <div className="flex items-center justify-center gap-2 mobile:gap-1">
                 <p className="text-sm text-gray-500 mobile:text-xs">100</p>
-                <BiLike className="text-xl text-gray-600" />
+                <BiLike className="text-2xl text-gray-600 mobile:text-xl" />
               </div>
               <div>
                 <LuUpload className="text-xl text-gray-600 mobile:text-lg" />
