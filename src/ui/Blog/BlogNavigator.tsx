@@ -55,12 +55,6 @@ const BlogNavigator = ({ value, setValue }: Props) => {
               fontSize: "12px",
             },
           },
-          "@media (max-width: 410px)": {
-            "& .MuiTab-root": {
-              width: "calc(100%)",
-              fontSize: "12px",
-            },
-          },
         }}
       >
         <Tab label="All" />

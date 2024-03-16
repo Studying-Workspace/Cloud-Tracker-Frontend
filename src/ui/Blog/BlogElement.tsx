@@ -20,21 +20,21 @@ const BlogElement = () => {
       </div>
 
       {/* body */}
-      <div className="flex items-center justify-between mobile:flex-col-reverse mobile:gap-2">
+      <div className="flex items-center justify-between">
         {/* container */}
-        <div className="flex w-[60%] flex-col gap-6 mobile:w-full">
-          <p className="text-2xl font-bold mobile:text-center mobile:text-sm tablet:text-lg">
+        <div className="flex w-[60%] flex-col gap-6 mobile:w-[65%]">
+          <p className="text-2xl font-bold tablet:text-lg mobile:text-xs">
             Exploring the Future of Digital Innovation
           </p>
 
-          <p className="text-lg mobile:hidden tablet:hidden">
+          <p className="text-lg tablet:hidden mobile:hidden">
             orem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             vestibulum justo quis urna posuere, sed sodales nisl facilisis.
             Phasellus suscipit, ipsum sed consectetur efficitur, leo felis....
           </p>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <div className="w-fit rounded-full border-2 border-linearOrange-200 px-6 py-1 text-center font-semibold mobile:px-4 mobile:text-xs">
+            <div className="flex items-center gap-6 mobile:gap-3">
+              <div className="w-fit rounded-full border-2 border-linearOrange-200 px-6 py-1 text-center font-semibold mobile:px-2 mobile:text-xs">
                 Cloud
               </div>
               <div className="text-sm text-gray-500 mobile:text-xs">
@@ -42,7 +42,7 @@ const BlogElement = () => {
               </div>
             </div>
             <div className="flex items-center justify-center gap-2">
-              <div className="flex items-center justify-center gap-2">
+              <div className="flex items-center justify-center gap-2 mobile:gap-1">
                 <p className="text-sm text-gray-500 mobile:text-xs">100</p>
                 <BiLike className="text-xl text-gray-600 mobile:text-lg" />
               </div>
@@ -58,7 +58,7 @@ const BlogElement = () => {
           src={blogImg}
           alt="img"
           draggable="false"
-          className=" h-32 w-32 self-start mobile:h-24 mobile:w-24 mobile:self-center tablet:h-24 tablet:w-24"
+          className=" h-32 w-32 self-start tablet:h-24 tablet:w-24 mobile:h-16 mobile:w-16 mobile:self-start"
         />
       </div>
     </div>
