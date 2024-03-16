@@ -1,17 +1,17 @@
 import { Tab, Tabs, tabsClasses } from "@mui/material";
 
 interface Props {
-  value : number ; 
-  setValue : Function ; 
-};
+  value: number;
+  setValue: Function;
+}
 
-const BlogNavigator = ({value , setValue}:Props) => {
+const BlogNavigator = ({ value, setValue }: Props) => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <div className="px-24">
+    <div className="px-24 mobile:px-4">
       <Tabs
         value={value}
         onChange={handleChange}
@@ -22,7 +22,7 @@ const BlogNavigator = ({value , setValue}:Props) => {
         sx={{
           "& .MuiTabs-scroller": {
             "& .MuiTabs-flexContainer": {
-              justifyContent: "space-between", 
+              justifyContent: "space-between",
               //borderBottom: "solid 1px gray"
             },
           },
@@ -30,8 +30,7 @@ const BlogNavigator = ({value , setValue}:Props) => {
             "&.Mui-disabled": { opacity: 0.3 },
           },
           "& .MuiTab-root": {
-            //minWidth: "auto", 
-            width: "calc(100%/4)", 
+            width: "calc(100%/4)",
             fontSize: "16px",
             textTransform: "capitalize",
           },
@@ -43,6 +42,24 @@ const BlogNavigator = ({value , setValue}:Props) => {
           },
           "& .MuiTabs-indicator": {
             display: "none !important", // Hide the active indicator
+          },
+          "@media (max-width: 1024px)": {
+            "& .MuiTab-root": {
+              width: "calc(100%/3)",
+              fontSize: "14px",
+            },
+          },
+          "@media (max-width: 768px)": {
+            "& .MuiTab-root": {
+              width: "calc(100%/2)",
+              fontSize: "12px",
+            },
+          },
+          "@media (max-width: 410px)": {
+            "& .MuiTab-root": {
+              width: "calc(100%)",
+              fontSize: "12px",
+            },
           },
         }}
       >

@@ -13,11 +13,13 @@ const Intro = () => {
         className="absolute left-[-1px] top-20 w-[150px] mobile:w-[80px] tablet:w-[100px]"
         src={circleLeft}
         alt=""
+        draggable="false"
       />
       <img
         className="absolute right-0 top-[-4px] z-10 w-[900px] mobile:w-[250px] tablet:w-[500px]"
         src={introWave}
         alt=""
+        draggable="false"
       />
       <div className="z-50 flex w-[40%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full">
         <div className="space-y-4">
@@ -41,6 +43,7 @@ const Intro = () => {
         className="z-50 w-[650px] mobile:w-[250px] mobile:self-end tablet:w-[450px] tablet:self-end"
         src={introVector}
         alt=""
+        draggable="false"
       />
     </div>
   );

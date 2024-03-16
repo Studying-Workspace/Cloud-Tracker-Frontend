@@ -52,6 +52,7 @@ const Section1 = () => {
         className="z-40 w-[600px] mobile:w-[300px] tablet:w-[450px]"
         src={educationVector}
         alt=""
+        draggable="false"
       />
       <div className="z-40 flex w-[45%] flex-col items-center justify-between gap-10 mobile:w-full tablet:w-full">
         <div className="space-y-4">
@@ -125,12 +126,14 @@ const Section2 = () => {
           className="z-40 w-[450px] mobile:w-[250px] tablet:w-[350px]"
           src={costReductionVector}
           alt=""
+          draggable="false"
         />
       </motion.div>
       <img
         className="absolute bottom-[-130px] right-[-1px] z-0 w-[120px] mobile:w-[70px] tablet:w-[80px]"
         src={circleRight}
         alt=""
+        draggable="false"
       />
     </div>
   );

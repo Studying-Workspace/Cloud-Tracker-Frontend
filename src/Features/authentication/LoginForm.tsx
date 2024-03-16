@@ -98,11 +98,11 @@ const LoginForm = () => {
                 {/* Remember me and forget password */}
                 <div className=" flex justify-between px-6 text-xl text-gray-400  mobile:text-sm tablet:text-sm">
                   <CheckBox check={rememberMe} setCheck={setRememberMe}>
-                    <p className="text-sm text-gray-400 mobile:text-[10px]">
+                    <p className="text-sm text-gray-400 mobile:text-[10px] tablet:text-[12px]">
                       Remember me
                     </p>
                   </CheckBox>
-                  <p className="cursor-pointer px-5 text-sm text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline mobile:text-[10px]">
+                  <p className="cursor-pointer px-5 text-sm text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline mobile:text-[10px] tablet:text-[12px]">
                     Forget Password ?
                   </p>
                 </div>

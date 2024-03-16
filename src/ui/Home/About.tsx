@@ -18,6 +18,7 @@ const About = () => {
       <img
         src={aboutWave}
         alt="banner"
+        draggable="false"
         className="absolute left-[-1px] top-0 w-[600px] mobile:w-[300px] tablet:w-[450px]"
       />
       <div className="flex items-center justify-between mobile:flex-col mobile:gap-24 tablet:flex-col tablet:gap-24">
@@ -25,6 +26,7 @@ const About = () => {
           className="z-40 w-[500px] mobile:w-[250px] mobile:self-start tablet:w-[350px] tablet:self-start"
           src={aboutVector}
           alt=""
+          draggable="false"
         />
         <motion.div
           ref={ref}
