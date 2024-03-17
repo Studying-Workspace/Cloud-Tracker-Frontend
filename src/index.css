@@ -12,7 +12,7 @@
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
     0deg,
-    rgba(254, 149, 38, 1) 0%,
-    rgba(27, 90, 168, 1) 100%
+    rgba(254, 149, 38, 0.7) 0%,
+    rgba(27, 90, 168, 0.7) 100%
   );
 }
