@@ -38,7 +38,6 @@ const BlogNavigator = ({ value, setValue }: Props) => {
             color: "black !important",
             fontSize: "16px",
             fontWeight: "bold",
-            background: "rgba(0,0,0,10%)",
           },
           "& .MuiTabs-indicator": {
             display: "none !important", // Hide the active indicator
