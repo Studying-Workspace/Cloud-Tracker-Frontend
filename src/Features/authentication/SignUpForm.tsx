@@ -34,7 +34,7 @@ const SignUpForm = () => {
 
   return (
     <div className="flex w-full justify-between">
-      <div className="flex w-[35%] flex-col gap-5 mobile:w-full tablet:w-[50%]">
+      <div className="flex w-[35%] flex-col gap-5 mobile:w-full tablet:w-[50%] mobile:gap-10">
         <div className="space-y-2 text-center">
           <p className="text-5xl font-medium mobile:text-3xl tablet:text-4xl">
             Sign Up
@@ -151,10 +151,20 @@ const SignUpForm = () => {
                   Sign Up
                 </Button>
                 <div className="flex w-[92%] flex-col items-center justify-between gap-2">
-                  <p className=" text-xl text-gray-400">or login via</p>
+                  <p className=" text-xl text-gray-400 mobile:text-sm">
+                    or login via
+                  </p>
                   <div className="flex gap-5">
-                    <img src={GoogleLogo} alt="google" className="h-14 w-14" />
-                    <img src={AwsLogo} alt="aws" className="h-14 w-14" />
+                    <img
+                      src={GoogleLogo}
+                      alt="google"
+                      className="h-14 w-14 mobile:h-8 mobile:w-8"
+                    />
+                    <img
+                      src={AwsLogo}
+                      alt="aws"
+                      className="h-14 w-14 mobile:h-8 mobile:w-8"
+                    />
                   </div>
                 </div>
               </div>

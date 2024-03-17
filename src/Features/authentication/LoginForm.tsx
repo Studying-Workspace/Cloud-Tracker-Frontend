@@ -24,7 +24,7 @@ const LoginForm = () => {
 
   return (
     <div className="flex w-full justify-between">
-      <div className="flex w-[35%] flex-col gap-5 mobile:w-full tablet:w-[50%]">
+      <div className="flex w-[35%] flex-col gap-5 mobile:gap-10 mobile:w-full tablet:w-[50%]">
         <div className="space-y-2 text-center">
           <p className="text-5xl font-medium mobile:text-3xl tablet:text-4xl">
             Sign in
