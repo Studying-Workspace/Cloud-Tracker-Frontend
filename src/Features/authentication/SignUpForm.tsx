@@ -151,19 +151,19 @@ const SignUpForm = () => {
                   Sign Up
                 </Button>
                 <div className="flex w-[92%] flex-col items-center justify-between gap-2">
-                  <p className=" text-xl text-gray-400 mobile:text-sm">
+                  <p className=" text-xl text-gray-400 mobile:text-[18px]">
                     or login via
                   </p>
                   <div className="flex gap-5">
                     <img
                       src={GoogleLogo}
                       alt="google"
-                      className="h-14 w-14 mobile:h-8 mobile:w-8"
+                      className="h-14 w-14 mobile:h-10 mobile:w-10"
                     />
                     <img
                       src={AwsLogo}
                       alt="aws"
-                      className="h-14 w-14 mobile:h-8 mobile:w-8"
+                      className="h-14 w-14 mobile:h-10 mobile:w-10"
                     />
                   </div>
                 </div>
