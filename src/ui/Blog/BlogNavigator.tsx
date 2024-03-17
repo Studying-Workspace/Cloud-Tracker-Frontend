@@ -50,7 +50,7 @@ const BlogNavigator = ({ value, setValue }: Props) => {
           },
           "@media (max-width: 768px)": {
             "& .MuiTab-root": {
-              width: "calc(100%/2)",
+              width: "calc(100%)",
               fontSize: "12px",
             },
           },
