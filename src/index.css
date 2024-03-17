@@ -3,7 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
-h1{
-    display: none;
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    0deg,
+    rgba(254, 149, 38, 1) 0%,
+    rgba(27, 90, 168, 1) 100%
+  );
 }

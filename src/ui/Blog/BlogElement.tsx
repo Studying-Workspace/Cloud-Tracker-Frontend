@@ -28,7 +28,7 @@ const BlogElement = () => {
           </p>
 
           <p className="text-lg tablet:hidden mobile:hidden">
-            orem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             vestibulum justo quis urna posuere, sed sodales nisl facilisis.
             Phasellus suscipit, ipsum sed consectetur efficitur, leo felis....
           </p>
