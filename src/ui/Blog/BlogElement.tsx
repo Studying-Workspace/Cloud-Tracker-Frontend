@@ -1,9 +1,17 @@
 import { IoPersonCircleOutline } from "react-icons/io5";
+// import { useParams } from "react-router-dom";
 import blogImg from "../../assets/blogImg.png";
 import { BiLike } from "react-icons/bi";
 import { LuUpload } from "react-icons/lu";
 
 const BlogElement = () => {
+  // const { blogId } = useParams();
+  const handleClick = () => {
+    // when we going to link it with API, we will use this
+    // window.location.href = `${location}/${blogId}`;
+    window.location.href = `${location}/123`;
+  };
+
   return (
     <div className="flex flex-col gap-6 py-6">
       {/* head */}
@@ -23,11 +31,17 @@ const BlogElement = () => {
       <div className="flex items-center justify-between">
         {/* container */}
         <div className="flex w-[60%] flex-col gap-6 mobile:w-[65%]">
-          <p className="text-2xl font-bold tablet:text-lg mobile:text-xs">
+          <p
+            className="text-2xl font-bold tablet:text-lg mobile:text-xs"
+            onClick={handleClick}
+          >
             Exploring the Future of Digital Innovation
           </p>
 
-          <p className="text-lg tablet:hidden mobile:hidden">
+          <p
+            className="text-lg tablet:hidden mobile:hidden"
+            onClick={handleClick}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             vestibulum justo quis urna posuere, sed sodales nisl facilisis.
             Phasellus suscipit, ipsum sed consectetur efficitur, leo felis....
@@ -59,6 +73,7 @@ const BlogElement = () => {
           alt="img"
           draggable="false"
           className=" h-32 w-32 self-start tablet:h-24 tablet:w-24 mobile:h-16 mobile:w-16 mobile:self-start"
+          onClick={handleClick}
         />
       </div>
     </div>
