@@ -4,15 +4,15 @@ import { LuUpload } from "react-icons/lu";
 
 const BlogInfo = () => {
   return (
-    <div className="mt-36 flex-col space-y-10 px-36 font-poppins tablet:mt-20 tablet:px-20 mobile:mt-14 mobile:space-y-5 mobile:px-10">
+    <div className="mt-24 flex-col space-y-10 px-72 font-poppins tablet:mt-20 tablet:px-20 mobile:mt-14 mobile:space-y-5 mobile:px-10">
       {/* title */}
-      <p className="text-[64px] font-bold tablet:text-[35px] mobile:text-[18px]">
+      <p className="text-[55px] font-bold tablet:text-[35px] mobile:text-[18px]">
         Exploring the Future of Digital Innovation
       </p>
-      <div className="flex items-center justify-between text-4xl tablet:text-2xl mobile:text-xs">
+      <div className="flex items-center justify-between text-3xl tablet:text-2xl mobile:text-xs">
         {/* publisher */}
         <div className=" flex items-center gap-1">
-          <IoPersonCircleOutline className="text-8xl text-gray-600 tablet:text-5xl mobile:text-4xl" />
+          <IoPersonCircleOutline className="text-6xl text-gray-600 tablet:text-5xl mobile:text-4xl" />
           <p className="text-gray-600">Publisher</p>
         </div>
         {/* date */}

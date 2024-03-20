@@ -1,15 +1,17 @@
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 import blogImg from "../../assets/blogImg.png";
 import { BiLike } from "react-icons/bi";
 import { LuUpload } from "react-icons/lu";
 
 const BlogElement = () => {
-  // const { blogId } = useParams();
+  const navigate = useNavigate();
+    // const { blogId } = useParams();
   const handleClick = () => {
     // when we going to link it with API, we will use this
-    // window.location.href = `${location}/${blogId}`;
-    window.location.href = `${location}/123`;
+    // navigate(`/blog/${blogId}`);
+    navigate(`/blog/123`);
   };
 
   return (
