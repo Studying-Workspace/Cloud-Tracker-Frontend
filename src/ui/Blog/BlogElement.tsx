@@ -14,6 +14,12 @@ const BlogElement = () => {
     navigate(`/blog/123`);
   };
 
+  const handleMakeLike = (e: any) => {
+    // stop onClick event from perant div
+    if (e && e.stopPropagation) e.stopPropagation();
+    console.log("like");
+  };
+
   return (
     <div
       className="flex cursor-pointer flex-col gap-6 px-4 py-6 transition-all duration-500 hover:bg-gray-100"
@@ -57,10 +63,16 @@ const BlogElement = () => {
             <div className="flex items-center justify-center gap-2">
               <div className="flex items-center justify-center gap-2 mobile:gap-1">
                 <p className="text-sm text-gray-500 mobile:text-xs">100</p>
-                <BiLike className="text-2xl text-gray-600 mobile:text-xl" />
+                <BiLike className="text-2xl text-gray-600 mobile:text-xl hover:text-blue-600" onClick={(e)=>handleMakeLike(e)}/>
               </div>
               <div>
-                <LuUpload className="text-xl text-gray-600 mobile:text-lg" />
+                <LuUpload
+                  className="z-50 text-xl text-gray-600 hover:text-blue-600 mobile:text-lg"
+                  onClick={() => {
+                    console.log("upload");
+                    navigate("/");
+                  }}
+                />
               </div>
             </div>
           </div>
