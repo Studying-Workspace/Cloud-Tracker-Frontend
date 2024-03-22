@@ -24,12 +24,12 @@ const LoginForm = () => {
 
   return (
     <div className="flex w-full justify-between">
-      <div className="flex w-[35%] flex-col gap-5 mobile:w-full tablet:w-[50%]">
+      <div className="flex w-[35%] flex-col gap-5 tablet:w-[50%] mobile:w-full">
         <div className="space-y-2 text-center">
-          <p className="text-5xl font-medium mobile:text-3xl tablet:text-4xl">
+          <p className="text-5xl font-medium tablet:text-4xl mobile:text-3xl">
             Sign in
           </p>
-          <p className="text-ms font-medium tracking-wider mobile:text-xs tablet:text-xs">
+          <p className="text-ms font-medium tracking-wider tablet:text-xs mobile:text-xs">
             Don’t have an account?{" "}
             <Link
               to="/signUp"
@@ -96,13 +96,13 @@ const LoginForm = () => {
                 </div>
 
                 {/* Remember me and forget password */}
-                <div className=" flex justify-between px-6 text-xl text-gray-400  mobile:text-sm tablet:text-sm">
+                <div className=" flex justify-between px-6 text-xl text-gray-400  tablet:text-sm mobile:text-sm">
                   <CheckBox check={rememberMe} setCheck={setRememberMe}>
-                    <p className="text-sm text-gray-400 mobile:text-[10px] tablet:text-[12px]">
+                    <p className="text-sm text-gray-400 tablet:text-[12px] mobile:text-[10px]">
                       Remember me
                     </p>
                   </CheckBox>
-                  <p className="cursor-pointer px-5 text-sm text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline mobile:text-[10px] tablet:text-[12px]">
+                  <p className="cursor-pointer px-5 text-sm text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline tablet:text-[12px] mobile:text-[10px]">
                     Forget Password ?
                   </p>
                 </div>

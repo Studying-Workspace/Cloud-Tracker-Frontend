@@ -7,7 +7,7 @@ import { LuUpload } from "react-icons/lu";
 
 const BlogElement = () => {
   const navigate = useNavigate();
-    // const { blogId } = useParams();
+  // const { blogId } = useParams();
   const handleClick = () => {
     // when we going to link it with API, we will use this
     // navigate(`/blog/${blogId}`);
@@ -15,7 +15,10 @@ const BlogElement = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 py-6">
+    <div
+      className="flex cursor-pointer flex-col gap-6 px-4 py-6 transition-all duration-500 hover:bg-gray-100"
+      onClick={() => handleClick()}
+    >
       {/* head */}
       <div className="flex items-center justify-between">
         {/* publisher */}
@@ -33,17 +36,11 @@ const BlogElement = () => {
       <div className="flex items-center justify-between">
         {/* container */}
         <div className="flex w-[60%] flex-col gap-6 mobile:w-[65%]">
-          <p
-            className="text-2xl font-bold tablet:text-lg mobile:text-xs"
-            onClick={handleClick}
-          >
+          <p className="text-2xl font-bold tablet:text-lg mobile:text-xs">
             Exploring the Future of Digital Innovation
           </p>
 
-          <p
-            className="text-lg tablet:hidden mobile:hidden"
-            onClick={handleClick}
-          >
+          <p className="text-lg tablet:hidden mobile:hidden">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
             vestibulum justo quis urna posuere, sed sodales nisl facilisis.
             Phasellus suscipit, ipsum sed consectetur efficitur, leo felis....
@@ -75,7 +72,6 @@ const BlogElement = () => {
           alt="img"
           draggable="false"
           className=" h-32 w-32 self-start tablet:h-24 tablet:w-24 mobile:h-16 mobile:w-16 mobile:self-start"
-          onClick={handleClick}
         />
       </div>
     </div>
