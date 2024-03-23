@@ -24,7 +24,7 @@ const LoginForm = () => {
 
   return (
     <div className="flex w-full justify-between">
-      <div className="flex w-[35%] flex-col gap-5 mobile:gap-10 mobile:w-full tablet:w-[50%]">
+      <div className="flex w-[35%] flex-col gap-5 mobile:w-full mobile:gap-10 tablet:w-[50%]">
         <div className="space-y-2 text-center">
           <p className="text-5xl font-medium mobile:text-3xl tablet:text-4xl">
             Sign in
@@ -34,6 +34,7 @@ const LoginForm = () => {
             <Link
               to="/signUp"
               className=" text-linearBlue-1 underline transition-all duration-300 hover:text-black"
+              data-testid="signUpLink"
             >
               Sign up
             </Link>
@@ -63,6 +64,7 @@ const LoginForm = () => {
                   placeholder="E-mail"
                   type="text"
                   name="email"
+                  data-testId="emailInput"
                   error={touched.email ? errors.email : undefined}
                 >
                   <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
@@ -71,6 +73,7 @@ const LoginForm = () => {
                   type="warning"
                   error={errors.email}
                   touched={touched.email}
+                  testid="emailWarning"
                 />
               </div>
 
@@ -84,6 +87,8 @@ const LoginForm = () => {
                     showPassword={showPassword}
                     setShowPassword={setShowPassword}
                     error={touched.password ? errors.password : undefined}
+                    data-testid="password"
+                    showTestId="showPassword"
                   >
                     <MdLockOutline className="text-3xl text-linearBlue-1" />
                   </InputField>
@@ -92,6 +97,7 @@ const LoginForm = () => {
                     type="warning"
                     error={errors.password}
                     touched={touched.password}
+                    testid="passwordWarning"
                   />
                 </div>
 
@@ -109,7 +115,7 @@ const LoginForm = () => {
               </div>
 
               {/* Submit */}
-              <Button role="submit" size="full">
+              <Button role="submit" size="full" testid="submitForm">
                 Sign in
               </Button>
             </Form>

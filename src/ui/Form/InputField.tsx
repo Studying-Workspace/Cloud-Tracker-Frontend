@@ -10,6 +10,7 @@ interface Props {
   showPassword?: boolean;
   setShowPassword?: Function;
   error: string | undefined;
+  showTestId?: string;
 }
 const InputField = ({
   children,
@@ -17,6 +18,7 @@ const InputField = ({
   showPassword,
   setShowPassword,
   error,
+  showTestId,
   ...props
 }: Props) => {
   if (type === "password") {
@@ -33,6 +35,7 @@ const InputField = ({
         <ShowPasswordButton
           showPassword={showPassword}
           setShowPassword={setShowPassword}
+          showTestIdBtn={showTestId}
         />
       </div>
     );
