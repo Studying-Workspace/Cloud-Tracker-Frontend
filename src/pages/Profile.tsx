@@ -1,3 +1,9 @@
+import ProfileContainer from "../ui/Profile/ProfileContainer";
+
 export const Profile = () => {
-  return <div>Profile</div>;
+  return (
+    <div>
+      <ProfileContainer />
+    </div>
+  );
 };
