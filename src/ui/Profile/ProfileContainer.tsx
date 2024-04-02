@@ -2,6 +2,7 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import Button from "../Button";
 import { MdEdit } from "react-icons/md";
 import { useRef } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 const ProfileContainer = () => {
   const ref = useRef<HTMLInputElement>(null);
@@ -44,8 +45,9 @@ const ProfileContainer = () => {
               <div className="flex h-[35px] w-[250px] justify-between bg-white">
                 <input
                   type="text"
-                  className="w-full px-2 text-lg text-gray-600 focus:outline-none"
+                  className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
                   placeholder="Username"
+                  disabled={true}
                 />{" "}
                 <span className="text-2xl text-gray-500">
                   <MdEdit />
@@ -54,11 +56,12 @@ const ProfileContainer = () => {
             </div>
 
             <div className=" bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1.5px]">
-              <div className="flex h-[35px] w-[250px] justify-between bg-white ">
+              <div className="flex h-[35px] w-[250px] justify-between bg-white">
                 <input
                   type="text"
-                  className="w-full px-2 text-lg text-gray-600 focus:outline-none"
+                  className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
                   placeholder="Password"
+                  disabled={true}
                 />{" "}
                 <span className="text-2xl text-gray-500">
                   <MdEdit />
@@ -67,11 +70,12 @@ const ProfileContainer = () => {
             </div>
 
             <div className=" bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1.5px]">
-              <div className="flex h-[35px] w-[250px] justify-between bg-white ">
+              <div className="flex h-[35px] w-[250px] justify-between bg-white">
                 <input
                   type="text"
-                  className="w-full px-2 text-lg text-gray-600 focus:outline-none"
+                  className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
                   placeholder="Email"
+                  disabled={true}
                 />{" "}
                 <span className="text-2xl text-gray-500">
                   <MdEdit />
@@ -79,15 +83,16 @@ const ProfileContainer = () => {
               </div>
             </div>
 
-            <div className=" bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1.5px]">
+            <div className=" bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1.5px] ">
               <div className="flex h-[35px] w-[250px] justify-between bg-white ">
                 <input
                   type="text"
-                  className="w-full px-2 text-lg text-gray-600 focus:outline-none"
+                  className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
                   placeholder="Country"
+                  disabled={true}
                 />{" "}
-                <span className="text-2xl text-gray-500">
-                  <MdEdit />
+                <span className="text-3xl text-gray-500">
+                  <IoIosArrowDown />
                 </span>
               </div>
             </div>
