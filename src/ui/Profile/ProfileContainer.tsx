@@ -1,8 +1,11 @@
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Button from "../Button";
 import { MdEdit } from "react-icons/md";
+import { useRef } from "react";
 
 const ProfileContainer = () => {
+  const ref = useRef<HTMLInputElement>(null);
+
   return (
     <div className="mt-[100px] flex min-h-screen items-start justify-center">
       <div className="bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px]">
@@ -12,21 +15,27 @@ const ProfileContainer = () => {
             <input
               type="file"
               id="file-upload"
-              className="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0"
+              className="hidden cursor-pointer"
+              ref={ref}
             />
             <div className="flex h-[200px] w-[200px] items-center justify-center rounded-full border-4 border-gray-500 bg-white">
-              <label htmlFor="file-upload" className="cursor-pointer">
-                <span className="text-8xl text-gray-500">
-                  <IoCloudUploadOutline />
-                </span>
-              </label>
+              <span className="text-8xl text-gray-500">
+                <IoCloudUploadOutline />
+              </span>
             </div>
-            <label htmlFor="file-upload" className="cursor-pointer">
-              <Button type="primary" size="xl">
-                {" "}
-                Upload Photo{" "}
-              </Button>
-            </label>
+
+            <Button
+              type="primary"
+              size="xl"
+              onClick={() => {
+                if (ref.current) {
+                  ref.current.click();
+                }
+              }}
+            >
+              {" "}
+              Upload Photo{" "}
+            </Button>
           </div>
 
           {/*input fields*/}
