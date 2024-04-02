@@ -4,7 +4,7 @@ import { MdEdit } from "react-icons/md";
 
 const ProfileContainer = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center ">
+    <div className="mt-[100px] flex min-h-screen items-start justify-center">
       <div className="bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px]">
         <div className=" flex h-[450px] w-[1000px] content-between items-center justify-start gap-16 bg-white px-[100px]">
           {/* Profile Image */}
@@ -30,9 +30,9 @@ const ProfileContainer = () => {
           </div>
 
           {/*input fields*/}
-          <div className="flex flex-wrap gap-[36px]">
+          <div className=" grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-16 ">
             <div className=" bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1.5px]">
-              <div className="flex h-[35px] w-[250px] justify-between bg-white ">
+              <div className="flex h-[35px] w-[250px] justify-between bg-white">
                 <input
                   type="text"
                   className="w-full px-2 text-lg text-gray-600 focus:outline-none"
