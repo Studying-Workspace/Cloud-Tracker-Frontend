@@ -3,6 +3,7 @@ import Button from "../Button";
 import { MdEdit } from "react-icons/md";
 import { useRef } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import Footer from "../Footer";
 
 const ProfileContainer = () => {
   const ref = useRef<HTMLInputElement>(null);
