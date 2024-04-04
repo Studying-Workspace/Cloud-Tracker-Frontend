@@ -13,7 +13,7 @@ const ProfileContainer = () => {
         <div
           className="flex h-[450px] w-[1000px] content-between items-center justify-start gap-16 
         bg-white px-[100px] tablet:h-[650px] tablet:w-[400px] tablet:flex-col 
-        tablet:justify-center tablet:gap-10 mobile:h-[550px] mobile:w-[300px] mobile:flex-col mobile:justify-center mobile:gap-8"
+        tablet:justify-center tablet:gap-10 mobile:h-[550px] mobile:w-[330px] mobile:flex-col mobile:justify-center mobile:gap-8"
         >
           {/* Profile Image */}
           <div className="relative flex flex-col items-center gap-8">
