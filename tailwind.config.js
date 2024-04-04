@@ -9,19 +9,18 @@ export default {
           2: "#4F7BB0",
           3: "#96B5DC",
         },
-        linearOrange:{
-          100 : "#FDAC3D" ,
-          200 : "#ED912A" , 
-        }
+        linearOrange: {
+          100: "#FDAC3D",
+          200: "#ED912A",
+        },
       },
       fontFamily: {
         poppins: ["Poppins"],
       },
-      screens:{
-        'tablet' : {'min': '769px' , 'max' : '1024px'},
-        'mobile' : {'max' : '768px'} , 
-        'tablet' : {'min': '769px' , 'max' : '1024px'}
-      }
+      screens: {
+        mobile: { max: "768px" },
+        tablet: { min: "769px", max: "1024px" },
+      },
     },
   },
   plugins: [],
