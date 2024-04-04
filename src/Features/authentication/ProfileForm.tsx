@@ -1,9 +1,9 @@
-import { MdEdit } from "react-icons/md";
+import ProfileInputField from "../../ui/Profile/ProfileInputField"
+import UploadPhoto from "../../ui/Profile/UploadPhoto"
 import { IoIosArrowDown } from "react-icons/io";
-import UploadPhoto from "./UploadPhoto";
-import ProfileInputField from "./ProfileInputField";
 
-const ProfileContainer = () => {
+
+const ProfileForm = () => {
   return (
     <div className="mt-[100px] flex min-h-screen items-start justify-center">
       <div className="relative bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px] ">
@@ -40,17 +40,7 @@ const ProfileContainer = () => {
         </div>
       </div>
     </div>
-  );
-  {
-    /* Save Changes button */
-  }
-  {
-    /*    <div className="flex w-fit rounded-full bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[3px]">
-        <Button type="secondary" size="xl">
-          Save Changes
-        </Button>
-      </div> */
-  }
-};
+  )
+}
 
-export default ProfileContainer;
+export default ProfileForm

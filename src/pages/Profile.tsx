@@ -1,10 +1,10 @@
+import ProfileForm from "../Features/authentication/ProfileForm";
 import Footer from "../ui/Footer";
-import ProfileContainer from "../ui/Profile/ProfileContainer";
 
 export const Profile = () => {
   return (
     <div>
-      <ProfileContainer />
+      <ProfileForm />
       <Footer />
     </div>
   );
