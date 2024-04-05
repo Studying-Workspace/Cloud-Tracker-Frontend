@@ -5,6 +5,7 @@ import { Outlet, useLocation } from "react-router-dom";
 const Applayout = () => {
   const loacation = useLocation();
   const currentPage = loacation.pathname;
+  const setFooter = currentPage === "/" || currentPage === "/profile";
 
   return (
     <div>
@@ -14,7 +15,7 @@ const Applayout = () => {
       >
         <Outlet />
       </div>
-      {currentPage === "/" && <Footer />}
+      {setFooter && <Footer />}
     </div>
   );
 };

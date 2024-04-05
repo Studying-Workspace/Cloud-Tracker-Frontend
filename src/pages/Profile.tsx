@@ -1,11 +1,9 @@
 import ProfileForm from "../Features/authentication/ProfileForm";
-import Footer from "../ui/Footer";
 
 export const Profile = () => {
   return (
-    <div>
+    <div className="flex items-center justify-center">
       <ProfileForm />
-      <Footer />
     </div>
   );
 };
