@@ -5,7 +5,7 @@ import UploadPhoto from "../../ui/Profile/UploadPhoto";
 const ProfileForm = () => {
   return (
     <div className="mt-[100px] flex min-h-screen items-start justify-center">
-      <div className="relative bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px] ">
+      <div className="relative bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[2.5px] ">
         <div
           className="flex h-[450px] w-[1000px] content-between items-center justify-start gap-16 
         bg-white px-[100px] mobile:h-[550px] mobile:w-[330px] mobile:flex-col 
