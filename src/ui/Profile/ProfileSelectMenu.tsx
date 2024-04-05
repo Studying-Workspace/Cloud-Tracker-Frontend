@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { grey } from "@mui/material/colors";
 import { MenuItem, Select } from "@mui/material";
 
@@ -16,17 +17,17 @@ const ProfileSelectMenu = () => {
               border: "none",
             },
             "& .MuiSelect-icon": {
-              fontSize: "2rem", // Adjust the icon size as needed
+              fontSize: "2rem",
             },
             "& .MuiSelect-select": {
-              color: grey[600], // Adjust the color as needed
-              fontSize: "1rem", // Increase the text size as needed
-              fontFamily: '"Poppins", sans-serif', // Apply the Poppins font
+              color: grey[600],
+              fontSize: "1rem",
+              fontFamily: '"Poppins", sans-serif',
             },
             "& .MuiMenuItem-root": {
-              color: "black", // Example color for options
-              fontSize: "1rem", // Increase the text size as needed
-              fontFamily: '"Poppins", sans-serif', // Apply the Poppins font to the dropdown options as well
+              color: "black",
+              fontSize: "1rem",
+              fontFamily: '"Poppins", sans-serif',
             },
           }}
           renderValue={(value) =>
@@ -46,10 +47,7 @@ const ProfileSelectMenu = () => {
           }
         >
           <MenuItem value="US">United States</MenuItem>
-          <MenuItem value="US">United States</MenuItem>
           <MenuItem value="CA">Canada</MenuItem>
-          <MenuItem value="CA">Canada</MenuItem>
-          <MenuItem value="MX">Mexico</MenuItem>
           <MenuItem value="MX">Mexico</MenuItem>
         </Select>
       </div>
