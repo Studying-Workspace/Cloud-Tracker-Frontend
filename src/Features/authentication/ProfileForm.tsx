@@ -22,8 +22,8 @@ const ProfileForm = () => {
           </div>
         </div>
       </div>
-      <div className="w-fit self-end rounded-full bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[3px] ">
-        <Button type="secondary" size="xl">
+      <div className="w-fit self-end rounded-full bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[3px] mobile:self-center tablet:self-center">
+        <Button role="submit" type="secondary" size="xl">
           Save Changes
         </Button>
       </div>
