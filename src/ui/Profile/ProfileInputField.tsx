@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MdEdit } from "react-icons/md";
+import Modal from "../Modal";
 
 
 interface Props {
@@ -31,9 +32,28 @@ const ProfileInputField = ({ type, placeholder }: Props) => {
           disabled={disabled}
           ref={inputField}
         />
-        <span className="text-2xl text-gray-500" onClick={handleClick}>
-          <MdEdit />
-        </span>
+        {type !== "password" ? (
+          <button className="text-2xl text-gray-500" onClick={handleClick}>
+            <MdEdit />
+          </button>
+        ) : (
+          <Modal>
+            <Modal.Open openName="password-form">
+              <button className="text-2xl text-gray-500">
+                <MdEdit />
+              </button>
+            </Modal.Open>
+            <Modal.Window currentWindowname="password-form">
+              <div className="rounded-xl bg-white p-4 shadow-md">
+                <input
+                  type="password"
+                  className="w-full px-2 text-lg text-gray-600 focus:outline-none"
+                  placeholder="New Password"
+                />
+              </div>
+            </Modal.Window>
+          </Modal>
+        )}
       </div>
     </div>
   );

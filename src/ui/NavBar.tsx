@@ -27,7 +27,8 @@ const NavBar = () => {
   const blogId = `123`;
   return (
     <nav
-      className={`relative z-50 flex w-full items-center justify-between bg-gradient-to-r from-linearBlue-3 via-linearBlue-2 to-linearBlue-1 px-24 py-1 font-poppins font-semibold 
+      className={`relative z-50 flex w-full items-center justify-between bg-gradient-to-r from-linearBlue-3
+       via-linearBlue-2 to-linearBlue-1 px-24 py-1 font-poppins font-semibold 
     text-white tablet:px-12 tablet:text-sm mobile:px-8 mobile:text-sm ${showNav ? "mobile:fixed" : ""}`}
     >
       <Logo />
