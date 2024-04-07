@@ -75,7 +75,7 @@ const Window = ({ children, currentWindowname }: WindowProps) => {
       >
         <button
           onClick={values.handleCloseWindow}
-          className="absolute right-4 top-4 text-xl text-gray-500"
+          className="absolute right-6 top-6 text-3xl text-gray-500"
         >
           {" "}
           <IoCloseSharp />{" "}
