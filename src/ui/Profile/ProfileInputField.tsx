@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import Modal from "../Modal";
-
+import EditPasswordform from "../../Features/authentication/EditPasswordform";
 
 interface Props {
   type: string;
@@ -44,13 +44,7 @@ const ProfileInputField = ({ type, placeholder }: Props) => {
               </button>
             </Modal.Open>
             <Modal.Window currentWindowname="password-form">
-              <div className="rounded-xl bg-white p-4 shadow-md">
-                <input
-                  type="password"
-                  className="w-full px-2 text-lg text-gray-600 focus:outline-none"
-                  placeholder="New Password"
-                />
-              </div>
+              <EditPasswordform />
             </Modal.Window>
           </Modal>
         )}

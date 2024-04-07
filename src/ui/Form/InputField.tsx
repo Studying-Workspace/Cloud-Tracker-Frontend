@@ -9,7 +9,7 @@ interface Props {
   name: string;
   showPassword?: boolean;
   setShowPassword?: Function;
-  error: string | undefined;
+  error?: string | undefined;
 }
 const InputField = ({
   children,
