@@ -8,6 +8,7 @@ import {
 } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { createPortal } from "react-dom";
+import { useClickOutSideElement } from "../hooks/useClickOutsideElement";
 
 interface ModalProps {
   children: ReactNode;
@@ -61,13 +62,17 @@ const Open = ({ children, openName }: OpenProps) => {
 
 const Window = ({ children, currentWindowname }: WindowProps) => {
   const values = useContext(ModalContext);
+  const ref = useClickOutSideElement(() => values?.handleCloseWindow());
 
   if (values?.openWindow !== currentWindowname) {
     return null;
   }
   return createPortal(
     <div className="fixed left-0 top-0 z-50 flex h-screen w-full items-center justify-center bg-[rgba(255,255,255,0.5)] backdrop-blur-sm	">
-      <div className=" relative rounded-xl shadow-[0_35px_60px_-15px_rgba(27,90,168,0.3)]">
+      <div
+        className=" relative rounded-xl shadow-[0_35px_60px_-15px_rgba(27,90,168,0.3)]"
+        ref={ref}
+      >
         <button
           onClick={values.handleCloseWindow}
           className="absolute right-4 top-4 text-xl text-gray-500"
