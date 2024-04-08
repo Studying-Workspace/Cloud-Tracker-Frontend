@@ -2,15 +2,25 @@ import { useEffect, useRef, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import Modal from "../Modal";
 import EditPasswordform from "../../Features/authentication/EditPasswordform";
+import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+import { Field } from "formik";
 
 interface Props {
   type: string;
   placeholder: string;
   name?: string;
   error?: string | undefined;
+  touched?: boolean;
 }
 
-const ProfileInputField = ({ type, placeholder, name, ...props }: Props) => {
+const ProfileInputField = ({
+  type,
+  placeholder,
+  name,
+  error,
+  touched,
+  ...props
+}: Props) => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const inputField = useRef<HTMLInputElement>(null);
 
@@ -20,14 +30,20 @@ const ProfileInputField = ({ type, placeholder, name, ...props }: Props) => {
     }
   }, [disabled]);
 
+  useEffect(() => {
+    if (touched) {
+      setDisabled(false);
+    }
+  }, [touched]);
+
   function handleClick() {
-    setDisabled((e) => !e);
+    setDisabled((prevState) => !prevState);
   }
 
   return (
-    <div className=" w-fit bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1px]">
+    <div className="w-fit bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1px]">
       <div className="flex h-[35px] w-[250px] justify-between bg-white">
-        <input
+        <Field
           type={type}
           className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
           placeholder={placeholder}
@@ -37,9 +53,13 @@ const ProfileInputField = ({ type, placeholder, name, ...props }: Props) => {
           {...props}
         />
         {type !== "password" ? (
-          <button className="text-2xl text-gray-500" onClick={handleClick}>
-            <MdEdit />
-          </button>
+          touched ? (
+            <HandleMessageForm type="warning" error={error} touched={true} />
+          ) : (
+            <button className="text-2xl text-gray-500" onClick={handleClick}>
+              <MdEdit />
+            </button>
+          )
         ) : (
           <Modal>
             <Modal.Open openName="password-form">

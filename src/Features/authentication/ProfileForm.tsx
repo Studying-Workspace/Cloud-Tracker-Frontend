@@ -45,26 +45,22 @@ const ProfileForm = () => {
 
                 {/* Input fields */}
                 <div className="grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-16 mobile:flex mobile:flex-col mobile:gap-6 tablet:flex tablet:flex-col tablet:gap-8">
-                  <ProfileInputField
-                    type="text"
-                    placeholder="Username"
-                    name="username"
-                    error={
-                      touched.username
-                        ? errors.username
-                        : undefined
-                    }
-                  />
+                  <div className="flex w-full items-center justify-between">
+                    <ProfileInputField
+                      type="text"
+                      placeholder="Username"
+                      name="username"
+                      error={errors.username}
+                      touched={touched.username}
+                    />
+                  </div>
                   <ProfileInputField type="password" placeholder="Password" />
                   <ProfileInputField
                     type="email"
                     placeholder="Email"
                     name="email"
-                    error={
-                      touched.email
-                        ? errors.email
-                        : undefined
-                    }
+                    error={errors.email}
+                    touched={touched.email}
                   />
                   <ProfileSelectMenu />
                 </div>
