@@ -49,4 +49,9 @@ describe("Blog Page", () => {
     const emailInput = screen.getByTestId("shareIcon");
     expect(emailInput).toBeInTheDocument();
   });
+
+  it("should have Content", () => {
+    const emailInput = screen.getByTestId("content");
+    expect(emailInput).toBeInTheDocument();
+  });
 });
