@@ -6,9 +6,11 @@ import EditPasswordform from "../../Features/authentication/EditPasswordform";
 interface Props {
   type: string;
   placeholder: string;
+  name?: string;
+  error?: string | undefined;
 }
 
-const ProfileInputField = ({ type, placeholder }: Props) => {
+const ProfileInputField = ({ type, placeholder, name, ...props }: Props) => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const inputField = useRef<HTMLInputElement>(null);
 
@@ -31,6 +33,8 @@ const ProfileInputField = ({ type, placeholder }: Props) => {
           placeholder={placeholder}
           disabled={disabled}
           ref={inputField}
+          name={name}
+          {...props}
         />
         {type !== "password" ? (
           <button className="text-2xl text-gray-500" onClick={handleClick}>
