@@ -11,7 +11,7 @@ describe("Profile Page", () => {
     );
   });
 
-  it("Renders multiple ProfileInputField components", () => {
+  it("Should Render multiple ProfileInputField components", () => {
     const inputFields = screen.getAllByRole("textbox");
     expect(inputFields.length).toBeGreaterThan(0);
   });
@@ -26,7 +26,7 @@ describe("Profile Page", () => {
     expect(saveButton).toBeInTheDocument();
   });
 
-  it("renders the 'Upload Photo' button", () => {
+  it("Should Render the 'Upload Photo' button", () => {
     const uploadButton = screen.getByRole("button", { name: /upload photo/i });
     expect(uploadButton).toBeInTheDocument();
   });
