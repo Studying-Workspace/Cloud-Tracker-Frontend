@@ -21,12 +21,18 @@ const HandleMessageForm = ({ error, touched, type, testid }: Props) => {
         <RiErrorWarningFill />
       </button>
     ) : (
-      <span className="text-2xl text-green-600 mobile:text-xl">
+      <span
+        className="text-2xl text-green-600 mobile:text-xl"
+        data-testid={testid}
+      >
         <FaCheckCircle />
       </span>
     )
   ) : (
-    <span className="text-2xl text-gray-700 mobile:text-xl">
+    <span
+      className="text-2xl text-gray-700 mobile:text-xl"
+      data-testid={testid}
+    >
       <FaMinusCircle />
     </span>
   );

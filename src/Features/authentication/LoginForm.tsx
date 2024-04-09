@@ -64,7 +64,7 @@ const LoginForm = () => {
                   placeholder="E-mail"
                   type="text"
                   name="email"
-                  data-testId="emailInput"
+                  data-testId="email"
                   error={touched.email ? errors.email : undefined}
                 >
                   <MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
@@ -103,7 +103,11 @@ const LoginForm = () => {
 
                 {/* Remember me and forget password */}
                 <div className=" flex justify-between px-6 text-xl text-gray-400  mobile:text-sm tablet:text-sm">
-                  <CheckBox check={rememberMe} setCheck={setRememberMe}>
+                  <CheckBox
+                    check={rememberMe}
+                    setCheck={setRememberMe}
+                    testid="rememberMe"
+                  >
                     <p className="text-lg text-gray-400 mobile:text-[10px]">
                       Remember me
                     </p>

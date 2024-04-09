@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import SignUp from "../pages/SignUp";
 import { HashRouter } from "react-router-dom";
 
@@ -29,26 +30,102 @@ describe("SignUp", () => {
     expect(window.location.hash).toBe("#/signIn");
   });
 
-  it("should have username input", () => {
-    const usernameInput = screen.getByTestId("username");
-    expect(usernameInput).toBeInTheDocument();
-
-    //fireEvent.change(usernameInput, { target: { value: "178" } });
-    const submitButton = screen.getByTestId("submitForm");
-    fireEvent.click(submitButton);
-    // const warningButton = screen.getByTestId("passwordWarning");
-    // fireEvent.click(warningButton);
-
-    // const warningMessage = screen.getByDisplayValue("Please Enter Your Username");
-    // expect(warningMessage).toBeInTheDocument();
+  it("should have username input and gray warning Icon", async () => {
+    const usernameField = screen.getByTestId("username");
+    expect(usernameField).toBeInTheDocument();
+    const warningIcon = screen.getByTestId("usernameWarning");
+    expect(warningIcon).toHaveClass("text-gray-700");
   });
 
-  it("should have email input", () => {
-    const emailInput = screen.getByTestId("email");
-    expect(emailInput).toBeInTheDocument();
+  it("The warning icon for the username test should be reded out if the field is empty", async () => {
+    const usernameField = screen.getByTestId("username");
+    const emailField = screen.getByTestId("email");
+    await userEvent.click(usernameField);
+    await userEvent.type(emailField, "moc");
+    const warningIcon = screen.getByTestId("usernameWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
   });
 
-  it("should have password input", () => {
+  it("The warning icon for the username test should be reded out if the field is min 3 char", async () => {
+    const usernameFiled = screen.getByTestId("username");
+    const emailField = screen.getByTestId("email");
+    await userEvent.type(usernameFiled, "mo");
+    await userEvent.type(emailField, "moc");
+    const warningIcon = screen.getByTestId("usernameWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the username test should be reded out if the field is max 15 char", async () => {
+    const usernameFiled = screen.getByTestId("username");
+    const emailField = screen.getByTestId("email");
+    await userEvent.type(usernameFiled, "aaaaaaaaaaaaaaaa");
+    await userEvent.type(emailField, "moc");
+    const warningIcon = screen.getByTestId("usernameWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the username test should be greened out if the field is correct", async () => {
+    const usernameFiled = screen.getByTestId("username");
+    const emailField = screen.getByTestId("email");
+    await userEvent.type(usernameFiled, "Ali");
+    await userEvent.type(emailField, "moc");
+    const warningIcon = screen.getByTestId("usernameWarning");
+    expect(warningIcon).toHaveClass("text-green-600");
+  });
+
+  it("should have email input and gray warning Icon", async () => {
+    const emailField = screen.getByTestId("email");
+    expect(emailField).toBeInTheDocument();
+    const warningIcon = screen.getByTestId("emailWarning");
+    expect(warningIcon).toHaveClass("text-gray-700");
+  });
+
+  it("The warning icon for the email test should be reded out if the field is empty", async () => {
+    const emailField = screen.getByTestId("email");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.click(emailField);
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("emailWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the email test should be reded out if the field is havent @", async () => {
+    const emailField = screen.getByTestId("email");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.type(emailField, "mo");
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("emailWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the email test should be reded out if the field is havent text before @", async () => {
+    const emailField = screen.getByTestId("email");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.type(emailField, "@mo");
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("emailWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the email test should be reded out if the field is havent text after @", async () => {
+    const emailField = screen.getByTestId("email");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.type(emailField, "mo@");
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("emailWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the email test should be greened out if the field is cottect", async () => {
+    const emailField = screen.getByTestId("email");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.type(emailField, "mo@gmail");
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("emailWarning");
+    expect(warningIcon).toHaveClass("text-green-600");
+  });
+
+  it("should have password input and show and hide it", () => {
     const passwordInput = screen.getByTestId("password");
     expect(passwordInput).toBeInTheDocument();
     const showPasswordButton = screen.getByTestId("showPassword");
@@ -58,7 +135,41 @@ describe("SignUp", () => {
     expect(passwordInput).toHaveAttribute("type", "password");
   });
 
-  it("should have confirm password input", () => {
+  it("should have password input and gray warning Icon", async () => {
+    const passwordField = screen.getByTestId("password");
+    expect(passwordField).toBeInTheDocument();
+    const warningIcon = screen.getByTestId("passwordWarning");
+    expect(warningIcon).toHaveClass("text-gray-700");
+  });
+
+  it("The warning icon for the password test should be reded out if the field is empty", async () => {
+    const passwordField = screen.getByTestId("password");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.click(passwordField);
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("passwordWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the password test should be reded out if the field is min 8 char", async () => {
+    const passwordFiled = screen.getByTestId("password");
+    const emailField = screen.getByTestId("email");
+    await userEvent.type(passwordFiled, "ooooooo");
+    await userEvent.type(emailField, "moc");
+    const warningIcon = screen.getByTestId("passwordWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the password test should be greened out if the field is correct", async () => {
+    const passwordFiled = screen.getByTestId("password");
+    const emailField = screen.getByTestId("email");
+    await userEvent.type(passwordFiled, "oooooooo");
+    await userEvent.type(emailField, "moc");
+    const warningIcon = screen.getByTestId("passwordWarning");
+    expect(warningIcon).toHaveClass("text-green-600");
+  });
+
+  it("should have confirm password input and show and hide it", () => {
     const confirmPasswordInput = screen.getByTestId("confirmPassword");
     expect(confirmPasswordInput).toBeInTheDocument();
     const showPasswordButton = screen.getByTestId("showConfirmPassword");
@@ -66,6 +177,54 @@ describe("SignUp", () => {
     expect(confirmPasswordInput).toHaveAttribute("type", "text");
     fireEvent.click(showPasswordButton);
     expect(confirmPasswordInput).toHaveAttribute("type", "password");
+  });
+
+  it("should have confirm password input and gray warning Icon", async () => {
+    const confirmPasswordField = screen.getByTestId("confirmPassword");
+    expect(confirmPasswordField).toBeInTheDocument();
+    const warningIcon = screen.getByTestId("confirmPasswordWarning");
+    expect(warningIcon).toHaveClass("text-gray-700");
+  });
+
+  it("The warning icon for the confirm password test should be reded out if the field is empty", async () => {
+    const passwordField = screen.getByTestId("confirmPassword");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.click(passwordField);
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("confirmPasswordWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+  it("The warning icon for the confirm password test should be reded out if the password and password confirm aren't the same", async () => {
+    const confirmPasswordField = screen.getByTestId("confirmPassword");
+    const passwordField = screen.getByTestId("password");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.type(passwordField, "122");
+    await userEvent.type(confirmPasswordField, "123");
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("confirmPasswordWarning");
+    expect(warningIcon).toHaveClass("text-red-600");
+  });
+
+  it("The warning icon for the confirm password test should be greened out if the field is correct", async () => {
+    const confirmPasswordField = screen.getByTestId("confirmPassword");
+    const passwordField = screen.getByTestId("password");
+    const usernameFiled = screen.getByTestId("username");
+    await userEvent.type(passwordField, "122");
+    await userEvent.type(confirmPasswordField, "122");
+    await userEvent.type(usernameFiled, "moc");
+    const warningIcon = screen.getByTestId("confirmPasswordWarning");
+    expect(warningIcon).toHaveClass("text-green-600");
+  });
+
+  it("The warning icon for the confirm password test should be greened out if the field is change to correct", async () => {
+    const confirmPasswordField = screen.getByTestId("confirmPassword");
+    const passwordField = screen.getByTestId("password");
+    await userEvent.type(passwordField, "122");
+    await userEvent.type(confirmPasswordField, "123");
+    await userEvent.clear(passwordField);
+    await userEvent.type(passwordField, "123");
+    const warningIcon = screen.getByTestId("confirmPasswordWarning");
+    expect(warningIcon).toHaveClass("text-green-600");
   });
 
   it("should have sign up button", () => {
@@ -79,8 +238,6 @@ describe("SignUp", () => {
 
     const awsButton = screen.getByTestId("aws");
     expect(awsButton).toBeInTheDocument();
-
-    // - add linked in button
   });
 
   it("should have info section", () => {
