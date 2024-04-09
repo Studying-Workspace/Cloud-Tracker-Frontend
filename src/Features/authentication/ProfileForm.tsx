@@ -9,12 +9,14 @@ import * as Yup from "yup";
 interface MyFormValues {
   email: string;
   username: string;
+  password : string;
 }
 
 const ProfileForm = () => {
   const initialValues: MyFormValues = {
     email: "",
     username: "",
+    password: "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -50,16 +52,16 @@ const ProfileForm = () => {
                       type="text"
                       placeholder="Username"
                       name="username"
-                      error={errors.username}
+                      error={touched.username ? errors.username : undefined}
                       touched={touched.username}
                     />
                   </div>
-                  <ProfileInputField type="password" placeholder="Password" />
+                  <ProfileInputField type="password" placeholder="Password" name="password" />
                   <ProfileInputField
                     type="email"
                     placeholder="Email"
                     name="email"
-                    error={errors.email}
+                    error={touched.email ? errors.email : undefined}
                     touched={touched.email}
                   />
                   <ProfileSelectMenu />

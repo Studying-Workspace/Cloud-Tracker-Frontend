@@ -30,12 +30,6 @@ const ProfileInputField = ({
     }
   }, [disabled]);
 
-  useEffect(() => {
-    if (touched) {
-      setDisabled(false);
-    }
-  }, [touched]);
-
   function handleClick() {
     setDisabled((prevState) => !prevState);
   }
@@ -43,27 +37,40 @@ const ProfileInputField = ({
   return (
     <div className="w-fit bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1px]">
       <div className="flex h-[35px] w-[250px] justify-between bg-white">
-        <Field
-          type={type}
-          className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
-          placeholder={placeholder}
-          disabled={disabled}
-          ref={inputField}
-          name={name}
-          {...props}
-        />
+        {type === "password" ? (
+          <Field
+            type="text"
+            name={name}
+            disabled={true}
+            className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
+            placeholder={placeholder}
+          />
+        ) : (
+          <Field
+            type={type}
+            className="w-full px-2 text-lg text-gray-600 focus:outline-none disabled:bg-transparent"
+            placeholder={placeholder}
+            disabled={disabled}
+            name={name}
+            {...props}
+          />
+        )}
         {type !== "password" ? (
-          touched ? (
-            <HandleMessageForm type="warning" error={error} touched={true} />
+          !disabled ? (
+            <HandleMessageForm type="warning" error={error} touched={touched} />
           ) : (
-            <button className="text-2xl text-gray-500" onClick={handleClick}>
+            <button
+              type="button"
+              className="text-2xl text-gray-500"
+              onClick={handleClick}
+            >
               <MdEdit />
             </button>
           )
         ) : (
           <Modal>
             <Modal.Open openName="password-form">
-              <button className="text-2xl text-gray-500">
+              <button type="button" className="text-2xl text-gray-500">
                 <MdEdit />
               </button>
             </Modal.Open>
