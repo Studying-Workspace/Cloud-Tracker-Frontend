@@ -1,14 +1,17 @@
 import { grey } from "@mui/material/colors";
 import { MenuItem, Select } from "@mui/material";
+import { useState } from "react";
 
 const ProfileSelectMenu = () => {
+  const [value, setValue] = useState<string>("");
   return (
     <div className="w-fit bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1px]">
       <div className="flex h-[35px] w-[250px] justify-between bg-white">
         <Select
           labelId="label"
           id="select"
-          value=""
+          onChange={(e)=>setValue(e.target.value)}
+          value={value}
           displayEmpty
           className="w-full"
           sx={{
@@ -29,25 +32,21 @@ const ProfileSelectMenu = () => {
               fontFamily: '"Poppins", sans-serif',
             },
           }}
-          renderValue={(value) =>
-            value === "" ? (
-              <span
-                style={{
-                  color: grey[500],
-                  fontFamily: '"Poppins", sans-serif',
-                  fontSize: "1.1rem",
-                }}
-              >
-                Country
-              </span>
-            ) : (
-              value
-            )
-          }
+          renderValue={(value) => (
+            <span
+              style={{
+                color: grey[500],
+                fontFamily: '"Poppins", sans-serif',
+                fontSize: "1.1rem",
+              }}
+            >
+              {value === "" ? "Country" : value}
+            </span>
+          )}
         >
-          <MenuItem value="US">United States</MenuItem>
-          <MenuItem value="CA">Canada</MenuItem>
-          <MenuItem value="MX">Mexico</MenuItem>
+          <MenuItem value="United States">United States</MenuItem>
+          <MenuItem value="Canada">Canada</MenuItem>
+          <MenuItem value="Mexico">Mexico</MenuItem>
         </Select>
       </div>
     </div>
