@@ -22,8 +22,7 @@ const NavBar = () => {
     },
     [currentPage],
   );
-  // when we going to link it with API, we will use this
-  // const { blogId } = useParams();
+  
   const blogId = `123`;
   return (
     <nav
