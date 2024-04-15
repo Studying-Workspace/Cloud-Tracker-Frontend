@@ -1,20 +1,27 @@
+import Button from "../../ui/Button";
+import InputField from "../../ui/Form/InputField";
+import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+import SignupWelcomeMessage from "../../ui/Form/SignupWelcomeMessage";
+
 import GoogleLogo from "../../assets/GoogleLogo.png";
 import AwsLogo from "../../assets/AwsLogo.png";
 
-import Button from "../../ui/Button";
 
-import { MdLockOutline, MdOutlineMail } from "react-icons/md";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { FaRegUser } from "react-icons/fa";
-import SignupWelcomeMessage from "../../ui/Form/SignupWelcomeMessage";
 
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import InputField from "../../ui/Form/InputField";
-import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+
 import { handleToastMessage } from "../../utils/helper";
+import { signUpFormValidationSchema } from "../../utils/validationSchema";
+
+import { MdLockOutline, MdOutlineMail } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+
+
+
+
 
 interface MyFormValues {
   username: string;
@@ -53,21 +60,7 @@ const SignUpForm = () => {
         {/* Form */}
         <Formik
           initialValues={initialValues}
-          validationSchema={Yup.object({
-            username: Yup.string()
-              .min(3, "Username Should Be At Least 3 Characters")
-              .max(15, "Username Should Be At Most 15 Characters")
-              .required("Please Enter Your Username"),
-            email: Yup.string()
-              .email("Invalid Email Format")
-              .required("Please Enter your Email"),
-            password: Yup.string()
-              .min(8, "Password Must be At Least 8 Characters")
-              .required("Please Enter Your Password"),
-            confirmPassword: Yup.string()
-              .required("Please Confirm Your Password")
-              .oneOf([Yup.ref("password")], "Passwords Must Match"),
-          })}
+          validationSchema={signUpFormValidationSchema}
           onSubmit={() => {
             handleToastMessage("Login success !", "success");
           }}

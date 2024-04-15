@@ -1,16 +1,14 @@
 import CheckBox from "../../ui/Form/CheckBox";
 import Button from "../../ui/Button";
-
-import { MdLockOutline, MdOutlineMail } from "react-icons/md";
-
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import LoginWelcomeMessage from "../../ui/Form/LoginWelcomeMessage";
-import { Form, Formik } from "formik";
-import * as Yup from "yup";
 import InputField from "../../ui/Form/InputField";
 import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+import LoginWelcomeMessage from "../../ui/Form/LoginWelcomeMessage";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Form, Formik } from "formik";
 import { handleToastMessage } from "../../utils/helper";
+import { loginFormValidationSchema } from "../../utils/validationSchema";
+import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 
 interface MyFormValues {
   email: string;
@@ -43,15 +41,7 @@ const LoginForm = () => {
         {/* Form */}
         <Formik
           initialValues={initialValues}
-          validationSchema={Yup.object({
-            email: Yup.string()
-              .email("Invalid Email Format")
-              .required("Please Enter your Email"),
-
-            password: Yup.string()
-              .min(8, "Your Password Must Be At Least 8 Characters")
-              .required("Please Enter Your Password"),
-          })}
+          validationSchema={loginFormValidationSchema}
           onSubmit={() => {
             handleToastMessage("Login success !", "success");
           }}
