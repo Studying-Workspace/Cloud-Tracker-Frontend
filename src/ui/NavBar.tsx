@@ -1,5 +1,4 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useEffect, useState } from "react";
