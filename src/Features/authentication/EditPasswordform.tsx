@@ -1,11 +1,11 @@
-import { Form, Formik } from "formik";
 import InputField from "../../ui/Form/InputField";
-import { MdLockOutline } from "react-icons/md";
-import { handleToastMessage } from "../../utils/helper";
 import Button from "../../ui/Button";
-import { useState } from "react";
-import * as Yup from "yup";
 import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+import { MdLockOutline } from "react-icons/md";
+import { useState } from "react";
+import { Form, Formik } from "formik";
+import { handleToastMessage } from "../../utils/helper";
+import { EditPasswordFormValidationSchema } from "../../utils/validationSchema";
 
 interface MyFormValues {
   currentPassword: string;
@@ -20,21 +20,6 @@ const EditPasswordform = () => {
     confirmPassword: "",
   };
 
-  const validationSchema = Yup.object().shape({
-    currentPassword: Yup.string()
-      .min(8, "Your Password Must Be At Least 8 Characters")
-      .required("Please Enter Your Current Password"),
-
-    newPassword: Yup.string()
-      .min(8, "Your Password Must Be At Least 8 Characters")
-      .required("Please Enter Your New Password"),
-
-    confirmPassword: Yup.string()
-      .min(8, "Your Password Must Be At Least 8 Characters")
-      .required("Please Confirm Your New Password")
-      .oneOf([Yup.ref("newPassword")], "Passwords Must Match"),
-  });
-
   const [showCurrentPassword, setShowCurrentPassword] =
     useState<boolean>(false);
   const [showNewPassword, setShowNewPassword] = useState<boolean>(false);
@@ -45,7 +30,7 @@ const EditPasswordform = () => {
       onSubmit={() => {
         handleToastMessage("Password Updated !", "success");
       }}
-      validationSchema={validationSchema}
+      validationSchema={EditPasswordFormValidationSchema}
     >
       {({ errors, touched }) => (
         <Form className="space-y-10">

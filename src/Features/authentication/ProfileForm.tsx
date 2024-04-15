@@ -1,15 +1,15 @@
-import { Form, Formik } from "formik";
 import Button from "../../ui/Button";
 import ProfileInputField from "../../ui/Profile/ProfileInputField";
 import ProfileSelectMenu from "../../ui/Profile/ProfileSelectMenu";
 import UploadPhoto from "../../ui/Profile/UploadPhoto";
+import { Form, Formik } from "formik";
 import { handleToastMessage } from "../../utils/helper";
-import * as Yup from "yup";
+import { profileFormValidationSchema } from "../../utils/validationSchema";
 
 interface MyFormValues {
   email: string;
   username: string;
-  password : string;
+  password: string;
 }
 
 const ProfileForm = () => {
@@ -19,23 +19,13 @@ const ProfileForm = () => {
     password: "",
   };
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Invalid Email")
-      .required("Please Enter Your Email"),
-    username: Yup.string()
-      .min(3, "Username Should Be At Least 3 Characters")
-      .max(15, "Username Should Be At Most 15 Characters")
-      .required("Please Enter Your Username"),
-  });
-
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={() => {
         handleToastMessage("Profile Details Updated !", "success");
       }}
-      validationSchema={validationSchema}
+      validationSchema={profileFormValidationSchema}
     >
       {({ errors, touched }) => (
         <Form className="flex min-h-screen w-fit flex-col gap-8 pb-[300px]">
@@ -56,7 +46,11 @@ const ProfileForm = () => {
                       touched={touched.username}
                     />
                   </div>
-                  <ProfileInputField type="password" placeholder="Password" name="password" />
+                  <ProfileInputField
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                  />
                   <ProfileInputField
                     type="email"
                     placeholder="Email"
