@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { HashRouter } from "react-router-dom";
 import BlogInfo from "../ui/Blog/BlogDetails/BlogInfo";
 
