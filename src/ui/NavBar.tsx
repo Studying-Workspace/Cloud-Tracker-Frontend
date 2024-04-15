@@ -22,9 +22,9 @@ const NavBar = () => {
     },
     [currentPage],
   );
-  // when we going to link it with API, we will use this
-  // const { blogId } = useParams();
+
   const blogId = `123`;
+
   return (
     <nav
       className={`relative z-50 flex w-full items-center justify-between bg-gradient-to-r from-linearBlue-3
@@ -98,6 +98,16 @@ const NavBar = () => {
             mobile:peer-hover/item2:top-[46px] 
             mobile:peer-hover/item3:left-[0px]
             mobile:peer-hover/item3:top-[95px]`}
+
+            { /*  mobile:w-[100px] mobile:peer-hover/item1:left-[0px]  mobile:peer-hover/item1:top-[-5px]
+            mobile:peer-hover/item2:left-[0px]
+            mobile:peer-hover/item2:top-[46px] 
+            mobile:peer-hover/item3:left-[0px]
+            mobile:peer-hover/item3:top-[95px]
+            tablet:w-[100px] 
+            tablet:peer-hover/item2:left-[100px]
+            tablet:peer-hover/item3:left-[200px]`} */}
+
           ></div>
         </div>
 

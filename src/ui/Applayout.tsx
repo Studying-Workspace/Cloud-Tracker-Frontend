@@ -10,9 +10,11 @@ const Applayout = () => {
   return (
     <div>
       <NavBar />
+
       <div
         className={`relative  ${currentPage === "/blog" ? "h-[calc(100vh-60.5px)]" : ""}  overflow-hidden`}
       >
+
         <Outlet />
       </div>
       {setFooter && <Footer />}
