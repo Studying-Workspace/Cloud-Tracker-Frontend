@@ -1,5 +1,4 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import Button from "./Button";
 import Logo from "./Logo";
 import { useEffect, useState } from "react";
@@ -98,16 +97,6 @@ const NavBar = () => {
             mobile:peer-hover/item2:top-[46px] 
             mobile:peer-hover/item3:left-[0px]
             mobile:peer-hover/item3:top-[95px]`}
-
-            { /*  mobile:w-[100px] mobile:peer-hover/item1:left-[0px]  mobile:peer-hover/item1:top-[-5px]
-            mobile:peer-hover/item2:left-[0px]
-            mobile:peer-hover/item2:top-[46px] 
-            mobile:peer-hover/item3:left-[0px]
-            mobile:peer-hover/item3:top-[95px]
-            tablet:w-[100px] 
-            tablet:peer-hover/item2:left-[100px]
-            tablet:peer-hover/item3:left-[200px]`} */}
-
           ></div>
         </div>
 

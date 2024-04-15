@@ -6,7 +6,7 @@ interface Props {
   error: string | undefined;
   touched: boolean | undefined;
   type: string;
-  testid: string;
+  testid?: string;
 }
 
 const HandleMessageForm = ({ error, touched, type, testid }: Props) => {

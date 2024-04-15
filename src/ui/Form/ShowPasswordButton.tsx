@@ -3,7 +3,8 @@ import { LiaEyeSlashSolid, LiaEyeSolid } from "react-icons/lia";
 interface Props {
   showPassword: boolean | undefined;
   setShowPassword: Function | undefined;
-
+  showTestIdBtn?: string;
+}
 
 const ShowPasswordButton = ({
   showPassword,

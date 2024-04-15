@@ -7,6 +7,7 @@ interface Props {
 
 const BlogNavigator = ({ value, setValue }: Props) => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    event.preventDefault() ; 
     setValue(newValue);
   };
 
