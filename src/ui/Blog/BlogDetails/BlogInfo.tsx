@@ -2,7 +2,6 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { BiLike } from "react-icons/bi";
 import { LuUpload } from "react-icons/lu";
 import { useState, useEffect } from "react";
-import DOMPurify from "dompurify";
 
 const BlogInfo = () => {
   const [blogs, setBlogs] = useState(String);
@@ -24,55 +23,67 @@ const BlogInfo = () => {
   }, []);
   return (
     <div
-      className="mt-24 flex-col space-y-10 px-72 pb-20 font-poppins tablet:mt-20
-     tablet:px-20 mobile:mt-14 mobile:space-y-5 mobile:px-10"
+      className="mt-24 flex-col space-y-10 px-72 pb-20 font-poppins mobile:mt-14
+     mobile:space-y-5 mobile:px-10 tablet:mt-20 tablet:px-20"
     >
       {/* title */}
       <div
-        className="text-[45px] font-bold tablet:text-[35px] mobile:text-[22px]"
+        className="text-4xl font-bold mobile:text-lg tablet:text-2xl"
         data-testid="title"
       >
         AWS Identity and Access Management (IAM)
       </div>
-      <div className="flex items-center justify-between text-3xl tablet:text-2xl mobile:text-xs">
+      <div className="flex items-center justify-between text-3xl mobile:text-xs tablet:text-2xl">
         {/* publisher */}
         <div className=" flex items-center gap-1">
           <IoPersonCircleOutline
-            className="text-6xl text-gray-600 tablet:text-5xl mobile:text-4xl"
+            className="text-4xl text-gray-600 mobile:text-2xl tablet:text-3xl"
             data-testid="publisherImage"
           />
-          <p className="text-gray-600" data-testid="publisherName">
+          <p
+            className="text-2xl text-gray-600 mobile:text-lg tablet:text-xl"
+            data-testid="publisherName"
+          >
             Publisher
           </p>
         </div>
         {/* date */}
-        <div className="flex text-gray-400" data-testid="date">
+        <div
+          className="flex text-2xl text-gray-400 mobile:text-lg tablet:text-xl"
+          data-testid="date"
+        >
           April 19,2024
         </div>
       </div>
       <div
         className="flex h-20 items-center justify-between border-y-2 border-gray-300
-       text-3xl tablet:text-2xl mobile:h-10 mobile:text-sm"
+       text-3xl mobile:h-10 mobile:text-sm tablet:text-2xl"
       >
         {/* Read time */}
-        <p className="text-gray-400" data-testid="readInfo">
+        <p
+          className="text-2xl text-gray-400 mobile:text-lg tablet:text-xl"
+          data-testid="readInfo"
+        >
           6 min read
         </p>
         <div className="flex items-center justify-center gap-2">
           {/* Reacts */}
           <div className="flex items-center justify-center gap-2 mobile:gap-1">
-            <p className="text-gray-400" data-testid="likecounter">
+            <p
+              className="text-2xl text-gray-400 mobile:text-lg tablet:text-xl"
+              data-testid="likecounter"
+            >
               100
             </p>
             <BiLike
-              className="text-4xl text-gray-600 tablet:text-2xl mobile:text-xl"
+              className="text-3xl text-gray-600 mobile:text-xl tablet:text-2xl"
               data-testid="likeIcon"
             />
           </div>
           {/* Share */}
           <div>
             <LuUpload
-              className="text-4xl text-gray-600 tablet:text-2xl mobile:text-xl"
+              className="text-3xl text-gray-600 mobile:text-xl tablet:text-2xl"
               data-testid="shareIcon"
             />
           </div>
