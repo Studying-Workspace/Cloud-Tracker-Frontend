@@ -20,10 +20,6 @@ import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 
 
-
-
-
-
 interface MyFormValues {
   username: string;
   email: string;

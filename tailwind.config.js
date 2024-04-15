@@ -17,10 +17,12 @@ export default {
       fontFamily: {
         poppins: ["Poppins"],
       },
+
       screens: {
         mobile: { max: "768px" },
         tablet: { min: "769px", max: "1024px" },
       },
+
     },
   },
   plugins: [],

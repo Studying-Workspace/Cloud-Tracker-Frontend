@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes} from "react-router-dom";
 
 import Applayout from "./ui/Applayout";
 import Home from "./pages/Home";
@@ -23,8 +23,8 @@ export default function App() {
             <Route path="/" element={<Applayout />}>
               <Route path="/" element={<Home />} />
               <Route path="blog" element={<Blog />} />
-
               <Route path="blog/:blogId" element={<BlogDetails />} />
+
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="profile" element={<Profile />} />
 
