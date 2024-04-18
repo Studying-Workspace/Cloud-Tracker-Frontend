@@ -6,9 +6,9 @@ import LoginWelcomeMessage from "../../ui/Form/LoginWelcomeMessage";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { handleToastMessage } from "../../utils/helper";
 import { loginFormValidationSchema } from "../../utils/validationSchema";
 import { MdLockOutline, MdOutlineMail } from "react-icons/md";
+import { useLogin } from "./useLogin";
 
 
 interface MyFormValues {
@@ -20,6 +20,12 @@ const LoginForm = () => {
   const initialValues: MyFormValues = { email: "", password: "" };
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const {isLoading , login} = useLogin() ; 
+
+  const handleSubmit = ()=>{
+    login()
+  }
 
   return (
     <div className="flex w-full justify-between">
@@ -45,7 +51,6 @@ const LoginForm = () => {
           initialValues={initialValues}
           validationSchema={loginFormValidationSchema}
           onSubmit={() => {
-            handleToastMessage("Login success !", "success");
           }}
         >
           {({ errors, touched }) => (
