@@ -4,10 +4,10 @@ export function scrollToTop(): void {
   window.scrollTo(0, 0);
 }
 
-export const handleToastMessage = (error: string | undefined, type: string) => {
+export const handleToastMessage = (message: string | undefined, type: "warning" | "success") => {
   switch (type) {
     case "warning":
-      toast.warning(error, {
+      toast.warning(message, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -20,7 +20,7 @@ export const handleToastMessage = (error: string | undefined, type: string) => {
       });
       break ; 
     case "success":
-      toast.success(error, {
+      toast.success(message, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
