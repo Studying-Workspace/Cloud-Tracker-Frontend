@@ -18,6 +18,8 @@ import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { useRegister } from "./useRegister";
 
+import { BeatLoader } from "react-spinners";
+
 interface MyFormValues {
   username: string;
   email: string;
@@ -152,8 +154,13 @@ const SignUpForm = () => {
               </div>
               {/* Submit */}
               <div className="flex flex-col justify-center gap-1">
-                <Button role="submit" size="full" testid="submitForm" disabled={isLoading}>
-                  Sign Up
+                <Button
+                  role="submit"
+                  size="full"
+                  testid="submitForm"
+                  disabled={isLoading}
+                >
+                  {isLoading ? <BeatLoader  color="#fff" size={8} /> : "Sign up"}
                 </Button>
                 <div className="flex w-[92%] flex-col items-center justify-between gap-2">
                   <p className=" text-xl text-gray-400 mobile:text-[18px]">

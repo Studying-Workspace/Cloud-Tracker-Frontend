@@ -9,6 +9,7 @@ import { Form, Formik } from "formik";
 import { loginFormValidationSchema } from "../../utils/validationSchema";
 import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 import { useLogin } from "./useLogin";
+import { BeatLoader  } from "react-spinners";
 
 interface MyFormValues {
   email: string;
@@ -123,7 +124,7 @@ const LoginForm = () => {
                 testid="submitForm"
                 disabled={isLoading}
               >
-                Sign in
+                {isLoading ? <BeatLoader  color="#fff" size={8} /> : "Sign in"}
               </Button>
             </Form>
           )}
