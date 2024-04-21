@@ -10,7 +10,6 @@ import { loginFormValidationSchema } from "../../utils/validationSchema";
 import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 import { useLogin } from "./useLogin";
 
-
 interface MyFormValues {
   email: string;
   password: string;
@@ -21,15 +20,14 @@ const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const {isLoading , login} = useLogin() ; 
+  const { isLoading, login } = useLogin();
 
-  const handleSubmit = (user:MyFormValues)=>{
-    login(user) ; 
-  }
+  const handleSubmit = (user: MyFormValues) => {
+    login(user);
+  };
 
   return (
     <div className="flex w-full justify-between">
-
       <div className="flex w-[35%] flex-col gap-5 mobile:w-full mobile:gap-10 tablet:w-[50%]">
         <div className="space-y-2 text-center">
           <p className="text-5xl font-medium mobile:text-3xl tablet:text-4xl">
@@ -51,7 +49,7 @@ const LoginForm = () => {
           initialValues={initialValues}
           validationSchema={loginFormValidationSchema}
           onSubmit={(values) => {
-            handleSubmit(values) ; 
+            handleSubmit(values);
           }}
         >
           {({ errors, touched }) => (
@@ -71,7 +69,8 @@ const LoginForm = () => {
                   type="warning"
                   error={errors.email}
                   touched={touched.email}
-                  testid="emailWarning"/>
+                  testid="emailWarning"
+                />
               </div>
 
               {/* Password */}
@@ -111,14 +110,19 @@ const LoginForm = () => {
                     </p>
                   </CheckBox>
                   <p className="cursor-pointer px-5 text-lg text-gray-400 transition-all duration-300 hover:text-linearBlue-1 hover:underline mobile:text-[10px]">
-                   Forget Password ?
+                    Forget Password ?
                   </p>
                 </div>
               </div>
 
               {/* Submit */}
 
-              <Button role="submit" size="full" testid="submitForm" disabled={isLoading}>
+              <Button
+                role="submit"
+                size="full"
+                testid="submitForm"
+                disabled={isLoading}
+              >
                 Sign in
               </Button>
             </Form>

@@ -12,6 +12,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UserProvider from "./context/UserProvider";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,6 +26,8 @@ export default function App() {
   return (
     <>
       <HashRouter>
+        <UserProvider>
+
         <QueryClientProvider client={queryClient}>
           <ScrollToTop>
             <Routes>
@@ -37,7 +40,12 @@ export default function App() {
                 <Route path="profile" element={<Profile />} />
               </Route>
 
-              <Route path="signIn" element={<SignIn />} />
+              <Route
+                path="signIn"
+                element={
+                    <SignIn />
+                }
+              />
 
               <Route path="signUp" element={<SignUp />} />
 
@@ -45,6 +53,7 @@ export default function App() {
             </Routes>
           </ScrollToTop>
         </QueryClientProvider>
+        </UserProvider>
       </HashRouter>
       <ToastContainer />
     </>
