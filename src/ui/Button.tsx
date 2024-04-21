@@ -7,6 +7,7 @@ interface Props {
   onClick?: Function;
   role?: "button" | "submit" | "reset";
   testid?: string;
+  disabled?: boolean;
 }
 
 const Types: any = {
@@ -28,6 +29,7 @@ const Button = ({
   onClick,
   role = "button",
   testid = "",
+  disabled
 }: Props) => {
   return (
     <button
@@ -35,6 +37,7 @@ const Button = ({
       onClick={() => onClick?.()}
       type={role}
       data-testid={testid}
+      disabled={disabled}
     >
       {children}
     </button>

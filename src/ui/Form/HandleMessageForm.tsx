@@ -5,7 +5,7 @@ import { handleToastMessage } from "../../utils/helper";
 interface Props {
   error: string | undefined;
   touched: boolean | undefined;
-  type: string;
+  type: "warning" | "success";
   testid?: string;
 }
 
