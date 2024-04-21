@@ -6,19 +6,17 @@ import SignupWelcomeMessage from "../../ui/Form/SignupWelcomeMessage";
 import GoogleLogo from "../../assets/GoogleLogo.png";
 import AwsLogo from "../../assets/AwsLogo.png";
 
-
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
 import { Formik, Form } from "formik";
 
-import { handleToastMessage } from "../../utils/helper";
 import { signUpFormValidationSchema } from "../../utils/validationSchema";
 
 import { MdLockOutline, MdOutlineMail } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
-
+import { useRegister } from "./useRegister";
 
 interface MyFormValues {
   username: string;
@@ -35,6 +33,12 @@ const SignUpForm = () => {
     confirmPassword: "",
   };
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const { register, isLoading } = useRegister();
+
+  const handleSubmit = (user: MyFormValues) => {
+    register(user);
+  };
 
   return (
     <div className="flex w-full justify-between">
@@ -58,8 +62,8 @@ const SignUpForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={signUpFormValidationSchema}
-          onSubmit={() => {
-            handleToastMessage("Login success !", "success");
+          onSubmit={(values) => {
+            handleSubmit(values);
           }}
         >
           {({ errors, touched }) => (
@@ -148,7 +152,7 @@ const SignUpForm = () => {
               </div>
               {/* Submit */}
               <div className="flex flex-col justify-center gap-1">
-                <Button role="submit" size="full" testid="submitForm">
+                <Button role="submit" size="full" testid="submitForm" disabled={isLoading}>
                   Sign Up
                 </Button>
                 <div className="flex w-[92%] flex-col items-center justify-between gap-2">
