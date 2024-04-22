@@ -13,7 +13,15 @@ export default {
           100: "#FDAC3D",
           200: "#ED912A",
         },
+        mixcolor: ["#1b5aa8b3", "#fe9526b3"],
       },
+      borderRadius: {
+        "5xl": "250px",
+      },
+      linearBorderGradients: (theme) => ({
+        colors: theme("colors"),
+        borderRadius: theme("borderRadius"),
+      }),
       fontFamily: {
         poppins: ["Poppins"],
       },
@@ -22,8 +30,7 @@ export default {
         mobile: { max: "768px" },
         tablet: { min: "769px", max: "1024px" },
       },
-
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-border-gradients")()],
 };

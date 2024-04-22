@@ -1,17 +1,19 @@
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-// import { useParams } from "react-router-dom";
 import blogImg from "../../assets/blogImg.png";
 import { BiLike } from "react-icons/bi";
 import { LuUpload } from "react-icons/lu";
 
-const BlogElement = () => {
+interface Props {
+  id: number;
+  title: string;
+  content: string;
+}
+
+const BlogElement = ({ id, title, content }: Props) => {
   const navigate = useNavigate();
-  // const { blogId } = useParams();
   const handleClick = () => {
-    // when we going to link it with API, we will use this
-    // navigate(`/blog/${blogId}`);
-    navigate(`/blog/123`);
+    navigate(`/blog/${id}`);
   };
 
   const handleMakeLike = (e: any) => {
@@ -42,15 +44,13 @@ const BlogElement = () => {
       <div className="flex items-center justify-between">
         {/* container */}
         <div className="flex w-[60%] flex-col gap-6 mobile:w-[65%]">
-          <p className="text-2xl font-bold tablet:text-lg mobile:text-xs">
-            Exploring the Future of Digital Innovation
+          <p className="text-2xl font-bold mobile:text-xs tablet:text-lg">
+            {title}
           </p>
 
-          <p className="text-lg tablet:hidden mobile:hidden">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            vestibulum justo quis urna posuere, sed sodales nisl facilisis.
-            Phasellus suscipit, ipsum sed consectetur efficitur, leo felis....
-          </p>
+          <div
+            className=" truncate text-ellipsis text-lg mobile:hidden tablet:hidden"
+            dangerouslySetInnerHTML={{ __html: content || "notfound" }}/>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6 mobile:gap-3">
               <div className="w-fit rounded-full border-2 border-linearOrange-200 px-6 py-1 text-center font-semibold mobile:px-2 mobile:text-xs">
@@ -63,7 +63,10 @@ const BlogElement = () => {
             <div className="flex items-center justify-center gap-2">
               <div className="flex items-center justify-center gap-2 mobile:gap-1">
                 <p className="text-sm text-gray-500 mobile:text-xs">100</p>
-                <BiLike className="text-2xl text-gray-600 mobile:text-xl hover:text-blue-600" onClick={(e)=>handleMakeLike(e)}/>
+                <BiLike
+                  className="text-2xl text-gray-600 hover:text-blue-600 mobile:text-xl"
+                  onClick={(e) => handleMakeLike(e)}
+                />
               </div>
               <div>
                 <LuUpload
@@ -83,7 +86,7 @@ const BlogElement = () => {
           src={blogImg}
           alt="img"
           draggable="false"
-          className=" h-32 w-32 self-start tablet:h-24 tablet:w-24 mobile:h-16 mobile:w-16 mobile:self-start"
+          className=" h-32 w-32 self-start mobile:h-16 mobile:w-16 mobile:self-start tablet:h-24 tablet:w-24"
         />
       </div>
     </div>

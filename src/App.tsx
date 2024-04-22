@@ -12,18 +12,28 @@ import ScrollToTop from "./ui/ScrollToTop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Profile } from "./pages/Profile";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
 
 export default function App() {
   return (
     <>
       <HashRouter>
+        <QueryClientProvider client={queryClient}>
         <ScrollToTop>
           <Routes>
             <Route path="/" element={<Applayout />}>
               <Route path="/" element={<Home />} />
               <Route path="blog" element={<Blog />} />
-              <Route path="blog/:blogId" element={<BlogDetails />} />
+              <Route path="blog/:id" element={<BlogDetails />} />
 
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="profile" element={<Profile />} />
@@ -37,6 +47,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ScrollToTop>
+        </QueryClientProvider>  
       </HashRouter>
       <ToastContainer />
     </>
