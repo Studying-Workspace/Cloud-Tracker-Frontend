@@ -21,7 +21,7 @@ export const profileFormValidationSchema = Yup.object().shape({
 });
 
 export const signUpFormValidationSchema = Yup.object({
-  username: Yup.string()
+  name: Yup.string()
     .min(3, "Username Should Be At Least 3 Characters")
     .max(15, "Username Should Be At Most 15 Characters")
     .required("Please Enter Your Username"),

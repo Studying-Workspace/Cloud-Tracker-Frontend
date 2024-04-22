@@ -10,9 +10,9 @@ export const useLogin = ()=>{
     const {mutate , isPending} = useMutation({
         mutationFn: login,
         onSuccess: (data)=> {
-            context?.setUser(data) ; 
-            handleToastMessage("sign in succefully!" , "success");
+            context?.setTokens(data) ; 
             navigate("/") ; 
+            handleToastMessage("sign in succefully!" , "success");
         },
         onError: (error)=>{
             handleToastMessage(error.message , "warning");

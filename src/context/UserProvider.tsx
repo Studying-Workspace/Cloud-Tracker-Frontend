@@ -1,19 +1,22 @@
 import { ReactNode, createContext, useContext } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
+
+
 interface userContextType {
-  user: object;
-  setUser: Function;
+  tokens: any;
+  setTokens: Function;
 }
 
 const UserContext = createContext<userContextType | null>(null);
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useLocalStorageState({}, "user");
+  const [tokens, setTokens] = useLocalStorageState(null, "tokens");
+
   return (
     <UserContext.Provider
       value={{
-        user,
-        setUser,
+        tokens,
+        setTokens,
       }}
     >
       {children}

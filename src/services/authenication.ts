@@ -17,7 +17,6 @@ export const register = async (user: user) => {
       },
     });
 
-    console.log(response);
     const data = await response.data;
 
     return data;
@@ -36,7 +35,25 @@ export const login = async (user: user) => {
     });
 
     const data = await response.data;
-    
+
+    return data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const getUser = async (token : string) => {
+  try {
+    const response = await axios.get(`${serverBaseUrl}/me/profile`, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.data;
+
     return data;
   } catch (error: any) {
     throw new Error(error.message);
