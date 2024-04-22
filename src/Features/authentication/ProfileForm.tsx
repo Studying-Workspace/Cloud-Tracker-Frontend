@@ -7,6 +7,7 @@ import { handleToastMessage } from "../../utils/helper";
 import { profileFormValidationSchema } from "../../utils/validationSchema";
 import { useUser } from "./useUser";
 
+
 interface MyFormValues {
   email: string;
   name: string;
@@ -16,9 +17,10 @@ interface MyFormValues {
 const ProfileForm = () => {
   const { user } = useUser();
 
+
   const initialValues: MyFormValues = {
-    email: user.email,
-    name: user.name,
+    email: user?.email,
+    name: user?.name,
     password: "",
   };
 

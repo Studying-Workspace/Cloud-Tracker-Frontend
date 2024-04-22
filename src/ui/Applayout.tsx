@@ -10,9 +10,9 @@ const Applayout = () => {
   const currentPage = loacation.pathname;
 
   const setFooter = currentPage === "/" || currentPage === "/profile";
-  const { isLoading } = useUser();
+  const { isLoading , isAuth } = useUser();
 
-  return isLoading ? (
+  return isAuth && isLoading ? (
     <Spinner />
   ) : (
     <div>

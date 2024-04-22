@@ -6,7 +6,7 @@ export const useUser = () => {
   const context = useUserContext();
 
   const { data: user, isLoading } = useQuery({
-    queryKey: ["user", context?.tokens?.token],
+    queryKey: ["user"],
     queryFn: () => getUser(context?.tokens?.token),
   });
 

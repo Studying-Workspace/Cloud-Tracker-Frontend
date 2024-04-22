@@ -13,6 +13,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserProvider from "./context/UserProvider";
+import ProtectRouter from "./ui/ProtectRouter";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,32 +28,54 @@ export default function App() {
     <>
       <HashRouter>
         <UserProvider>
+          <QueryClientProvider client={queryClient}>
+            <ScrollToTop>
+              <Routes>
+                <Route path="/" element={<Applayout />}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="blog" element={<Blog />} />
+                  <Route path="blog/:blogId" element={<BlogDetails />} />
 
-        <QueryClientProvider client={queryClient}>
-          <ScrollToTop>
-            <Routes>
-              <Route path="/" element={<Applayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="blog" element={<Blog />} />
-                <Route path="blog/:blogId" element={<BlogDetails />} />
+                  <Route
+                    path="dashboard"
+                    element={
+                      <ProtectRouter route="dashboard">
+                        <Dashboard/>
+                      </ProtectRouter>
+                    }
+                  />
+                  <Route
+                    path="profile"
+                    element={
+                      <ProtectRouter route="profile">
+                        <Profile />
+                      </ProtectRouter>
+                    }
+                  />
+                </Route>
 
-                <Route path="dashboard" element={<Dashboard />} />
-                <Route path="profile" element={<Profile />} />
-              </Route>
+                <Route
+                  path="signIn"
+                  element={
+                    <ProtectRouter route="signIn">
+                      <SignIn />
+                    </ProtectRouter>
+                  }
+                />
 
-              <Route
-                path="signIn"
-                element={
-                    <SignIn />
-                }
-              />
+                <Route
+                  path="signUp"
+                  element={
+                    <ProtectRouter route="signUp">
+                      <SignUp />
+                    </ProtectRouter>
+                  }
+                />
 
-              <Route path="signUp" element={<SignUp />} />
-
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </ScrollToTop>
-        </QueryClientProvider>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </ScrollToTop>
+          </QueryClientProvider>
         </UserProvider>
       </HashRouter>
       <ToastContainer />
