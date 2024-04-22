@@ -17,7 +17,7 @@ const BlogInfo = () => {
     return (
       <div className="h-{500px} flex items-center justify-center">
         <div className="mt-24 h-96 w-96 animate-spin rounded-full border-b-8 border-t-8 border-orange-200" />
-        <img src={blogImg} alt="loading" className="absolute mt-24 h-56 w-60" />
+        <img src={blogImg} alt="loading" className="h-46 absolute mt-24 w-56" />
       </div>
     );
   if (!data) return <NotFound />;

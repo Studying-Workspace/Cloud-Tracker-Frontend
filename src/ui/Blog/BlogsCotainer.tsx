@@ -3,6 +3,8 @@ import { useState } from "react";
 import BlogNavigator from "./BlogNavigator";
 import { useBlogs } from "../../Features/Blogs/useBlogs";
 import blogImg from "../../assets/logo/logo_color2.png";
+import NotFound from "../../pages/NotFound";
+import { isEmptyArray } from "formik";
 
 interface IBlog {
   id: number;
@@ -27,9 +29,11 @@ const BlogsCotainer = () => {
             <img
               src={blogImg}
               alt="loading"
-              className="absolute mt-24 h-56 w-60"
+              className="h-46 absolute mt-24 w-56"
             />
           </div>
+        ) : !data || isEmptyArray(data)? (
+          <NotFound />
         ) : (
           data?.map((blog: IBlog) => {
             console.log(blog);

@@ -49,11 +49,15 @@ const BlogElement = ({ id, title, content }: Props) => {
           </p>
 
           <div
-            className=" truncate text-ellipsis text-lg mobile:hidden tablet:hidden"
-            dangerouslySetInnerHTML={{ __html: content || "notfound" }}/>
+            className="h-20 text-lg leading-7 mobile:hidden tablet:hidden overflow-hidden"
+            dangerouslySetInnerHTML={{ __html: content || "notfound" }}
+          />
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6 mobile:gap-3">
-              <div className="w-fit rounded-full border-2 border-linearOrange-200 px-6 py-1 text-center font-semibold mobile:px-2 mobile:text-xs">
+              <div
+                className="w-fit rounded-full border-2 border-linearOrange-200 px-6 py-1 
+              text-center font-semibold mobile:px-2 mobile:text-xs"
+              >
                 Cloud
               </div>
               <div className="text-sm text-gray-500 mobile:text-xs">
@@ -86,7 +90,8 @@ const BlogElement = ({ id, title, content }: Props) => {
           src={blogImg}
           alt="img"
           draggable="false"
-          className=" h-32 w-32 self-start mobile:h-16 mobile:w-16 mobile:self-start tablet:h-24 tablet:w-24"
+          className=" h-32 w-32 self-start mobile:h-16 mobile:w-16 
+          mobile:self-start tablet:h-24 tablet:w-24"
         />
       </div>
     </div>
