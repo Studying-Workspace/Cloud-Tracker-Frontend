@@ -3,12 +3,12 @@ import { useUserContext } from "../../context/UserProvider";
 import { getUser } from "../../services/authenication";
 
 export const useUser = () => {
-  const context = useUserContext();
+  const {tokens} = useUserContext();
 
   const { data: user, isLoading } = useQuery({
     queryKey: ["user"],
-    queryFn: () => getUser(context?.tokens?.token),
+    queryFn: () => getUser(tokens?.token),
   });
 
-  return { user, isLoading, isAuth: context?.tokens !== null };
+  return { user, isLoading, isAuth: tokens !== null };
 };

@@ -42,9 +42,9 @@ export const login = async (user: user) => {
   }
 };
 
-export const getUser = async (token : string) => {
+export const getUser = async (token : string | undefined) => {
   try {
-    if(token==null) return null; 
+    if(token===undefined) return null; 
     const response = await axios.get(`${serverBaseUrl}/me/profile`, {
       headers: {
         "Access-Control-Allow-Origin": "*",

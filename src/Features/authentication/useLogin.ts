@@ -6,11 +6,11 @@ import { useUserContext } from "../../context/UserProvider";
 
 export const useLogin = ()=>{
     const navigate = useNavigate() ; 
-    const context = useUserContext() ;
+    const {setTokens} = useUserContext() ;
     const {mutate , isPending} = useMutation({
         mutationFn: login,
         onSuccess: (data)=> {
-            context?.setTokens(data) ; 
+            setTokens(data) ; 
             navigate("/") ; 
             handleToastMessage("sign in succefully!" , "success");
         },

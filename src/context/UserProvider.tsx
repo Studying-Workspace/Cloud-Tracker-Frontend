@@ -1,27 +1,25 @@
 import { ReactNode, createContext, useContext } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
+interface tokenType{
+  token:string;
+  refreshToken:string;
+}
 
 interface userContextType {
-  tokens: any;
+  tokens: tokenType | null;
   setTokens: Function;
 }
 
-const UserContext = createContext<userContextType | null>(null);
+const UserContext = createContext<userContextType | undefined>(undefined);
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
   const [tokens, setTokens] = useLocalStorageState(null, "tokens");
-
-  return (
-    <UserContext.Provider
-      value={{
-        tokens,
-        setTokens,
-      }}
-    >
-      {children}
-    </UserContext.Provider>
-  );
+  const contextValues: userContextType = {
+    tokens,
+    setTokens,
+  };
+  return <UserContext.Provider value={contextValues}>{children}</UserContext.Provider>;
 };
 
 const useUserContext = () => {
