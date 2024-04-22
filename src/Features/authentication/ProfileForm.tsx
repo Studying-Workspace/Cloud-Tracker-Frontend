@@ -5,17 +5,20 @@ import UploadPhoto from "../../ui/Profile/UploadPhoto";
 import { Form, Formik } from "formik";
 import { handleToastMessage } from "../../utils/helper";
 import { profileFormValidationSchema } from "../../utils/validationSchema";
+import { useUser } from "./useUser";
 
 interface MyFormValues {
   email: string;
-  username: string;
+  name: string;
   password: string;
 }
 
 const ProfileForm = () => {
+  const { user } = useUser();
+
   const initialValues: MyFormValues = {
-    email: "",
-    username: "",
+    email: user.email,
+    name: user.name,
     password: "",
   };
 
@@ -41,9 +44,9 @@ const ProfileForm = () => {
                     <ProfileInputField
                       type="text"
                       placeholder="Username"
-                      name="username"
-                      error={touched.username ? errors.username : undefined}
-                      touched={touched.username}
+                      name="name"
+                      error={touched.name ? errors.name : undefined}
+                      touched={touched.name}
                     />
                   </div>
                   <ProfileInputField

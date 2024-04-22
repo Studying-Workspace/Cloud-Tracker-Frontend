@@ -3,6 +3,8 @@ import Button from "./Button";
 import Logo from "./Logo";
 import { useEffect, useState } from "react";
 import { BurgerSpin } from "react-burger-icons";
+import { useUser } from "../Features/authentication/useUser";
+import ProfileTab from "./Profile/ProfileTab";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const NavBar = () => {
 
   // need this state in mobile design only
   const [showNav, setShowNav] = useState<boolean>(false);
-
+  const { isAuth } = useUser();
   useEffect(
     function () {
       setStartPostion(currentPage);
@@ -22,13 +24,12 @@ const NavBar = () => {
     [currentPage],
   );
 
-  
   const blogId = `123`;
   return (
     <nav
       className={`relative z-50 flex w-full items-center justify-between bg-gradient-to-r from-linearBlue-3 via-linearBlue-2 to-linearBlue-1 px-24 py-1 font-poppins font-semibold 
 
-    text-white tablet:px-12 tablet:text-sm mobile:px-8 mobile:text-sm ${showNav ? "mobile:fixed" : ""}`}
+    text-white mobile:px-8 mobile:text-sm tablet:px-12 tablet:text-sm ${showNav ? "mobile:fixed" : ""}`}
     >
       <Logo />
       <button
@@ -51,8 +52,8 @@ const NavBar = () => {
       >
         <div
           className="relative mt-0 flex w-[450px] items-center justify-between pt-0 
-        tablet:w-[300px] 
-        mobile:flex mobile:h-[120px] mobile:w-[100px] mobile:flex-col"
+        mobile:flex 
+        mobile:h-[120px] mobile:w-[100px] mobile:flex-col tablet:w-[300px]"
         >
           <NavLink
             to="/"
@@ -83,24 +84,30 @@ const NavBar = () => {
                 ? "left-0 mobile:top-[-5px]"
                 : startPosition === "/blog" ||
                     startPosition === `/blog/${blogId}`
-                  ? "left-[150px] tablet:left-[100px] mobile:left-0 mobile:top-[45px]"
-                  : "left-[300px] tablet:left-[200px] mobile:left-0 mobile:top-[95px]"
+                  ? "left-[150px] mobile:left-0 mobile:top-[45px] tablet:left-[100px]"
+                  : startPosition === "/dashboard"
+                    ? "left-[300px] mobile:left-0 mobile:top-[95px] tablet:left-[200px]"
+                    : "hidden"
             } 
             h-[30px] w-[150px] rounded-full border-4 border-linearOrange-200 transition-all 
             duration-500 peer-hover/item1:left-0 
             peer-hover/item2:left-[150px] peer-hover/item3:left-[300px] 
-            tablet:w-[100px] tablet:peer-hover/item2:left-[100px]  tablet:peer-hover/item3:left-[200px]
-            mobile:w-[100px]
-            mobile:peer-hover/item1:left-[0px] 
-            mobile:peer-hover/item1:top-[-5px]
+            mobile:w-[100px] mobile:peer-hover/item1:left-[0px]  mobile:peer-hover/item1:top-[-5px]
             mobile:peer-hover/item2:left-[0px]
             mobile:peer-hover/item2:top-[46px] 
             mobile:peer-hover/item3:left-[0px]
-            mobile:peer-hover/item3:top-[95px]`}
+            mobile:peer-hover/item3:top-[95px]
+            tablet:w-[100px] 
+            tablet:peer-hover/item2:left-[100px]
+            tablet:peer-hover/item3:left-[200px]`}
           ></div>
         </div>
 
-        <Button onClick={() => navigate("/signIn")}>Sign In</Button>
+        {isAuth ? (
+          <ProfileTab />
+        ) : (
+          <Button onClick={() => navigate("/signIn")}>Sign In</Button>
+        )}
       </div>
     </nav>
   );
