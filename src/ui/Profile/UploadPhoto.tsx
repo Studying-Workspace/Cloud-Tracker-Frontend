@@ -13,8 +13,7 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
   const [imageFile, setImageFile] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const handleDeletePhoto = () => {
-    console.log("Delete");
-    setFile(name , "");
+    setFile(name, "");
     setImageFile(null);
     setIsDeleting(true);
   };
@@ -32,10 +31,11 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
         }}
       />
       <div
-        className={` relative z-0 flex h-fit w-fit items-center justify-center rounded-full border-4 ${(img === null || isDeleting) && imageFile === null ? "border-stone-500" : "border-linearOrange-200"}
+        className={` relative z-0 flex h-fit w-fit items-center justify-center rounded-full border-4 ${(img === null || img.length===0 || isDeleting) && imageFile === null ? "border-stone-500" : "border-linearOrange-200"}
                   bg-white mobile:border-2 tablet:border-2`}
       >
-        {(img === null && imageFile === null) || isDeleting ? (
+        {(img === null || img.length === 0 || isDeleting) &&
+        imageFile === null ? (
           <span className="text-8xl text-gray-500 mobile:text-6xl tablet:text-7xl">
             <IoCloudUploadOutline className=" m-10" />
           </span>
@@ -47,7 +47,8 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
           />
         )}
 
-        {(imageFile !== null || !isDeleting) && (
+        {(imageFile !== null ||
+          (!isDeleting && img !== null && img.length !== 0)) && (
           <button
             type="button"
             onClick={handleDeletePhoto}

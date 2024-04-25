@@ -50,7 +50,7 @@ const EditPasswordform = () => {
       initialValues={initialValues}
       onSubmit={(values) => {
         handleSubmit(values);
-      }}
+      }} 
       validationSchema={EditPasswordFormValidationSchema}
     >
       {({ errors, touched }) => (
