@@ -1,6 +1,8 @@
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Button from "../Button";
 import { useState } from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { MdDeleteOutline } from "react-icons/md";
 
 interface Props {
   name: string;
@@ -23,7 +25,7 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
         }}
       />
       <div
-        className={`flex h-fit w-fit items-center justify-center rounded-full border-4 ${img === null && imageFile === null ? "border-stone-400" : "border-linearOrange-200"}
+        className={` relative z-0 flex h-fit w-fit items-center justify-center rounded-full border-4 ${img === null && imageFile === null ? "border-stone-400" : "border-linearOrange-200"}
                   bg-white mobile:border-2 tablet:border-2`}
       >
         {img === null && imageFile === null ? (
@@ -37,6 +39,10 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
             className="h-[200px] w-[200px] rounded-full mobile:h-[120px] mobile:w-[120px] tablet:h-[150px] tablet:w-[150px]"
           />
         )}
+
+        <div className="absolute bottom-3 right-3 z-50 rounded-full border-2 border-linearOrange-200 bg-white p-1 text-xl text-stone-500 cursor-pointer">
+          <MdDeleteOutline />
+        </div>
       </div>
 
       <Button labelFor="file-upload" role="label" size="xl" type="primary">
