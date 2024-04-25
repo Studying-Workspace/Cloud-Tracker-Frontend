@@ -38,21 +38,10 @@ export const handleToastMessage = (
   }
 };
 
-// export function convertImageToBase64(file: File, callback: Function) {
-//   const reader = new FileReader();
-//   reader.readAsDataURL(file);
-//   reader.onload = () => {
-//     callback?.(reader?.result?.toString());
-//   };
-// }
-
-export const fileToBase64 = (file:File) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      resolve(reader.result);
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
+export const convertImageToBase64 = (file: File, callback: Function) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    callback?.(reader?.result?.toString());
+  };
 };

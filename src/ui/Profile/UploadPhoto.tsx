@@ -1,12 +1,12 @@
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Button from "../Button";
-import { Field } from "formik";
+
 interface Props {
   name: string;
   setFile: Function;
 }
 
-const UploadPhoto = ({ name, setFile }:Props) => {
+const UploadPhoto = ({ name, setFile }: Props) => {
   return (
     <div className="relative flex flex-col items-center gap-8">
       <input
