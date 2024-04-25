@@ -1,17 +1,15 @@
-import { useRef } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Button from "../Button";
+import { Field } from "formik";
 
-const UploadPhoto = () => {
-  const ref = useRef<HTMLInputElement>(null);
-
+const UploadPhoto = ({ name }: { name: string }) => {
   return (
     <div className="relative flex flex-col items-center gap-8">
-      <input
+      <Field
         type="file"
         id="file-upload"
         className="hidden cursor-pointer"
-        ref={ref}
+        name={name}
       />
       <div
         className="flex h-[200px] w-[200px] items-center justify-center rounded-full border-4 border-gray-500
@@ -22,15 +20,7 @@ const UploadPhoto = () => {
         </span>
       </div>
 
-      <Button
-        type="primary"
-        size="xl"
-        onClick={() => {
-          if (ref.current) {
-            ref.current.click();
-          }
-        }}
-      >
+      <Button labelFor="file-upload" role="label" size="xl" type="primary">
         Upload Photo
       </Button>
     </div>

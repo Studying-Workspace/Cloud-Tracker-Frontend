@@ -4,7 +4,10 @@ export function scrollToTop(): void {
   window.scrollTo(0, 0);
 }
 
-export const handleToastMessage = (message: string | undefined, type: "warning" | "success") => {
+export const handleToastMessage = (
+  message: string | undefined,
+  type: "warning" | "success",
+) => {
   switch (type) {
     case "warning":
       toast.warning(message, {
@@ -18,7 +21,7 @@ export const handleToastMessage = (message: string | undefined, type: "warning" 
         theme: "light",
         transition: Slide,
       });
-      break ; 
+      break;
     case "success":
       toast.success(message, {
         position: "top-right",
@@ -31,7 +34,14 @@ export const handleToastMessage = (message: string | undefined, type: "warning" 
         theme: "light",
         transition: Slide,
       });
-      break ; 
+      break;
   }
-
 };
+
+export function convertImageToBase64(file: File, callback: Function) {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    callback?.(reader?.result?.toString());
+  };
+}
