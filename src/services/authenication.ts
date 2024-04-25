@@ -63,8 +63,6 @@ export const getUser = async (token: string | undefined) => {
 
 export const editProfile = async (user: user, token: string | undefined) => {
   if (token === undefined) return null;
-  console.log(user) ; 
-  console.log(token) ; 
   try {
     const response = await axios.patch(`${serverBaseUrl}/me/profile`, user, {
       headers: {
@@ -76,7 +74,6 @@ export const editProfile = async (user: user, token: string | undefined) => {
     const data = await response.data;
     return data;
   } catch (error: any) {
-    console.log(error);
     throw new Error(error.message);
   }
 };

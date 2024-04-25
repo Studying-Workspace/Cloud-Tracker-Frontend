@@ -5,7 +5,6 @@ import { handleToastMessage } from "../../utils/helper";
 export const useLogout = (to : string , message: string)=>{
     const {setTokens} = useUserContext() ; 
     const navigate = useNavigate() ;
-    console.log("logout") ; 
     const logout = ()=>{
         setTokens(null) ; 
         navigate(to) ;
