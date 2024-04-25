@@ -23,12 +23,12 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
         }}
       />
       <div
-        className="flex h-fit w-fit items-center justify-center rounded-full border-4 border-linearOrange-200
-                  bg-white mobile:border-2 tablet:border-2"
+        className={`flex h-fit w-fit items-center justify-center rounded-full border-4 ${img === null && imageFile === null ? "border-stone-400" : "border-linearOrange-200"}
+                  bg-white mobile:border-2 tablet:border-2`}
       >
-        {img.length === 0 && !imageFile ? (
+        {img === null && imageFile === null ? (
           <span className="text-8xl text-gray-500 mobile:text-6xl tablet:text-7xl">
-            <IoCloudUploadOutline />
+            <IoCloudUploadOutline className=" m-10" />
           </span>
         ) : (
           <img
