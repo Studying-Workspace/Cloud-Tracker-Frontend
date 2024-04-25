@@ -1,7 +1,6 @@
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Button from "../Button";
 import { useState } from "react";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { MdDeleteOutline } from "react-icons/md";
 
 interface Props {
@@ -12,6 +11,13 @@ interface Props {
 
 const UploadPhoto = ({ name, setFile, img }: Props) => {
   const [imageFile, setImageFile] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const handleDeletePhoto = () => {
+    console.log("Delete");
+    setFile(name , "");
+    setImageFile(null);
+    setIsDeleting(true);
+  };
   return (
     <div className="relative flex flex-col items-center gap-8">
       <input
@@ -22,13 +28,14 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
         onChange={(event: any) => {
           setFile(name, event.currentTarget.files[0]);
           setImageFile(URL.createObjectURL(event.currentTarget.files[0]));
+          setIsDeleting(false);
         }}
       />
       <div
-        className={` relative z-0 flex h-fit w-fit items-center justify-center rounded-full border-4 ${img === null && imageFile === null ? "border-stone-400" : "border-linearOrange-200"}
+        className={` relative z-0 flex h-fit w-fit items-center justify-center rounded-full border-4 ${(img === null || isDeleting) && imageFile === null ? "border-stone-500" : "border-linearOrange-200"}
                   bg-white mobile:border-2 tablet:border-2`}
       >
-        {img === null && imageFile === null ? (
+        {(img === null && imageFile === null) || isDeleting ? (
           <span className="text-8xl text-gray-500 mobile:text-6xl tablet:text-7xl">
             <IoCloudUploadOutline className=" m-10" />
           </span>
@@ -40,9 +47,15 @@ const UploadPhoto = ({ name, setFile, img }: Props) => {
           />
         )}
 
-        <div className="absolute bottom-3 right-3 z-50 rounded-full border-2 border-linearOrange-200 bg-white p-1 text-xl text-stone-500 cursor-pointer">
-          <MdDeleteOutline />
-        </div>
+        {(imageFile !== null || !isDeleting) && (
+          <button
+            type="button"
+            onClick={handleDeletePhoto}
+            className="absolute bottom-3 right-3 z-50 cursor-pointer rounded-full border-2 border-linearOrange-200 bg-white p-1 text-xl text-stone-500"
+          >
+            <MdDeleteOutline />
+          </button>
+        )}
       </div>
 
       <Button labelFor="file-upload" role="label" size="xl" type="primary">
