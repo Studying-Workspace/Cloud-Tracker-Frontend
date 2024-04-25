@@ -45,7 +45,7 @@ export const EditPasswordFormValidationSchema = Yup.object().shape({
     .min(8, "Your Password Must Be At Least 8 Characters")
     .required("Please Enter Your New Password"),
 
-  confirmPassword: Yup.string()
+  confirmNewPassword: Yup.string()
     .min(8, "Your Password Must Be At Least 8 Characters")
     .required("Please Confirm Your New Password")
     .oneOf([Yup.ref("newPassword")], "Passwords Must Match"),
