@@ -9,6 +9,7 @@ import { convertImageToBase64, handleToastMessage } from "../../utils/helper";
 import useEditProfile from "./useEditProfile";
 import { useUserContext } from "../../context/UserProvider";
 import { useLogout } from "./useLogout";
+import { BeatLoader } from "react-spinners";
 
 interface MyFormValues {
   email: string;
@@ -111,15 +112,19 @@ const ProfileForm = () => {
               </div>
             </div>
           </div>
-          <div className="w-fit self-end rounded-full bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[3px] mobile:self-center tablet:self-center">
-            <Button
-              role="submit"
-              type="secondary"
-              size="xl"
-              disabled={isLoading}
-            >
-              Save Changes
+          <div className="flex gap-2 self-end">
+            <Button role="submit" type="primary" size="l" disabled={isLoading}>
+              {isLoading ? <BeatLoader color="#fff" size={8} /> : "Save"}
             </Button>
+            <div className="w-fit rounded-full bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[3px] mobile:self-center tablet:self-center">
+              <Button
+                role="button"
+                type="secondary"
+                size="l"
+              >
+                Reset
+              </Button>
+            </div>
           </div>
         </Form>
       )}

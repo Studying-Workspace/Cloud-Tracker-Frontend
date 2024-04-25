@@ -8,6 +8,7 @@ import { EditPasswordFormValidationSchema } from "../../utils/validationSchema";
 import useEditPassword from "./useEditPassword";
 import { useUserContext } from "../../context/UserProvider";
 import { useLogout } from "./useLogout";
+import { BeatLoader } from "react-spinners";
 
 interface MyFormValues {
   currentPassword: string;
@@ -115,7 +116,7 @@ const EditPasswordform = () => {
             />
           </div>
           <Button role="submit" size="full" disabled={isLoading}>
-            Change Password
+            {isLoading ? <BeatLoader color="#fff" size={8} /> : "Change Password"}
           </Button>
         </Form>
       )}
