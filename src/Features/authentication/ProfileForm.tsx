@@ -31,14 +31,15 @@ const ProfileForm = () => {
 
   const handleSubmit = (values: MyFormValues) => {
     if (typeof values.image === "string") {
-      console.log(values);
       editProfile({ user: values, token: tokens?.token });
     } else {
       convertImageToBase64(values.image, (base64: string) => {
-        const handleUser = { ...values, image: base64 };
-        console.log(handleUser);
+        const handleUser = { ...values, image: base64};
         editProfile({ user: handleUser, token: tokens?.token });
       });
+      // const handleUser = { ...values, image: "photo" };
+      // console.log(handleUser);
+      // editProfile({ user: handleUser, token: tokens?.token });
     }
   };
 
@@ -56,7 +57,7 @@ const ProfileForm = () => {
             <div className="relative bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px] ">
               <div className="flex h-[450px] w-[1000px] content-between items-center justify-start gap-16 bg-white px-[100px] mobile:h-[550px] mobile:w-[330px] mobile:flex-col mobile:justify-center mobile:gap-8 tablet:h-[650px] tablet:w-[400px] tablet:flex-col tablet:justify-center tablet:gap-10">
                 {/* Profile Image */}
-                <UploadPhoto name="image" setFile={setFieldValue} />
+                <UploadPhoto name="image" setFile={setFieldValue} img={user.image} />
 
                 {/* Input fields */}
                 <div className="grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-16 mobile:flex mobile:flex-col mobile:gap-6 tablet:flex tablet:flex-col tablet:gap-8">

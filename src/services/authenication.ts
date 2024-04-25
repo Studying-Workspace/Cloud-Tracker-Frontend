@@ -63,6 +63,8 @@ export const getUser = async (token: string | undefined) => {
 
 export const editProfile = async (user: user, token: string | undefined) => {
   if (token === undefined) return null;
+  console.log(user) ; 
+  console.log(token) ; 
   try {
     const response = await axios.patch(`${serverBaseUrl}/me/profile`, user, {
       headers: {
