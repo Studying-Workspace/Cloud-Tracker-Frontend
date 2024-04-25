@@ -5,7 +5,7 @@ import UploadPhoto from "../../ui/Profile/UploadPhoto";
 import { Form, Formik } from "formik";
 import { profileFormValidationSchema } from "../../utils/validationSchema";
 import { useUser } from "./useUser";
-import { convertImageToBase64 } from "../../utils/helper";
+import { convertImageToBase64, handleToastMessage } from "../../utils/helper";
 import useEditProfile from "./useEditProfile";
 import { useUserContext } from "../../context/UserProvider";
 import { useLogout } from "./useLogout";
@@ -35,6 +35,10 @@ const ProfileForm = () => {
   );
 
   const handleSubmit = (values: MyFormValues) => {
+    if (values === initialValues) {
+      handleToastMessage("There Is No Changes In Profile Data", "warning");
+      return;
+    }
     if (typeof values.image === "string") {
       editProfile(
         { user: values, token: tokens?.token },
