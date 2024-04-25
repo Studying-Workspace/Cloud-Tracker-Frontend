@@ -17,7 +17,7 @@ const ProfileTab = () => {
       <div
         className={`text-4xl transition-all duration-300 mobile:hidden ${currentPage === "/profile" ? " text-linearOrange-200" : ""}`}
       >
-        {user.image ? (
+        {user?.image ? (
           <img
             src={user.image}
             alt="userPhoto"
