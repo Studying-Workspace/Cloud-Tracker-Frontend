@@ -1,15 +1,22 @@
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Button from "../Button";
 import { Field } from "formik";
+interface Props {
+  name: string;
+  setFile: Function;
+}
 
-const UploadPhoto = ({ name }: { name: string }) => {
+const UploadPhoto = ({ name, setFile }:Props) => {
   return (
     <div className="relative flex flex-col items-center gap-8">
-      <Field
+      <input
         type="file"
         id="file-upload"
         className="hidden cursor-pointer"
         name={name}
+        onChange={(event: any) => {
+          setFile(name, event.currentTarget.files[0]);
+        }}
       />
       <div
         className="flex h-[200px] w-[200px] items-center justify-center rounded-full border-4 border-gray-500
