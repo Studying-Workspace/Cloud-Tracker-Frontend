@@ -6,6 +6,8 @@ import { Form, Formik } from "formik";
 import { profileFormValidationSchema } from "../../utils/validationSchema";
 import { useUser } from "./useUser";
 import { convertImageToBase64 } from "../../utils/helper";
+import useEditProfile from "./useEditProfile";
+import { useUserContext } from "../../context/UserProvider";
 
 interface MyFormValues {
   email: string;
@@ -24,12 +26,18 @@ const ProfileForm = () => {
     image: "",
   };
 
+  const { tokens } = useUserContext();
+  const { editProfile, isLoading } = useEditProfile();
+
   const handleSubmit = (values: MyFormValues) => {
     if (typeof values.image === "string") {
-      console.log("Image is a string");
+      console.log(values);
+      editProfile({ user: values, token: tokens?.token });
     } else {
       convertImageToBase64(values.image, (base64: string) => {
-        console.log(base64);
+        const handleUser = { ...values, image: base64 };
+        console.log(handleUser);
+        editProfile({ user: handleUser, token: tokens?.token });
       });
     }
   };
@@ -79,7 +87,12 @@ const ProfileForm = () => {
             </div>
           </div>
           <div className="w-fit self-end rounded-full bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[3px] mobile:self-center tablet:self-center">
-            <Button role="submit" type="secondary" size="xl">
+            <Button
+              role="submit"
+              type="secondary"
+              size="xl"
+              disabled={isLoading}
+            >
               Save Changes
             </Button>
           </div>

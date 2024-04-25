@@ -42,9 +42,9 @@ export const login = async (user: user) => {
   }
 };
 
-export const getUser = async (token : string | undefined) => {
+export const getUser = async (token: string | undefined) => {
   try {
-    if(token===undefined) return null; 
+    if (token === undefined) return null;
     const response = await axios.get(`${serverBaseUrl}/me/profile`, {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -57,6 +57,24 @@ export const getUser = async (token : string | undefined) => {
 
     return data;
   } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const editProfile = async (user: user, token: string | undefined) => {
+  if (token === undefined) return null;
+  try {
+    const response = await axios.patch(`${serverBaseUrl}/me/profile`, user, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.data;
+    return data;
+  } catch (error: any) {
+    console.log(error);
     throw new Error(error.message);
   }
 };
