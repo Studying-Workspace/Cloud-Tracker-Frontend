@@ -2,12 +2,26 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import SignIn from "../pages/SignIn";
 import userEvent from "@testing-library/user-event";
 import { HashRouter } from "react-router-dom";
+import UserProvider from "../context/UserProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 0,
+		},
+	},
+});
 
 describe("SignIn", () => {
 	beforeEach(() => {
 		render(
 			<HashRouter>
-				<SignIn />
+				<UserProvider>
+					<QueryClientProvider client={queryClient}>
+						<SignIn />
+					</QueryClientProvider>
+				</UserProvider>
 			</HashRouter>,
 		);
 	});
