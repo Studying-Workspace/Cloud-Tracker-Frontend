@@ -16,69 +16,72 @@ import UserProvider from "./context/UserProvider";
 import ProtectRouter from "./ui/ProtectRouter";
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 0,
-    },
-  },
+	defaultOptions: {
+		queries: {
+			staleTime: 0,
+		},
+	},
 });
 
 export default function App() {
-  return (
-    <>
-      <HashRouter>
-        <UserProvider>
-          <QueryClientProvider client={queryClient}>
-            <ScrollToTop>
-              <Routes>
-                <Route path="/" element={<Applayout />}>
-                  <Route path="/" element={<Home />} />
-                  <Route path="blog" element={<Blog />} />
-                  <Route path="blog/:blogId" element={<BlogDetails />} />
+	return (
+		<>
+			<HashRouter>
+				<UserProvider>
+					<QueryClientProvider client={queryClient}>
+						<ScrollToTop>
+							<Routes>
+								<Route path="/" element={<Applayout />}>
+									<Route path="/" element={<Home />} />
+									<Route path="blog" element={<Blog />} />
+									<Route
+										path="blog/:blogId"
+										element={<BlogDetails />}
+									/>
 
-                  <Route
-                    path="dashboard"
-                    element={
-                      <ProtectRouter route="dashboard">
-                        <Dashboard/>
-                      </ProtectRouter>
-                    }
-                  />
-                  <Route
-                    path="profile"
-                    element={
-                      <ProtectRouter route="profile">
-                        <Profile />
-                      </ProtectRouter>
-                    }
-                  />
-                </Route>
+									<Route
+										path="dashboard"
+										element={
+											<ProtectRouter route="dashboard">
+												<Dashboard />
+											</ProtectRouter>
+										}
+									/>
+									<Route
+										path="profile"
+										element={
+											<ProtectRouter route="profile">
+												<Profile />
+											</ProtectRouter>
+										}
+									/>
+								</Route>
 
-                <Route
-                  path="signIn"
-                  element={
-                    <ProtectRouter route="signIn">
-                      <SignIn />
-                    </ProtectRouter>
-                  }
-                />
+								<Route
+									path="signIn"
+									element={
+										<ProtectRouter route="signIn">
+											<SignIn />
+										</ProtectRouter>
+									}
+								/>
 
-                <Route
-                  path="signUp"
-                  element={
-                    <ProtectRouter route="signUp">
-                      <SignUp />
-                    </ProtectRouter>
-                  }
-                />
+								<Route
+									path="signUp"
+									element={
+										<ProtectRouter route="signUp">
+											<SignUp />
+										</ProtectRouter>
+									}
+								/>
 
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </ScrollToTop>
-          </QueryClientProvider>
-        </UserProvider>
-      </HashRouter>
-      <ToastContainer />
-    </>
-  );
+								<Route path="*" element={<NotFound />} />
+							</Routes>
+						</ScrollToTop>
+					</QueryClientProvider>
+				</UserProvider>
+			</HashRouter>
+			<ToastContainer />
+		</>
+	);
 }

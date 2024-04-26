@@ -3,25 +3,30 @@ import { editProfile } from "../../services/authenication";
 import { handleToastMessage } from "../../utils/helper";
 
 interface user {
-  email?: string;
-  name?: string;
-  image?: string;
-  password: string;
+	email?: string;
+	name?: string;
+	image?: string;
+	password: string;
 }
 
 const useEditProfile = () => {
-  const { mutate, isPending } = useMutation({
-    mutationFn: ({ user, token }: { user: user; token: string | undefined }) =>
-      editProfile(user, token),
-    onSuccess: () => {
-      handleToastMessage("Profile updated successfully!", "success");
-    },
-    onError: (error) => {
-      handleToastMessage(error.message, "warning");
-    },
-  });
+	const { mutate, isPending } = useMutation({
+		mutationFn: ({
+			user,
+			token,
+		}: {
+			user: user;
+			token: string | undefined;
+		}) => editProfile(user, token),
+		onSuccess: () => {
+			handleToastMessage("Profile updated successfully!", "success");
+		},
+		onError: (error) => {
+			handleToastMessage(error.message, "warning");
+		},
+	});
 
-  return { isLoading: isPending, editProfile: mutate };
+	return { isLoading: isPending, editProfile: mutate };
 };
 
 export default useEditProfile;
