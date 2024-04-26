@@ -6,9 +6,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useUser } from "../Features/authentication/useUser";
 
 const Applayout = () => {
-  const loacation = useLocation();
-  const currentPage = loacation.pathname;
-
+	const loacation = useLocation();
+	const currentPage = loacation.pathname;
   const setFooter = currentPage === "/" || currentPage === "/profile";
   const { isLoading , isAuth } = useUser();
 

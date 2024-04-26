@@ -4,14 +4,13 @@ import Service from "../ui/Home/Service";
 
 
 const Home = () => {
-  
-  return (
-      <div>
-        <Intro />
-        <About />
-        <Service />
-      </div>
-  );
+	return (
+		<div>
+			<Intro />
+			<About />
+			<Service />
+		</div>
+	);
 };
 
 export default Home;

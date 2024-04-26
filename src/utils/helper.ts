@@ -44,4 +44,5 @@ export const convertImageToBase64 = (file: File, callback: Function) => {
 	reader.onload = () => {
 		callback?.(reader?.result?.toString());
 	};
+
 };

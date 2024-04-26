@@ -14,6 +14,7 @@ interface MyFormValues {
 	currentPassword: string;
 	newPassword: string;
 	confirmNewPassword: string;
+
 }
 
 const EditPasswordform = () => {
@@ -21,6 +22,7 @@ const EditPasswordform = () => {
 		currentPassword: "",
 		newPassword: "",
 		confirmNewPassword: "",
+
 	};
 
 	const [showCurrentPassword, setShowCurrentPassword] =
@@ -108,6 +110,7 @@ const EditPasswordform = () => {
 							error={
 								touched.confirmNewPassword
 									? errors.confirmNewPassword
+
 									: undefined
 							}
 						>
@@ -125,6 +128,7 @@ const EditPasswordform = () => {
 						) : (
 							"Change Password"
 						)}
+
 					</Button>
 				</Form>
 			)}

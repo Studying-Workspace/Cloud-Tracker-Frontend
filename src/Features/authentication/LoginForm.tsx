@@ -21,11 +21,13 @@ const LoginForm = () => {
 	const [rememberMe, setRememberMe] = useState<boolean>(false);
 	const [showPassword, setShowPassword] = useState<boolean>(false);
 
+
 	const { isLoading, login } = useLogin();
 
 	const handleSubmit = (user: MyFormValues) => {
 		login(user);
 	};
+
 
 	return (
 		<div className="flex w-full justify-between">
@@ -51,6 +53,7 @@ const LoginForm = () => {
 					validationSchema={loginFormValidationSchema}
 					onSubmit={(values) => {
 						handleSubmit(values);
+
 					}}
 				>
 					{({ errors, touched }) => (
@@ -62,6 +65,7 @@ const LoginForm = () => {
 									type="text"
 									name="email"
 									data-testid="email"
+
 									error={touched.email ? errors.email : undefined}
 								>
 									<MdOutlineMail className=" text-3xl text-linearBlue-1 mobile:text-2xl" />
@@ -133,6 +137,7 @@ const LoginForm = () => {
 								) : (
 									"Sign in"
 								)}
+                
 							</Button>
 						</Form>
 					)}

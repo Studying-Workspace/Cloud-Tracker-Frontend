@@ -1,80 +1,85 @@
 <!-- file.html -->
 <html lang="en">
-  <head>
-    <title>AWS Identity and Access Management (IAM)</title>
-  </head>
-  <body>
-    <div dir="ltr" class="space-y-6 font-poppins text-xl mobile:text-lg">
-      <p>
-        In cloud computing, security is of paramount importance. AWS (Amazon Web
-        Services) provides a system called IAM (Identity and Access Management)
-        to protect your data and resources.
-      </p>
-      <p>
-        In this article, we'll discuss the basics of IAM, including the
-        difference between authentication and authorization, a root user, IAM
-        users, IAM user groups, IAM roles, and policies.
-      </p>
-      <br />
-      <hr />
-      <br />
-      <h2 class="text-4xl font-bold mobile:text-2xl">
-        The difference between "Authentication" and "Authorization"
-      </h2>
-      <h3 class="text-2xl font-bold mobile:text-xl">What is Authentication?</h3>
+	<head>
+		<title>AWS Identity and Access Management (IAM)</title>
+	</head>
+	<body>
+		<div dir="ltr" class="space-y-6 font-poppins text-xl mobile:text-lg">
+			<p>
+				In cloud computing, security is of paramount importance. AWS
+				(Amazon Web Services) provides a system called IAM (Identity and
+				Access Management) to protect your data and resources.
+			</p>
+			<p>
+				In this article, we'll discuss the basics of IAM, including the
+				difference between authentication and authorization, a root user,
+				IAM users, IAM user groups, IAM roles, and policies.
+			</p>
+			<br />
+			<hr />
+			<br />
+			<h2 class="text-4xl font-bold mobile:text-2xl">
+				The difference between "Authentication" and "Authorization"
+			</h2>
+			<h3 class="text-2xl font-bold mobile:text-xl">
+				What is Authentication?
+			</h3>
 
-      <p>
-        Authentication verifies user identity by validating their claimed
-        identity. This involves challenging users to authenticate their
-        credentials, like passwords, security question answers, or facial
-        recognition. It occurs prior to authorization to safeguard protected
-        resources and often utilizes an ID Token for secure transmission of user
-        identity information.
-      </p>
+			<p>
+				Authentication verifies user identity by validating their claimed
+				identity. This involves challenging users to authenticate their
+				credentials, like passwords, security question answers, or facial
+				recognition. It occurs prior to authorization to safeguard
+				protected resources and often utilizes an ID Token for secure
+				transmission of user identity information.
+			</p>
 
-      <h3 class="text-2xl font-bold mobile:text-xl">What is Authorization?</h3>
+			<h3 class="text-2xl font-bold mobile:text-xl">
+				What is Authorization?
+			</h3>
 
-      <p>
-        Authorization establishes permissions and restrictions for system
-        access, verifying access based on predefined policies and rules. It
-        occurs after successful authentication, allowing only authenticated
-        users with the necessary privileges to access specific resources. For
-        secure transmission of authorization information, an Access Token is
-        commonly employed.
-      </p>
+			<p>
+				Authorization establishes permissions and restrictions for system
+				access, verifying access based on predefined policies and rules.
+				It occurs after successful authentication, allowing only
+				authenticated users with the necessary privileges to access
+				specific resources. For secure transmission of authorization
+				information, an Access Token is commonly employed.
+			</p>
 
-      <h3 class="text-2xl font-bold mobile:text-xl">
-        To fully understand the difference between "Authentication" and
-        "Authorization", consider the following analogy.
-      </h3>
-      <img
-        src="../Cloud-Tracker-Frontend/src/ui/Blog/BlogDetails/assests/IAM_blog (1).jpg"
-        class="h-[300px] w-[70%] mobile:h-[50%] mobile:w-[90%]"
-        style="margin: auto"
-      />
-      <p>
-        To enter the university building, a registered ID card is required,
-        serving as proof of affiliation and authorization. It verifies your
-        recognized status within the university community, granting permission
-        to access the facilities. This example illustrates the process of
-        authentication.
-      </p>
-      <br />
-      <img
-        src="../Cloud-Tracker-Frontend/src/ui/Blog/BlogDetails/assests/IAM_blog.jpg"
-        class="h-[300px] w-[70%] px-10 mobile:h-[50%] mobile:w-[90%]"
-        style="margin: auto"
-      />
-      <p>
-        Once you have been granted permission to enter your selected university
-        and college, understanding your role and responsibilities is essential.
-        For example, as a university teacher, you have permission to participate
-        in teaching activities and access student records. However, interfering
-        in the university's financial affairs does not fall within the scope of
-        your permit. This example exemplifies the concept of delegation, where
-        specific privileges are granted based on an individual's role and
-        responsibilities.
-      </p>
-    </div>
-  </body>
+			<h3 class="text-2xl font-bold mobile:text-xl">
+				To fully understand the difference between "Authentication" and
+				"Authorization", consider the following analogy.
+			</h3>
+			<img
+				src="../Cloud-Tracker-Frontend/src/ui/Blog/BlogDetails/assests/IAM_blog (1).jpg"
+				class="h-[300px] w-[70%] mobile:h-[50%] mobile:w-[90%]"
+				style="margin: auto"
+			/>
+			<p>
+				To enter the university building, a registered ID card is
+				required, serving as proof of affiliation and authorization. It
+				verifies your recognized status within the university community,
+				granting permission to access the facilities. This example
+				illustrates the process of authentication.
+			</p>
+			<br />
+			<img
+				src="../Cloud-Tracker-Frontend/src/ui/Blog/BlogDetails/assests/IAM_blog.jpg"
+				class="h-[300px] w-[70%] px-10 mobile:h-[50%] mobile:w-[90%]"
+				style="margin: auto"
+			/>
+			<p>
+				Once you have been granted permission to enter your selected
+				university and college, understanding your role and
+				responsibilities is essential. For example, as a university
+				teacher, you have permission to participate in teaching activities
+				and access student records. However, interfering in the
+				university's financial affairs does not fall within the scope of
+				your permit. This example exemplifies the concept of delegation,
+				where specific privileges are granted based on an individual's
+				role and responsibilities.
+			</p>
+		</div>
+	</body>
 </html>

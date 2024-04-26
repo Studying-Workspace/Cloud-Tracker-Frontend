@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import UserProvider from "./context/UserProvider";
 import ProtectRouter from "./ui/ProtectRouter";
 
+
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
@@ -22,6 +23,7 @@ const queryClient = new QueryClient({
 		},
 	},
 });
+
 
 export default function App() {
 	return (
@@ -35,7 +37,7 @@ export default function App() {
 									<Route path="/" element={<Home />} />
 									<Route path="blog" element={<Blog />} />
 									<Route
-										path="blog/:blogId"
+										path="blog/:id"
 										element={<BlogDetails />}
 									/>
 

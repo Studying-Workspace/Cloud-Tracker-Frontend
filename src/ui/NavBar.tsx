@@ -7,11 +7,11 @@ import { useUser } from "../Features/authentication/useUser";
 import ProfileTab from "./Profile/ProfileTab";
 
 const NavBar = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const currentPage = location.pathname;
+	const navigate = useNavigate();
+	const location = useLocation();
+	const currentPage = location.pathname;
 
-  const [startPosition, setStartPostion] = useState<string>(currentPage);
+	const [startPosition, setStartPostion] = useState<string>(currentPage);
 
   // need this state in mobile design only
   const [showNav, setShowNav] = useState<boolean>(false);
@@ -42,10 +42,11 @@ const NavBar = () => {
         <BurgerSpin isClosed={showNav} />
       </button>
 
-      <div
-        className={`flex w-[70%] items-center justify-between 
+
+			<div
+				className={`flex w-[70%] items-center justify-between
         mobile:fixed mobile:top-[45px]
-        ${showNav ? "mobile:left-0" : "left-[-200%]"}  
+        ${showNav ? "mobile:left-0" : "left-[-200%]"}
         z-50 transition-all duration-500 mobile:h-full
         mobile:w-screen
         mobile:flex-col mobile:justify-start mobile:gap-10 mobile:bg-linearBlue-1 mobile:py-10`}
@@ -62,23 +63,23 @@ const NavBar = () => {
             Home
           </NavLink>
 
-          <NavLink
-            to="/blog"
-            className="peer/item2 z-10 w-[150px] text-center tablet:w-[100px]"
-          >
-            Blog
-          </NavLink>
+					<NavLink
+						to="/blog"
+						className="peer/item2 z-10 w-[150px] text-center tablet:w-[100px]"
+					>
+						Blog
+					</NavLink>
 
-          <NavLink
-            to="/dashboard"
-            className="peer/item3 z-10 w-[150px] text-center tablet:w-[100px]"
-          >
-            Dashboard
-          </NavLink>
+					<NavLink
+						to="/dashboard"
+						className="peer/item3 z-10 w-[150px] text-center tablet:w-[100px]"
+					>
+						Dashboard
+					</NavLink>
 
-          <div
-            id="activeLink"
-            className={`absolute z-0 
+					<div
+						id="activeLink"
+						className={`absolute z-0
             ${
               startPosition === "/"
                 ? "left-0 mobile:top-[-5px]"
@@ -92,9 +93,10 @@ const NavBar = () => {
             h-[30px] w-[150px] rounded-full border-4 border-linearOrange-200 transition-all 
             duration-500 peer-hover/item1:left-0 
             peer-hover/item2:left-[150px] peer-hover/item3:left-[300px] 
+
             mobile:w-[100px] mobile:peer-hover/item1:left-[0px]  mobile:peer-hover/item1:top-[-5px]
             mobile:peer-hover/item2:left-[0px]
-            mobile:peer-hover/item2:top-[46px] 
+            mobile:peer-hover/item2:top-[46px]
             mobile:peer-hover/item3:left-[0px]
             mobile:peer-hover/item3:top-[95px]
             tablet:w-[100px] 
@@ -111,6 +113,7 @@ const NavBar = () => {
       </div>
     </nav>
   );
+
 };
 
 export default NavBar;
