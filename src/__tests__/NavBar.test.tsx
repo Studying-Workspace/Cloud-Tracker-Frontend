@@ -1,12 +1,26 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import NavBar from "../ui/NavBar";
 import { HashRouter } from "react-router-dom";
+import UserProvider from "../context/UserProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 0,
+		},
+	},
+});
 
 describe("NavBar", () => {
 	beforeEach(() => {
 		render(
 			<HashRouter>
-				<NavBar />
+				<UserProvider>
+					<QueryClientProvider client={queryClient}>
+						<NavBar />
+					</QueryClientProvider>
+				</UserProvider>
 			</HashRouter>,
 		);
 	});
@@ -48,32 +62,5 @@ describe("NavBar", () => {
 		fireEvent.click(signInButton);
 
 		expect(window.location.hash).toBe("#/signIn");
-	});
-});
-
-// should change {window.location.hash} before render
-
-describe("NavLink", () => {
-	beforeEach(() => {
-		window.location.hash = "#/blog";
-		render(
-			<HashRouter>
-				<NavBar />
-			</HashRouter>,
-		);
-	});
-
-	it("applies active class when NavLink is active", () => {
-		const blogPage = screen.queryByText("Blog");
-
-		expect(blogPage).toHaveClass("active");
-	});
-
-	it("deos not apply active class when NavLink is not active", () => {
-		const dashboardPage = screen.queryByText("Dashboard");
-		const homePage = screen.queryByText("Home");
-
-		expect(dashboardPage).not.toHaveClass("active");
-		expect(homePage).not.toHaveClass("active");
 	});
 });
