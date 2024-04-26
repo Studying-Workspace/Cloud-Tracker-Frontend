@@ -16,29 +16,32 @@ const BlogElement = ({ id, title, content }: Props) => {
     navigate(`/blog/${id}`);
   };
 
-  const handleMakeLike = (e: any) => {
-    // stop onClick event from perant div
-    if (e && e.stopPropagation) e.stopPropagation();
-    console.log("like");
-  };
 
-  return (
-    <div
-      className="flex cursor-pointer flex-col gap-6 px-4 py-6 transition-all duration-500 hover:bg-gray-100"
-      onClick={() => handleClick()}
-    >
-      {/* head */}
-      <div className="flex items-center justify-between">
-        {/* publisher */}
-        <div className="flex items-center gap-1">
-          <IoPersonCircleOutline className="text-4xl text-gray-600 mobile:text-3xl" />
-          <p className="text-sm text-gray-600 mobile:text-xs">Publisher</p>
-        </div>
-        {/* date */}
-        <div className="text-sm text-gray-500 mobile:text-xs">
-          April 19,2024
-        </div>
-      </div>
+	const handleMakeLike = (e: any) => {
+		// stop onClick event from perant div
+		if (e && e.stopPropagation) e.stopPropagation();
+		console.log("like");
+	};
+
+	return (
+		<div
+			className="flex cursor-pointer flex-col gap-6 px-4 py-6 transition-all duration-500 hover:bg-gray-100"
+			onClick={() => handleClick()}
+		>
+			{/* head */}
+			<div className="flex items-center justify-between">
+				{/* publisher */}
+				<div className="flex items-center gap-1">
+					<IoPersonCircleOutline className="text-4xl text-gray-600 mobile:text-3xl" />
+					<p className="text-sm text-gray-600 mobile:text-xs">
+						Publisher
+					</p>
+				</div>
+				{/* date */}
+				<div className="text-sm text-gray-500 mobile:text-xs">
+					April 19,2024
+				</div>
+			</div>
 
       {/* body */}
       <div className="flex items-center justify-between">

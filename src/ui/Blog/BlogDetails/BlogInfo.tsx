@@ -5,6 +5,7 @@ import BlogContent from "./BlogContent";
 import blogImg from "../../../assets/logo/logo_color2.png";
 
 const BlogInfo = () => {
+
   const { id } = useParams<{ id: string }>();
   const blogId = parseInt(id || "0");
 

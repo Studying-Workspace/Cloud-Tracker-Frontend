@@ -1,7 +1,7 @@
-import BlogInfo from "../ui/Blog/BlogDetails/BlogInfo"
+import BlogInfo from "../ui/Blog/BlogDetails/BlogInfo";
 
 const BlogDetails = () => {
-  return (<BlogInfo/>)
-}
+	return <BlogInfo />;
+};
 
-export default BlogDetails
+export default BlogDetails;

@@ -13,7 +13,8 @@ interface IBlog {
 }
 
 const BlogsCotainer = () => {
-  const [value, setValue] = useState<number>(0);
+	const [value, setValue] = useState<number>(0);
+
 
   const { data, isLoading } = useBlogs({
     queryKey: ["blogs"],
