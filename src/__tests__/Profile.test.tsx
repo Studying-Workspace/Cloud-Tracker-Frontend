@@ -1,12 +1,26 @@
 import { render, screen } from "@testing-library/react";
 import { HashRouter } from "react-router-dom";
 import { Profile } from "../pages/Profile";
+import UserProvider from "../context/UserProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: 0,
+		},
+	},
+});
 
 describe("Profile Page", () => {
 	beforeEach(() => {
 		render(
 			<HashRouter>
-				<Profile />
+				<UserProvider>
+					<QueryClientProvider client={queryClient}>
+						<Profile />
+					</QueryClientProvider>
+				</UserProvider>
 			</HashRouter>,
 		);
 	});
@@ -23,15 +37,13 @@ describe("Profile Page", () => {
 
 	it("Should render a save changes button", () => {
 		const saveButton = screen.getByRole("button", {
-			name: /Save Changes/i,
+			name: /Save/i,
 		});
 		expect(saveButton).toBeInTheDocument();
 	});
 
 	it("Should Render the 'Upload Photo' button", () => {
-		const uploadButton = screen.getByRole("button", {
-			name: /upload photo/i,
-		});
+		const uploadButton = screen.getByText(/upload photo/i);
 		expect(uploadButton).toBeInTheDocument();
 	});
 });

@@ -19,7 +19,7 @@ interface MyFormValues {
 }
 
 const ProfileForm = () => {
-	const { user } = useUser();
+	const { user , isAuth } = useUser();
 
 	const initialValues: MyFormValues = {
 		email: user?.email,
@@ -81,7 +81,7 @@ const ProfileForm = () => {
 								<UploadPhoto
 									name="image"
 									setFile={setFieldValue}
-									img={user.image}
+									img={isAuth ? user.image : ""}
 								/>
 
 
