@@ -14,7 +14,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserProvider from "./context/UserProvider";
 import ProtectRouter from "./ui/ProtectRouter";
-
+import AllCharts from "./ui/DashBoard/AllCharts";
+import PieChart from "./Features/DashBoard/PieChart";
+import ColumnChart from "./Features/DashBoard/ColumnChart";
+import LineChart from "./Features/DashBoard/LineChart";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -23,7 +26,6 @@ const queryClient = new QueryClient({
 		},
 	},
 });
-
 
 export default function App() {
 	return (
@@ -34,21 +36,42 @@ export default function App() {
 						<ScrollToTop>
 							<Routes>
 								<Route path="/" element={<Applayout />}>
-									<Route path="/" element={<Home />} />
+									<Route index element={<Home />} />
 									<Route path="blog" element={<Blog />} />
-									<Route
-										path="blog/:id"
-										element={<BlogDetails />}
-									/>
-
-									<Route
-										path="dashboard"
-										element={
-											<ProtectRouter route="dashboard">
-												<Dashboard />
-											</ProtectRouter>
-										}
-									/>
+									<Route path="blog/:id" element={<BlogDetails />} />
+									<Route path="dashboard">
+										<Route index element={<div>Dashboard</div>} />
+										<Route
+											path="charts"
+											element={
+												<ProtectRouter route="dashboard">
+													<Dashboard />
+												</ProtectRouter>
+											}
+										>
+											<Route index element={<AllCharts />} />
+											<Route
+												path="pieChart"
+												element={<PieChart type="full" />}
+											/>
+											<Route
+												path="columnChart"
+												element={<ColumnChart type="full" />}
+											/>
+											<Route
+												path="lineChart"
+												element={<LineChart type="full" />}
+											/>
+											<Route
+												path="bubbleChart"
+												element={<div>bubble chart</div>}
+											/>
+											<Route
+												path="notification"
+												element={<div>notification</div>}
+											/>
+										</Route>
+									</Route>
 									<Route
 										path="profile"
 										element={
