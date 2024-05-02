@@ -1,5 +1,7 @@
-const NotFound = () => {
-	return <div>NotFound</div>;
+import NotFound from "../ui/NotFound";
+
+const Error = () => {
+	return <NotFound />;
 };
 
-export default NotFound;
+export default Error;
