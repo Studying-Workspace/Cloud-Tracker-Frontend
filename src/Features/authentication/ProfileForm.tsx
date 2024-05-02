@@ -10,6 +10,7 @@ import useEditProfile from "./useEditProfile";
 import { useUserContext } from "../../context/UserProvider";
 import { useLogout } from "./useLogout";
 import { BeatLoader } from "react-spinners";
+import { useState } from "react";
 
 interface MyFormValues {
 	email: string;
@@ -19,7 +20,8 @@ interface MyFormValues {
 }
 
 const ProfileForm = () => {
-	const { user , isAuth } = useUser();
+	const [imageFile, setImageFile] = useState<string | null>(null);
+	const { user, isAuth } = useUser();
 
 	const initialValues: MyFormValues = {
 		email: user?.email,
@@ -72,7 +74,7 @@ const ProfileForm = () => {
 			}}
 			validationSchema={profileFormValidationSchema}
 		>
-			{({ errors, touched, setFieldValue }) => (
+			{({ errors, touched, setFieldValue, resetForm }) => (
 				<Form className="flex min-h-screen w-fit flex-col gap-8 pb-[300px]">
 					<div className="relative mt-[100px] flex  items-start justify-center ">
 						<div className="relative bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px] ">
@@ -82,8 +84,9 @@ const ProfileForm = () => {
 									name="image"
 									setFile={setFieldValue}
 									img={isAuth ? user.image : ""}
+									imageFile={imageFile}
+									setImageFile={setImageFile}
 								/>
-
 
 								{/* Input fields */}
 								<div className="grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-16 mobile:flex mobile:flex-col mobile:gap-6 tablet:flex tablet:flex-col tablet:gap-8">
@@ -129,7 +132,19 @@ const ProfileForm = () => {
 							)}
 						</Button>
 						<div className="w-fit rounded-full bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[3px] mobile:self-center tablet:self-center">
-							<Button role="button" type="secondary" size="l">
+							<Button
+								role="button"
+								type="secondary"
+								size="l"
+								onClick={() => {
+									resetForm();
+									setFieldValue("image", user?.image);
+									setImageFile(
+										user.image === "" ? null : user.image,
+									);
+									console.log(status) ;
+								}}
+							>
 								Reset
 							</Button>
 						</div>
