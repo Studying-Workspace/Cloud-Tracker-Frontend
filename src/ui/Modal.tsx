@@ -62,7 +62,7 @@ const Open = ({ children, openName }: OpenProps) => {
 
 const Window = ({ children, currentWindowname }: WindowProps) => {
 	const values = useContext(ModalContext);
-	const ref = useClickOutSideElement(() => values?.handleCloseWindow());
+	const ref = useClickOutSideElement(() => values?.handleCloseWindow() , HTMLDivElement);
 
 	if (values?.openWindow !== currentWindowname) {
 		return null;

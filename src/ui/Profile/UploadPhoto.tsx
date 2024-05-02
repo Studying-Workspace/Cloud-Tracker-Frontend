@@ -61,7 +61,7 @@ const UploadPhoto = ({
 					<button
 						type="button"
 						onClick={handleDeletePhoto}
-						className=" opacity-80 hover:opacity-100 absolute bottom-3 right-3 z-50 cursor-pointer rounded-full border-2 border-linearOrange-200 bg-white p-1 text-xl text-stone-500 mobile:bottom-1 mobile:right-1"
+						className=" absolute bottom-3 right-3 z-50 cursor-pointer rounded-full border-2 border-linearOrange-200 bg-white p-1 text-xl text-stone-500 opacity-80 hover:opacity-100 mobile:bottom-1 mobile:right-1"
 					>
 						<MdDeleteOutline />
 					</button>

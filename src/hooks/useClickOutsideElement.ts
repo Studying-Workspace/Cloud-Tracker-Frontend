@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
-export function useClickOutSideElement(handler: () => void) {
-	const ref = useRef<HTMLDivElement>(null);
+export function useClickOutSideElement(handler: () => void , type:any) {
+	const ref = useRef<typeof type>(null);
 
 	useEffect(
 		function () {
