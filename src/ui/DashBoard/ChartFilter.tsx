@@ -24,18 +24,21 @@ const ChartFilter = ({
 				setValue={setRegion}
 				defaultValue="Region"
 				options={[]}
+				title="showing"
 			/>
 			<SelectFilter
 				value={zones}
 				setValue={setZones}
 				defaultValue="Availability zones"
 				options={[]}
+				title="showing"
 			/>
 			<SelectFilter
 				value={pricing}
 				setValue={setPricing}
 				defaultValue="Pricing"
 				options={[]}
+				title="showing"
 			/>
 		</div>
 	);

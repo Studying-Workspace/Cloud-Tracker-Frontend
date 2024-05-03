@@ -3,6 +3,7 @@ import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import useGetElementWidth from "../../hooks/useGetElementWidth";
+import { formatDate } from "../../utils/Data";
 
 interface ChartData {
 	series: { name: string; data: number[] }[];
@@ -11,26 +12,11 @@ interface ChartData {
 
 const LineChart = ({ type }: { type: "full" | "mini" }) => {
 	const { containerRef, width } = useGetElementWidth();
-
+	const {datesArray , seriesData} = formatDate() ;
 	const [miniChartData] = useState<ChartData>({
-		series: [
-			{
-				name: "EC2",
-				data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-			},
-			{
-				name: "S3",
-				data: [10, 80, 10, 20, 35, 88, 25, 45, 100],
-			},
-			{
-				name: "RDS",
-				data: [52, 44, 12, 50, 35, 88, 60, 70, 150],
-			},
-		],
+		series: seriesData,
 		options: {
 			chart: {
-				height: 250,
-				width: 1200,
 				type: "line",
 				zoom: {
 					enabled: true,
@@ -61,84 +47,20 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 				},
 			},
 			xaxis: {
-				categories: [
-					"Jan",
-					"Feb",
-					"Mar",
-					"Apr",
-					"May",
-					"Jun",
-					"Jul",
-					"Aug",
-					"Sep",
-				],
+				categories: datesArray,
 			},
+			yaxis:{
+				title:{
+					text: "Price in $",
+					style:{
+						fontSize: '16px' ,
+						fontWeight : "normal"
+					}
+				}
+			}
 		},
 	});
 
-	const [fullChartData] = useState<ChartData>({
-		series: [
-			{
-				name: "EC2",
-				data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-			},
-			{
-				name: "S3",
-				data: [10, 80, 10, 20, 35, 88, 25, 45, 100],
-			},
-			{
-				name: "RDS",
-				data: [52, 44, 12, 50, 35, 88, 60, 70, 150],
-			},
-		],
-		options: {
-			chart: {
-				height: 350,
-				width: 900,
-				type: "line",
-				zoom: {
-					enabled: true,
-				},
-			},
-			legend: {
-				position: "bottom",
-				fontSize: "14px",
-				fontWeight: "bold",
-				labels: {
-					colors: "gray",
-				},
-			},
-			dataLabels: {
-				enabled: false,
-			},
-			stroke: {
-				curve: "smooth",
-			},
-			//   title: {
-			//     text: "Product Trends by Month",
-			//     align: "center",
-			//   },
-			grid: {
-				row: {
-					colors: ["transparent"],
-					opacity: 0.5,
-				},
-			},
-			xaxis: {
-				categories: [
-					"Jan",
-					"Feb",
-					"Mar",
-					"Apr",
-					"May",
-					"Jun",
-					"Jul",
-					"Aug",
-					"Sep",
-				],
-			},
-		},
-	});
 
 	if (type === "mini") {
 		return (
@@ -150,7 +72,7 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 					options={miniChartData.options}
 					series={miniChartData.series}
 					type={miniChartData.options.chart?.type}
-					height={miniChartData.options.chart?.height}
+					height={250}
 					width={width}
 				/>
 			</div>
@@ -176,10 +98,10 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 			/>
 
 			<ReactApexChart
-				options={fullChartData.options}
-				series={fullChartData.series}
-				type={fullChartData.options.chart?.type}
-				height={fullChartData.options.chart?.height}
+				options={miniChartData.options}
+				series={miniChartData.series}
+				type={miniChartData.options.chart?.type}
+				height={350}
 				width={width}
 			/>
 		</div>

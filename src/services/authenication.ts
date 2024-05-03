@@ -27,6 +27,7 @@ export const register = async (user: user) => {
 
 		return data;
 	} catch (error: any) {
+
 		throw new Error(error.response.data);
 	}
 };
@@ -63,6 +64,7 @@ export const getUser = async (token: string | undefined) => {
 
 		return data;
 	} catch (error: any) {
+
 		throw new Error(error.response.data);
 	}
 };
