@@ -1,5 +1,3 @@
-import { number, string } from "yup";
-
 export const chartData = [
 	{
 		 "date": "2024-03-17",
