@@ -3,22 +3,28 @@ import ColumnChart from "../../Features/DashBoard/ColumnChart";
 import LineChart from "../../Features/DashBoard/LineChart";
 import PieChart from "../../Features/DashBoard/PieChart";
 import useIamRoles from "../../Features/DashBoard/useIamRoles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SelectFilter from "./SelectFilter";
 import Spinner from "../Spinner";
 
 const AllCharts = () => {
 	const navigate = useNavigate();
 	const { IamRoles, isLoading } = useIamRoles();
-	const [iamRolesName] = useState<string[]>(function (): string[] {
-		let handleIamRoles: string[] = [];
-		IamRoles?.map((roleName: string) => handleIamRoles.push(roleName));
-		return handleIamRoles;
-	});
-	const [selectedRole, setSelectedRole] = useState<string>(iamRolesName?.[0]);
+	const [iamRolesName, setIAMRoleName] = useState<string[]>([]);
 
+	const [selectedRole, setSelectedRole] = useState<string>("");
+
+
+	useEffect(()=>{
+		if(isLoading)
+			return;
+		let handleIamRoles: string[] = [];
+		IamRoles?.map((role: any) => handleIamRoles.push(role?.roleName));
+		setIAMRoleName(handleIamRoles);
+		setSelectedRole(handleIamRoles[0]);
+	}, [IamRoles, isLoading]);
+	console.log(iamRolesName) ; 
 	if (isLoading) return <Spinner />;
-	console.log(IamRoles) ; 
 
 	return (
 		<div>
