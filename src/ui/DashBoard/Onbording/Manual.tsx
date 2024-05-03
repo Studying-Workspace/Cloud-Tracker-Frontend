@@ -3,6 +3,7 @@ import semiCircle from "../../../assets/circleLeft.png";
 import holloCircle from "../../../assets/hollowCircle.png";
 import Modal from "../../Modal";
 import Button from "../../Button";
+import { BsArrowLeftCircle } from "react-icons/bs";
 const Manual = () => {
 	return (
 		<div className="relative">
@@ -26,6 +27,7 @@ const Manual = () => {
 
 			<div className="flex flex-col items-center space-y-24 pt-64 text-xl mobile:pt-44 tablet:pt-48">
 				<div className=" w-[850px] space-y-14 pr-[20px] mobile:w-[300px] mobile:text-lg tablet:w-[550px]">
+					<button onClick={() => history.back()} className="z-2 text-4xl text-linearBlue-1"><BsArrowLeftCircle /></button>
 					<p className="text-3xl font-bold mobile:text-xl">
 						Step 1: Sign In to AWS Management Console:
 					</p>
