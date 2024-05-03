@@ -4,6 +4,7 @@ import holloCircle from "../../../assets/hollowCircle.png";
 import Modal from "../../Modal";
 import Button from "../../Button";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import AddARN from "../../../Features/authentication/AddARN";
 const Manual = () => {
 	return (
 		<div className="relative">
@@ -112,7 +113,8 @@ const Manual = () => {
 						<Button size="2xl"> Enter Your ARN </Button>
 					</Modal.Open>
 					<Modal.Window currentWindowname="ARN">
-						<div className="flex flex-col items-center space-y-4">
+						<AddARN />
+						{/* <div className="flex flex-col items-center space-y-4">
 							<p className="text-3xl font-semibold mobile:text-xl">
 								Enter Your ARN
 							</p>
@@ -124,7 +126,7 @@ const Manual = () => {
 								 focus:ring-linearOrange-200 mobile:w-[200px] mobile:text-sm"
 							/>
 							<Button size="2xl"> Submit </Button>
-						</div>
+						</div> */}
 					</Modal.Window>
 				</Modal>
 			</div>
