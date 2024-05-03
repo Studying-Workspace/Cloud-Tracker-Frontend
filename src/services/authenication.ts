@@ -27,6 +27,7 @@ export const register = async (user: user) => {
 
 		return data;
 	} catch (error: any) {
+
 		throw new Error(error.response.data);
 	}
 };
@@ -63,6 +64,7 @@ export const getUser = async (token: string | undefined) => {
 
 		return data;
 	} catch (error: any) {
+
 		throw new Error(error.response.data);
 	}
 };
@@ -112,7 +114,6 @@ export const editPassword = async (
 	}
 };
 
-
 export const addARN = async (ARN: string, token: string | undefined) => {
 	if (token === undefined) return null;
 
@@ -129,6 +130,7 @@ export const addARN = async (ARN: string, token: string | undefined) => {
 				},
 			},
 		);
+
 
 		const data = await response.data;
 		return data;

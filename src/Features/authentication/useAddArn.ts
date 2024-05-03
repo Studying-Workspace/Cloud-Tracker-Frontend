@@ -13,6 +13,7 @@ const useAddARN = () => {
 		onSuccess: () => {
 			handleToastMessage("ARN is successfully!", "success");
 			navigate("/dashboard/charts");
+
 		},
 		onError: (error) => {
 			handleToastMessage(error.message, "warning");

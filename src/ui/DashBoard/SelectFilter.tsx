@@ -5,13 +5,15 @@ interface Prop {
 	value: string;
 	defaultValue: string;
 	setValue: Function;
-	options: string[];
+	options: any[];
+	title ?: string ;
 }
 
-const SelectFilter = ({ value, defaultValue, setValue, options }: Prop) => {
+const SelectFilter = ({ value, defaultValue, setValue, options , title}: Prop) => {
+	console.log(options);
 	return (
-		<div className="flex h-[35px] w-[200px] items-center justify-center  bg-white mobile:justify-start">
-			<div className="text-sm text-stone-400">showing</div>
+		<div className="flex h-[35px] w-[250px] items-center justify-center bg-white mobile:justify-start">
+			<div className="text-sm text-stone-400">{title}</div>
 			<Select
 				labelId="label"
 				id="select"
@@ -52,7 +54,8 @@ const SelectFilter = ({ value, defaultValue, setValue, options }: Prop) => {
 					</span>
 				)}
 			>
-				{options?.map((item) => <MenuItem value={item}>{item}</MenuItem>)}
+				
+				{options?.map((item, index) => <MenuItem key={index} value={item}>{item}</MenuItem>)}
 			</Select>
 		</div>
 	);
