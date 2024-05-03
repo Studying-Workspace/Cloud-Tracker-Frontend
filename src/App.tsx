@@ -38,91 +38,71 @@ export default function App() {
 				<UserProvider>
 					<QueryClientProvider client={queryClient}>
 						<ScrollToTop>
-							<Routes>
-								<Route path="/" element={<Applayout />}>
-									<Route index element={<Home />} />
-									<Route path="blog" element={<Blog />} />
-									<Route path="blog/:id" element={<BlogDetails />} />
-									<Route path="dashboard">
-										<Route index element={<Onboarding />} />
+							<ProtectRouter>
+								<Routes>
+									<Route path="/" element={<Applayout />}>
+										<Route index element={<Home />} />
+										<Route path="blog" element={<Blog />} />
 										<Route
-											path="instruction"
-											element={<div>instruction</div>}
+											path="blog/:id"
+											element={<BlogDetails />}
 										/>
-										<Route
-											path="manual"
-											element={<ManualMethod />}
-										/>
-										<Route
-											path="terminal"
-											element={<AWSCLIMethod />}
-										/>
-										<Route
-											path="cloudFormation"
-											element={<CloudFormationMEthod />}
-										/>
-										<Route path="cdk" element={<div>fourth</div>} />
-										<Route
-											path="charts"
-											element={
-												<ProtectRouter route="dashboard">
-													<Dashboard />
-												</ProtectRouter>
-											}
-										>
-											<Route index element={<AllCharts />} />
+										<Route path="dashboard">
+											<Route index element={<Onboarding />} />
 											<Route
-												path="pieChart"
-												element={<PieChart type="full" />}
+												path="instruction"
+												element={<div>instruction</div>}
 											/>
 											<Route
-												path="columnChart"
-												element={<ColumnChart type="full" />}
+												path="manual"
+												element={<ManualMethod />}
 											/>
 											<Route
-												path="lineChart"
-												element={<LineChart type="full" />}
+												path="terminal"
+												element={<AWSCLIMethod />}
 											/>
 											<Route
-												path="bubbleChart"
-												element={<div>bubble chart</div>}
+												path="cloudFormation"
+												element={<CloudFormationMEthod />}
 											/>
 											<Route
-												path="notification"
-												element={<div>notification</div>}
+												path="cdk"
+												element={<div>fourth</div>}
 											/>
+											<Route path="charts" element={<Dashboard />}>
+												<Route index element={<AllCharts />} />
+												<Route
+													path="pieChart"
+													element={<PieChart type="full" />}
+												/>
+												<Route
+													path="columnChart"
+													element={<ColumnChart type="full" />}
+												/>
+												<Route
+													path="lineChart"
+													element={<LineChart type="full" />}
+												/>
+												<Route
+													path="bubbleChart"
+													element={<div>bubble chart</div>}
+												/>
+												<Route
+													path="notification"
+													element={<div>notification</div>}
+												/>
+											</Route>
 										</Route>
+										<Route path="profile" element={<Profile />} />
 									</Route>
-									<Route
-										path="profile"
-										element={
-											<ProtectRouter route="profile">
-												<Profile />
-											</ProtectRouter>
-										}
-									/>
-								</Route>
 
-								<Route
-									path="signIn"
-									element={
-										<ProtectRouter route="signIn">
-											<SignIn />
-										</ProtectRouter>
-									}
-								/>
+									<Route path="signIn" element={<SignIn />} />
 
-								<Route
-									path="signUp"
-									element={
-										<ProtectRouter route="signUp">
-											<SignUp />
-										</ProtectRouter>
-									}
-								/>
+									<Route path="signUp" element={<SignUp />} />
 
-								<Route path="*" element={<NotFound />} />
-							</Routes>
+									<Route path="*" element={<NotFound />} />
+								</Routes>
+							</ProtectRouter>
 						</ScrollToTop>
 					</QueryClientProvider>
 				</UserProvider>

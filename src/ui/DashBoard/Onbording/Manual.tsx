@@ -26,7 +26,7 @@ const Manual = () => {
 				className="absolute right-0 top-[900px]  w-1/6"
 			/>
 
-			<div className="flex flex-col items-center space-y-24 pt-64 text-xl mobile:pt-44 tablet:pt-48">
+			<div className="flex flex-col items-center space-y-24 pt-[150px] text-xl mobile:pt-44 tablet:pt-48">
 				<div className=" w-[850px] space-y-14 pr-[20px] mobile:w-[300px] mobile:text-lg tablet:w-[550px]">
 					<button
 						data-testid="arrowLeftTest"

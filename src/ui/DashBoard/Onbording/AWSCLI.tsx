@@ -24,7 +24,7 @@ const AWSCLI = () => {
 				draggable="false"
 				className="absolute right-0 top-[900px]  w-1/6"
 			/>
-			<div className="z-10 flex flex-col items-center space-y-20 pt-64 mobile:pt-44">
+			<div className="z-10 flex flex-col items-center space-y-20 pt-[150px] mobile:pt-44">
 				<div className=" w-[850px] space-y-24 pr-[20px] mobile:w-[300px] mobile:text-lg tablet:w-[550px] text-xl">
 					<button data-testid="arrowLeftTest" onClick={() => history.back()} className="z-2 text-4xl text-linearBlue-1"><BsArrowLeftCircle /></button>
 					<p className="text-3xl mobile:text-xl">
