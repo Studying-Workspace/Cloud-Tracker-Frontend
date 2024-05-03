@@ -53,4 +53,12 @@ describe("cloud formation", () => {
 		expect(enterArn).toBeInTheDocument();
 		fireEvent.click(enterArn);
 	});
+
+	it("should have return to all methods page", () => {
+		const navigateBack = screen.getByTestId("arrowLeftTest");
+		expect(navigateBack).toBeInTheDocument();
+		fireEvent.click(navigateBack);
+		expect(window.location.hash).toBe("");
+	});
+
 });

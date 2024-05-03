@@ -55,11 +55,17 @@ describe("Manual", () => {
 		expect(step6).toBeInTheDocument();
 	});
 
-	it("shoud have Enter your ARN button", () => {
+	it("should have Enter your ARN button", () => {
 		const enterArn = screen.getByText(/Enter your ARN/i);
 		expect(enterArn).toBeInTheDocument();
 		fireEvent.click(enterArn);
 	});
 
+	it("should have return to all methods page", () => {
+		const navigateBack = screen.getByTestId("arrowLeftTest");
+		expect(navigateBack).toBeInTheDocument();
+		fireEvent.click(navigateBack);
+		expect(window.location.hash).toBe("");
+	});
 
 });

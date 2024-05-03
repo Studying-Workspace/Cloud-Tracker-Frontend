@@ -27,7 +27,7 @@ const CloudFormation = () => {
 
 			<div className="z-10 flex flex-col items-center space-y-20 pt-64 mobile:pt-44">
 				<div className=" w-[850px] space-y-24 pr-[20px] text-xl mobile:w-[300px] mobile:text-lg tablet:w-[550px]">
-					<button onClick={() => history.back()} className="z-2 text-4xl text-linearBlue-1"><BsArrowLeftCircle /></button>
+					<button data-testid="arrowLeftTest" onClick={() => history.back()} className="z-2 text-4xl text-linearBlue-1"><BsArrowLeftCircle /></button>
 					<p className="text-3xl font-bold mobile:text-xl">
 						Step 1: Create a CloudFormation Template
 					</p>
