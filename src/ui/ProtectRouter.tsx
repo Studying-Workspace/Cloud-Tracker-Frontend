@@ -1,23 +1,30 @@
 import { ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Features/authentication/useUser";
+// import useGetRouterPath from "../hooks/useGetRouterPath";
 
 const ProtectRouter = ({
 	children,
-	route,
 }: {
 	children: ReactNode;
-	route: string;
 }) => {
 	const navigate = useNavigate();
 	const { isLoading, isAuth } = useUser();
+	const currentPage = window.location.href ;
+	console.log(currentPage) ;
 
 	useEffect(() => {
-		if (route === "signIn" || route === "signUp") {
+		if (
+			currentPage.includes("/signIn") ||
+			currentPage.includes("/signUp")
+		) {
 			if (!isLoading && isAuth) navigate("/profile");
 		}
 
-		if (route === "profile") {
+		if (
+			currentPage.includes("/profile") ||
+			currentPage.includes("/dashboard")
+		) {
 			if (!isLoading && !isAuth) navigate("/signIn");
 		}
 	}, [navigate, isAuth, isLoading]);
