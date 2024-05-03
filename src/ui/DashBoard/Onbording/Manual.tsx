@@ -4,7 +4,7 @@ import holloCircle from "../../../assets/hollowCircle.png";
 import Modal from "../../Modal";
 import Button from "../../Button";
 import { BsArrowLeftCircle } from "react-icons/bs";
-import AddARN from "../../../Features/authentication/AddARN";
+import AddARN from "../../../Features/DashBoard/AddARN";
 const Manual = () => {
 	return (
 		<div className="relative">

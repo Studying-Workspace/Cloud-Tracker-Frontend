@@ -22,7 +22,6 @@ const AddARN = () => {
 	const { tokens } = useUserContext();
 	const { isLoading, addARN } = useAddARN();
 
-
 	const handleSubmit = (values: MyFormValues) => {
 		addARN({ ARN: values.ARN, token: tokens?.token });
 	};

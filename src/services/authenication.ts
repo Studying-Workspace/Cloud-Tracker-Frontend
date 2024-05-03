@@ -114,28 +114,5 @@ export const editPassword = async (
 	}
 };
 
-export const addARN = async (ARN: string, token: string | undefined) => {
-	if (token === undefined) return null;
 
-	try {
-		console.log(token);
-		const response = await axios.post(
-			`${serverBaseUrl}/role?arn=${ARN}`,
-			null,
-			{
-				headers: {
-					"Access-Control-Allow-Origin": "*",
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-			},
-		);
-
-
-		const data = await response.data;
-		return data;
-	} catch (error: any) {
-		throw new Error(error.message);
-	}
-};
 

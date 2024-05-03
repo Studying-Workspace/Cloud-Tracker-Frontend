@@ -10,7 +10,6 @@ interface Prop {
 }
 
 const SelectFilter = ({ value, defaultValue, setValue, options , title}: Prop) => {
-	console.log(options);
 	return (
 		<div className="flex h-[35px] w-[250px] items-center justify-center bg-white mobile:justify-start">
 			<div className="text-sm text-stone-400">{title}</div>
@@ -54,7 +53,7 @@ const SelectFilter = ({ value, defaultValue, setValue, options , title}: Prop) =
 					</span>
 				)}
 			>
-				
+
 				{options?.map((item, index) => <MenuItem key={index} value={item}>{item}</MenuItem>)}
 			</Select>
 		</div>

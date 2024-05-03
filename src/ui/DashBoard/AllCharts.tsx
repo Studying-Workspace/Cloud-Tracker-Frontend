@@ -6,24 +6,21 @@ import useIamRoles from "../../Features/DashBoard/useIamRoles";
 import { useEffect, useState } from "react";
 import SelectFilter from "./SelectFilter";
 import Spinner from "../Spinner";
+import { useUserContext } from "../../context/UserProvider";
+
 
 const AllCharts = () => {
 	const navigate = useNavigate();
 	const { IamRoles, isLoading } = useIamRoles();
 	const [iamRolesName, setIAMRoleName] = useState<string[]>([]);
-
-	const [selectedRole, setSelectedRole] = useState<string>("");
-
-
-	useEffect(()=>{
-		if(isLoading)
-			return;
+	const {selectedRole , setSelectedRole} = useUserContext() ;
+	useEffect(() => {
+		if (isLoading) return;
 		let handleIamRoles: string[] = [];
-		IamRoles?.map((role: any) => handleIamRoles.push(role?.roleName));
+		IamRoles?.map((role: any) => handleIamRoles.push(role?.arn));
 		setIAMRoleName(handleIamRoles);
 		setSelectedRole(handleIamRoles[0]);
 	}, [IamRoles, isLoading]);
-	console.log(iamRolesName) ; 
 	if (isLoading) return <Spinner />;
 
 	return (
