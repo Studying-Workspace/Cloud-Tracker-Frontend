@@ -28,7 +28,13 @@ const Manual = () => {
 
 			<div className="flex flex-col items-center space-y-24 pt-64 text-xl mobile:pt-44 tablet:pt-48">
 				<div className=" w-[850px] space-y-14 pr-[20px] mobile:w-[300px] mobile:text-lg tablet:w-[550px]">
-					<button data-testid="arrowLeftTest" onClick={() => history.back()} className="z-2 text-4xl text-linearBlue-1"><BsArrowLeftCircle /></button>
+					<button
+						data-testid="arrowLeftTest"
+						onClick={() => history.back()}
+						className="z-2 text-4xl text-linearBlue-1"
+					>
+						<BsArrowLeftCircle />
+					</button>
 					<p className="text-3xl font-bold mobile:text-xl">
 						Step 1: Sign In to AWS Management Console:
 					</p>
@@ -114,19 +120,6 @@ const Manual = () => {
 					</Modal.Open>
 					<Modal.Window currentWindowname="ARN">
 						<AddARN />
-						{/* <div className="flex flex-col items-center space-y-4">
-							<p className="text-3xl font-semibold mobile:text-xl">
-								Enter Your ARN
-							</p>
-							<input
-								type="text"
-								placeholder="arn:aws:iam::123456789012:role/MyRole"
-								className="h-[60px] w-[450px] rounded-full border border-gray-300 p-4 shadow-md transition-all
-								 duration-300 hover:shadow-lg focus:border-transparent focus:outline-none focus:ring-2
-								 focus:ring-linearOrange-200 mobile:w-[200px] mobile:text-sm"
-							/>
-							<Button size="2xl"> Submit </Button>
-						</div> */}
 					</Modal.Window>
 				</Modal>
 			</div>
