@@ -27,7 +27,8 @@ export const register = async (user: user) => {
 
 		return data;
 	} catch (error: any) {
-		throw new Error(error);
+
+		throw new Error(error.response.data);
 	}
 };
 
@@ -44,8 +45,7 @@ export const login = async (user: user) => {
 
 		return data;
 	} catch (error: any) {
-		console.log(error);
-		throw new Error(error.message);
+		throw new Error(error.response.data);
 	}
 };
 
@@ -64,7 +64,8 @@ export const getUser = async (token: string | undefined) => {
 
 		return data;
 	} catch (error: any) {
-		throw new Error(error.message);
+
+		throw new Error(error.response.data);
 	}
 };
 
@@ -85,7 +86,7 @@ export const editProfile = async (user: user, token: string | undefined) => {
 		const data = await response.data;
 		return data;
 	} catch (error: any) {
-		throw new Error(error.message);
+		throw new Error(error.response.data);
 	}
 };
 
@@ -109,6 +110,6 @@ export const editPassword = async (
 		const data = await response.data;
 		return data;
 	} catch (error: any) {
-		throw new Error(error.message);
+		throw new Error(error.response.data);
 	}
 };
