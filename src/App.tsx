@@ -6,6 +6,10 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 import { Profile } from "./pages/Profile";
+import Onboarding from "./pages/Dashboard/Onbording";
+import ManualMethod from "./pages/Dashboard/ManualMethod";
+import AWSCLIMethod from "./pages/Dashboard/AWSCLIMethod";
+import CloudFormationMEthod from "./pages/Dashboard/CloudFormationMEthod";
 import Applayout from "./ui/Applayout";
 import ScrollToTop from "./ui/ScrollToTop";
 import { HashRouter, Route, Routes } from "react-router-dom";
@@ -40,7 +44,24 @@ export default function App() {
 									<Route path="blog" element={<Blog />} />
 									<Route path="blog/:id" element={<BlogDetails />} />
 									<Route path="dashboard">
-										<Route index element={<div>Dashboard</div>} />
+										<Route index element={<Onboarding />} />
+										<Route
+											path="instruction"
+											element={<div>instruction</div>}
+										/>
+										<Route
+											path="manual"
+											element={<ManualMethod />}
+										/>
+										<Route
+											path="terminal"
+											element={<AWSCLIMethod />}
+										/>
+										<Route
+											path="cloudFormation"
+											element={<CloudFormationMEthod />}
+										/>
+										<Route path="cdk" element={<div>fourth</div>} />
 										<Route
 											path="charts"
 											element={
