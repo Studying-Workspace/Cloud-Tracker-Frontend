@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
+import { formatPieChart } from "../../utils/Data";
 
 interface ChartData {
 	series: number[];
@@ -10,12 +11,12 @@ interface ChartData {
 
 const PieChart = ({ type }: { type: "full" | "mini" }) => {
 
+	const {servicesArray , pieChartData} = formatPieChart() ;
+
 	const [miniChartData] = useState<ChartData>({
-		series: [35, 35, 30],
+		series: pieChartData,
 		options: {
 			chart: {
-				height: 300,
-				width: 600,
 				type: "pie",
 			},
 			legend: {
@@ -27,30 +28,10 @@ const PieChart = ({ type }: { type: "full" | "mini" }) => {
 					colors: "gray",
 				},
 			},
-			labels: ["ec2", "s3", "RDS"],
+			labels: servicesArray,
 		},
 	});
 
-	const [fullChartData] = useState<ChartData>({
-		series: [35, 35, 30],
-		options: {
-			chart: {
-				height: 400,
-				width: 600,
-				type: "pie",
-			},
-			legend: {
-				position: "bottom",
-				width: 600,
-				fontSize: "14px",
-				fontWeight: "bold",
-				labels: {
-					colors: "gray",
-				},
-			},
-			labels: ["ec2", "s3", "RDS"],
-		},
-	});
 
 	if (type === "mini") {
 		return (
@@ -61,7 +42,7 @@ const PieChart = ({ type }: { type: "full" | "mini" }) => {
 					options={miniChartData.options}
 					series={miniChartData.series}
 					type="pie"
-					height={miniChartData.options.chart?.height}
+					height={300}
 					width={600}
 				/>
 			</div>
@@ -83,10 +64,10 @@ const PieChart = ({ type }: { type: "full" | "mini" }) => {
 				setPricing={setPricing}
 			/>
 			<ReactApexChart
-				options={fullChartData.options}
-				series={fullChartData.series}
+				options={miniChartData.options}
+				series={miniChartData.series}
 				type="pie"
-				height={fullChartData.options.chart?.height}
+				height={400}
 				width={600}
 			/>
 		</div>
