@@ -49,41 +49,201 @@ const CloudFormation = () => {
 							<div className="shadow-3xl mb-4 border-b-4 p-2 border-gradient-tr-mixcolor">
 								yaml
 							</div>
-							<div className="m-2 font-semibold">
-								{/* <pre>{`AWSTemplateFormatVersion: '2010-09-09'`}</pre> */}
-								{/* <pre>{`Description: Create IAM Role with Billing Access`}</pre> */}
-								<pre>{``}</pre>
-								<pre>{`Resources:`}</pre>
-								<pre>{``}</pre>
-								<pre>{`  BillingAccessPolicy:`}</pre>
-								<pre>{`    Type: AWS::IAM::ManagedPolicy`}</pre>
-								<pre>{`    Properties:`}</pre>
-								{/* <pre>{`      Description: "Policy that grants access to AWS Billing"`}</pre> */}
-								<pre>{`      PolicyDocument:`}</pre>
-								<pre>{`        Version: "2012-10-17"`}</pre>
-								<pre>{`        Statement:`}</pre>
-								<pre>{`          - Effect: "Allow"`}</pre>
-								<pre>{`            Action:`}</pre>
-								{/* <pre>{`              - "aws-portal:ViewBilling"`}</pre>
-								<pre>{`              - "aws-portal:ViewUsage"`}</pre>
-								<pre>{`              - "aws-portal:ViewAccount"`}</pre> */}
-								<pre>{`            Resource: "*"`}</pre>
-								<pre>{``}</pre>
-								<pre>{`  BillingAccessRole:`}</pre>
-								<pre>{`    Type: AWS::IAM::Role`}</pre>
-								<pre>{`    Properties:`}</pre>
-								<pre>{`      AssumeRolePolicyDocument:`}</pre>
-								<pre>{`        Version: "2012-10-17"`}</pre>
-								<pre>{`        Statement:`}</pre>
-								<pre>{`          - Effect: "Allow"`}</pre>
-								<pre>{`            Principal:`}</pre>
-								{/* <pre>{`              AWS: !Sub "arn:aws:iam::010
-175364045:root"`}</pre> */}
-								<pre>{`            Action:`}</pre>
-								<pre>{`              - "sts:AssumeRole"`}</pre>
-								<pre>{`      ManagedPolicyArns:`}</pre>
-								<pre>{`        - !Ref BillingAccessPolicy`}</pre>
-								<pre>{`      RoleName: "BillingAccessRole"`}</pre>
+							<div className="m-2 flex flex-col font-semibold">
+								<div className="flex flex-row">
+									<span className=" text-red-700">
+										AWSTemplateFormatVersion
+									</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										'2010-09-09'
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<span className=" text-red-700">Description</span>
+									<pre>: </pre>
+									<span className=" word text-green-600">
+										Create IAM Role with Billing Access
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<span className=" text-red-700">Resources</span>:
+								</div>
+								<div className="flex flex-row">
+									<pre> </pre>
+									<span className=" text-red-700">
+										BillingAccessPolicy
+									</span>
+									:
+								</div>
+								<div className="flex flex-row">
+									<pre> </pre>
+									<span className=" text-red-700">Type</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										AWS::IAM::ManagedPolicy
+									</span>
+									:
+								</div>
+								<div className="flex flex-row">
+									<pre>{"  "}</pre>
+									<span className=" text-red-700">Properties</span>:
+								</div>
+								<div className="flex flex-row">
+									<pre>{"   "}</pre>
+									<span className=" text-red-700">Description</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										"Policy that grants access to AWS Billing"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"   "}</pre>
+									<span className=" text-red-700">
+										PolicyDocument
+									</span>
+									:
+								</div>
+								<div className="flex flex-row">
+									<pre>{"    "}</pre>
+									<span className=" text-red-700">Version</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										"2012-10-17"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"    "}</pre>
+									<span className=" text-red-700">Statement</span>
+									:
+								</div>
+								<div className="flex flex-row">
+									<pre>{"     "}</pre>
+									<span className=" text-red-700">- Effect</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										"Allow"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"      "}</pre>
+									<span className=" text-red-700">Action</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"       "}</pre>
+									<span className=" text-green-600">
+										- "aws-portal:ViewBilling"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"       "}</pre>
+									<span className=" text-green-600">
+										- "aws-portal:ViewUsage"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"       "}</pre>
+									<span className=" text-green-600">
+										- "aws-portal:ViewAccount"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"     "}</pre>
+									<span className=" text-red-700">Resource</span>
+									<pre>: </pre>
+									<span className=" text-green-600">"*"</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{" "}</pre>
+									<span className=" text-red-700">
+										BillingAccessRole
+									</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"   "}</pre>
+									<span className=" text-red-700">Type</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										AWS::IAM::Role
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"   "}</pre>
+									<span className=" text-red-700">Properties</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"    "}</pre>
+									<span className=" text-red-700">AssumeRolePolicyDocument</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"     "}</pre>
+									<span className=" text-red-700">Version</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										"2012-10-17"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"     "}</pre>
+									<span className=" text-red-700">Statement</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"      "}</pre>
+									<span className=" text-red-700">- Effect</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										"Allow"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"       "}</pre>
+									<span className=" text-red-700">Principal</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"        "}</pre>
+									<span className=" text-green-600">
+										AWS : !Sub
+										"arn:aws:iam::010175364045:root"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"       "}</pre>
+									<span className=" text-red-700">Action</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"        "}</pre>
+									<span className=" text-green-600">
+										- "sts:AssumeRole"
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"     "}</pre>
+									<span className=" text-red-700">
+										ManagedPolicyArns
+									</span>
+									<pre>:</pre>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"      "}</pre>
+									<span className=" text-green-600">
+										- !Ref BillingAccessPolicy
+									</span>
+								</div>
+								<div className="flex flex-row">
+									<pre>{"     "}</pre>
+									<span className=" text-red-700">RoleName</span>
+									<pre>: </pre>
+									<span className=" text-green-600">
+										"BillingAccessRole"
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -181,3 +341,4 @@ const CloudFormation = () => {
 };
 
 export default CloudFormation;
+
