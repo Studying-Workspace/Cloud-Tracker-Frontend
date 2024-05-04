@@ -25,7 +25,6 @@ export const addARN = async (ARN: string, token: string | undefined) => {
 	if (token === undefined) return null;
 
 	try {
-		console.log(token);
 		const response = await axios.post(
 			`${serverBaseUrl}/role?arn=${ARN}`,
 			null,
@@ -46,7 +45,6 @@ export const addARN = async (ARN: string, token: string | undefined) => {
 };
 
 export const getBillingData = async (arn: string | undefined, token: string | undefined) => {
-	console.log("call") ;
 	if (arn === undefined || token === undefined || arn==="") return;
 	try {
 		const response = await axios.get(
@@ -63,7 +61,6 @@ export const getBillingData = async (arn: string | undefined, token: string | un
 		const data = await response.data;
 		return data;
 	} catch (error: any) {
-		console.log("error") ;
 		throw new Error(error.response.data);
 	}
 };

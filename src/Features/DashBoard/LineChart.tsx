@@ -3,7 +3,8 @@ import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import useGetElementWidth from "../../hooks/useGetElementWidth";
-import { formatDate } from "../../utils/Data";
+import useGetBillingData from "./useGetBillingData";
+import { formatDashboardData } from "../../utils/billingDataHandling";
 
 interface ChartData {
 	series: { name: string; data: number[] }[];
@@ -11,8 +12,9 @@ interface ChartData {
 }
 
 const LineChart = ({ type }: { type: "full" | "mini" }) => {
-	const { containerRef, width } = useGetElementWidth();
-	const {datesArray , seriesData} = formatDate() ;
+	const {BillingData} = useGetBillingData();
+	const {containerRef, width } = useGetElementWidth();
+	const {datesArray , seriesData} = formatDashboardData(BillingData) ;
 	const [miniChartData] = useState<ChartData>({
 		series: seriesData,
 		options: {

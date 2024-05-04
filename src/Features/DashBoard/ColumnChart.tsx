@@ -3,6 +3,8 @@ import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import useGetElementWidth from "../../hooks/useGetElementWidth";
+import useGetBillingData from "./useGetBillingData";
+import { formatDashboardData } from "../../utils/billingDataHandling";
 
 interface ChartData {
 	series: { name: string; data: number[] }[];
@@ -10,23 +12,12 @@ interface ChartData {
 }
 
 const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
+	const {BillingData} = useGetBillingData();
+	const {datesArray , seriesData} = formatDashboardData(BillingData) ;
 	const { containerRef, width } = useGetElementWidth();
 
 	const [miniChartData] = useState<ChartData>({
-		series: [
-			{
-				name: "EC2",
-				data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 41, 90],
-			},
-			{
-				name: "S3",
-				data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 60, 40],
-			},
-			{
-				name: "RDS",
-				data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 69, 20],
-			},
-		],
+		series: seriesData,
 		options: {
 			chart: {
 				type: "bar",
@@ -54,19 +45,7 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 				colors: ["transparent"],
 			},
 			xaxis: {
-				categories: [
-					"Feb",
-					"Mar",
-					"Apr",
-					"May",
-					"Jun",
-					"Jul",
-					"Aug",
-					"Sep",
-					"Oct",
-					"Nev",
-					"Dec",
-				],
+				categories: datesArray,
 			},
 			fill: {
 				opacity: 1,
@@ -74,7 +53,7 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 			tooltip: {
 				y: {
 					formatter: function (val: number) {
-						return "$ " + val + " thousands";
+						return "$ " + val;
 					},
 				},
 			},

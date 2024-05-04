@@ -2,7 +2,8 @@ import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
-import { formatPieChart } from "../../utils/Data";
+import { formatPieChart } from "../../utils/billingDataHandling";
+import useGetBillingData from "./useGetBillingData";
 
 interface ChartData {
 	series: number[];
@@ -10,8 +11,8 @@ interface ChartData {
 }
 
 const PieChart = ({ type }: { type: "full" | "mini" }) => {
-
-	const {servicesArray , pieChartData} = formatPieChart() ;
+	const {BillingData} = useGetBillingData();
+	const {servicesArray , pieChartData} = formatPieChart(BillingData) ;
 
 	const [miniChartData] = useState<ChartData>({
 		series: pieChartData,

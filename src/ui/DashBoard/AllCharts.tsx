@@ -7,21 +7,23 @@ import { useEffect, useState } from "react";
 import SelectFilter from "./SelectFilter";
 import Spinner from "../Spinner";
 import { useUserContext } from "../../context/UserProvider";
+import useGetBillingData from "../../Features/DashBoard/useGetBillingData";
 
 
 const AllCharts = () => {
+	const {isLoading:billingDataLoading} = useGetBillingData();
 	const navigate = useNavigate();
-	const { IamRoles, isLoading } = useIamRoles();
+	const { IamRoles, isLoading:IamRolesLoading } = useIamRoles();
 	const [iamRolesName, setIAMRoleName] = useState<string[]>([]);
 	const {selectedRole , setSelectedRole} = useUserContext() ;
 	useEffect(() => {
-		if (isLoading) return;
+		if (IamRolesLoading) return;
 		let handleIamRoles: string[] = [];
 		IamRoles?.map((role: any) => handleIamRoles.push(role?.arn));
 		setIAMRoleName(handleIamRoles);
 		setSelectedRole(handleIamRoles[0]);
-	}, [IamRoles, isLoading]);
-	if (isLoading) return <Spinner />;
+	}, [IamRoles, IamRolesLoading]);
+	if (IamRolesLoading || billingDataLoading) return <Spinner />;
 
 	return (
 		<div>
