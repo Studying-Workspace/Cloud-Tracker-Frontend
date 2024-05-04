@@ -34,7 +34,7 @@ const BlogElement = ({ id, title, content }: Props) => {
 				<div className="flex items-center gap-1">
 					<IoPersonCircleOutline className="text-4xl text-gray-600 mobile:text-3xl" />
 					<p className="text-sm text-gray-600 mobile:text-xs">
-						Publisher
+						Cloud Tracker
 					</p>
 				</div>
 				{/* date */}
