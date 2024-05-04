@@ -1,5 +1,5 @@
 
-export const formatDashboardData = (chartData:any)=>{
+export const formatDashboardData = (chartData:any[])=>{
 	let service = new Set() ;
 	let dates = new Set()  ;
 
@@ -35,7 +35,7 @@ export const formatDashboardData = (chartData:any)=>{
 }
 
 
-export const formatPieChart = (chartData:any)=>{
+export const formatPieChart = (chartData:any[])=>{
 	let service:Set<string> = new Set() ;
 	let dates = new Set()  ;
 	let totalCost = 0 ;
@@ -69,4 +69,15 @@ export const formatPieChart = (chartData:any)=>{
 
 
 	return {servicesArray , pieChartData} ;
+}
+
+export const defaultDates = (chartData:any[]|undefined)=>{
+	let startDate = new Date() , endDate = new Date() ;
+
+	if(chartData!==undefined && chartData?.length!==0){
+		startDate = chartData?.[0].date ;
+		endDate = chartData?.[chartData.length-1].date ;
+	}
+
+	return {startDate , endDate} ;
 }

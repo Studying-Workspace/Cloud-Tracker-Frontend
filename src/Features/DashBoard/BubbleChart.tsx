@@ -123,7 +123,10 @@ const BubbleChart = ({ type }: { type: "full" | "mini" }) => {
 	}
 
 	return (
-		<div ref={containerRef} className="w-[90%] mobile:w-full tablet:w-full">
+		<div
+			ref={containerRef}
+			className="flex h-full w-[90%] flex-col justify-between mobile:w-full tablet:w-full"
+		>
 			<SelectFilter
 				value={selectedRole}
 				setValue={setSelectedRole}
@@ -134,7 +137,7 @@ const BubbleChart = ({ type }: { type: "full" | "mini" }) => {
 						: selectedRole
 				}
 			/>
-			<div className="transtion-all flex h-full  w-full  flex-col items-center justify-between bg-white py-20 shadow-xl duration-300  mobile:gap-8  tablet:gap-8">
+			<div className="transtion-all flex gap-2 w-full  flex-col items-center justify-between bg-white py-20 shadow-xl duration-300  mobile:gap-8  tablet:gap-8">
 				<ChartFilter
 					region={region}
 					setRegion={setRegion}
@@ -143,7 +146,7 @@ const BubbleChart = ({ type }: { type: "full" | "mini" }) => {
 					pricing={pricing}
 					setPricing={setPricing}
 				/>
-				<FilterDate/>
+				<FilterDate />
 				<ReactApexChart
 					options={ChartData.options}
 					series={ChartData.series}
