@@ -4,6 +4,7 @@ import holloCircle from "../../../assets/hollowCircle.png";
 import Modal from "../../Modal";
 import Button from "../../Button";
 import { BsArrowLeftCircle } from "react-icons/bs";
+import AddARN from "../../../Features/DashBoard/AddARN";
 const CloudFormation = () => {
 	return (
 		<div className="relative">
@@ -27,7 +28,13 @@ const CloudFormation = () => {
 
 			<div className="z-10 flex flex-col items-center space-y-20 pt-[150px] mobile:pt-44">
 				<div className=" w-[850px] space-y-24 pr-[20px] text-xl mobile:w-[300px] mobile:text-lg tablet:w-[550px]">
-					<button data-testid="arrowLeftTest" onClick={() => history.back()} className="z-2 text-4xl text-linearBlue-1"><BsArrowLeftCircle /></button>
+					<button
+						data-testid="arrowLeftTest"
+						onClick={() => history.back()}
+						className="z-2 text-4xl text-linearBlue-1"
+					>
+						<BsArrowLeftCircle />
+					</button>
 					<p className="text-3xl font-bold mobile:text-xl">
 						Step 1: Create a CloudFormation Template
 					</p>
@@ -39,7 +46,7 @@ const CloudFormation = () => {
 							appropriate policies for billing access.
 						</p>
 						<div className="rounded-lg border-4 border-gradient-br-mixcolor mobile:text-xs">
-							<div className="mb-4 border-b-4 p-2 shadow-3xl border-gradient-tr-mixcolor">
+							<div className="shadow-3xl mb-4 border-b-4 p-2 border-gradient-tr-mixcolor">
 								yaml
 							</div>
 							<div className="m-2 font-semibold">
@@ -99,7 +106,7 @@ const CloudFormation = () => {
 							CloudFormation stack based on your template:
 						</p>
 						<div className="rounded-lg border-4 border-gradient-br-mixcolor mobile:text-xs">
-							<div className="mb-4 border-b-4 p-2 shadow-3xl border-gradient-tr-mixcolor">
+							<div className="shadow-3xl mb-4 border-b-4 p-2 border-gradient-tr-mixcolor">
 								bash
 							</div>
 							<div className="m-2 font-semibold">
@@ -130,7 +137,7 @@ const CloudFormation = () => {
 							created successfully, use:
 						</p>
 						<div className="rounded-lg border-4 border-gradient-br-mixcolor mobile:text-xs">
-							<div className="mb-4 border-b-4 p-2 shadow-3xl border-gradient-tr-mixcolor">
+							<div className="shadow-3xl mb-4 border-b-4 p-2 border-gradient-tr-mixcolor">
 								bash
 							</div>
 							<div className="m-2 font-semibold">
@@ -152,19 +159,7 @@ const CloudFormation = () => {
 						<Button size="2xl"> Enter Your ARN </Button>
 					</Modal.Open>
 					<Modal.Window currentWindowname="ARN">
-						<div className="flex flex-col items-center space-y-4">
-							<p className="text-3xl font-semibold mobile:text-xl">
-								Enter Your ARN
-							</p>
-							<input
-								type="text"
-								placeholder="arn:aws:iam::123456789012:role/MyRole"
-								className="h-[60px] w-[450px] rounded-full border border-gray-300 p-4 shadow-md transition-all
-								 duration-300 hover:shadow-lg focus:border-transparent focus:outline-none focus:ring-2
-								 focus:ring-linearOrange-200 mobile:w-[200px] mobile:text-sm"
-							/>
-							<Button size="2xl"> Submit </Button>
-						</div>
+						<AddARN />
 					</Modal.Window>
 				</Modal>
 			</div>
@@ -173,7 +168,7 @@ const CloudFormation = () => {
 					src={semiCircle}
 					draggable="false"
 					className="absolute bottom-[-300px] right-44 w-[18%] -rotate-90 mobile:bottom-[-100px] mobile:right-6
-					 mobile:w-[28%] tablet:right-20 tablet:w-[28%]"
+					 mobile:w-[22%] tablet:right-20 tablet:w-[28%]"
 				/>
 				<img
 					src={Wave}

@@ -128,7 +128,7 @@ const Manual = () => {
 					src={semiCircle}
 					draggable="false"
 					className="absolute bottom-[-300px] right-44 w-[18%] -rotate-90 mobile:bottom-[-100px] mobile:right-6
-					 mobile:w-[28%] tablet:right-20 tablet:w-[28%]"
+					 mobile:w-[22%] tablet:right-20 tablet:w-[28%]"
 				/>
 				<img
 					src={Wave}
