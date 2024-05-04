@@ -35,7 +35,7 @@ const ProfileInputField = ({
   }
 
   return (
-    <div className="w-fit bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 pb-[1px]">
+    <div className="w-fit border-b-2 border-gradient-br-mixcolor">
       <div className="flex h-[35px] w-[250px] justify-between bg-white">
         {type === "password" ? (
           <Field

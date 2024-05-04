@@ -7,6 +7,7 @@ import SelectFilter from "../../ui/DashBoard/SelectFilter";
 import { useUserContext } from "../../context/UserProvider";
 import useIamRoles from "./useIamRoles";
 import Spinner from "../../ui/Spinner";
+import FilterDate from "../../ui/DashBoard/FilterDate";
 
 interface ChartData {
 	series: { name: string; data: number[][] }[];
@@ -122,7 +123,7 @@ const BubbleChart = ({ type }: { type: "full" | "mini" }) => {
 	}
 
 	return (
-		<div>
+		<div ref={containerRef} className="w-[90%] mobile:w-full tablet:w-full">
 			<SelectFilter
 				value={selectedRole}
 				setValue={setSelectedRole}
@@ -133,10 +134,7 @@ const BubbleChart = ({ type }: { type: "full" | "mini" }) => {
 						: selectedRole
 				}
 			/>
-			<div
-				ref={containerRef}
-				className="transtion-all flex  h-full w-[90%] flex-col items-center justify-between bg-white py-20 shadow-xl duration-300 mobile:w-full mobile:gap-8 tablet:w-full tablet:gap-8"
-			>
+			<div className="transtion-all flex h-full  w-full  flex-col items-center justify-between bg-white py-20 shadow-xl duration-300  mobile:gap-8  tablet:gap-8">
 				<ChartFilter
 					region={region}
 					setRegion={setRegion}
@@ -145,6 +143,7 @@ const BubbleChart = ({ type }: { type: "full" | "mini" }) => {
 					pricing={pricing}
 					setPricing={setPricing}
 				/>
+				<FilterDate/>
 				<ReactApexChart
 					options={ChartData.options}
 					series={ChartData.series}
