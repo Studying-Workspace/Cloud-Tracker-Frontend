@@ -9,8 +9,10 @@ interface tokenType {
 interface userContextType {
 	tokens: tokenType | null;
 	setTokens: Function;
-	selectedRole : string ;
-	setSelectedRole : Function ;
+	selectedRole: string;
+	setSelectedRole: Function;
+	iamRolesArn: string[];
+	setIAmRolesArn: Function;
 }
 
 const UserContext = createContext<userContextType | undefined>(undefined);
@@ -18,11 +20,15 @@ const UserContext = createContext<userContextType | undefined>(undefined);
 const UserProvider = ({ children }: { children: ReactNode }) => {
 	const [selectedRole, setSelectedRole] = useState<string>("");
 	const [tokens, setTokens] = useLocalStorageState(null, "tokens");
+	const [iamRolesArn, setIAmRolesArn] = useState<string[]>([]);
+
 	const contextValues: userContextType = {
 		tokens,
 		setTokens,
 		selectedRole,
-		setSelectedRole
+		setSelectedRole,
+		iamRolesArn,
+		setIAmRolesArn,
 	};
 	return (
 		<UserContext.Provider value={contextValues}>

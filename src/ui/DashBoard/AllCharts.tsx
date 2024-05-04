@@ -3,26 +3,27 @@ import ColumnChart from "../../Features/DashBoard/ColumnChart";
 import LineChart from "../../Features/DashBoard/LineChart";
 import PieChart from "../../Features/DashBoard/PieChart";
 import useIamRoles from "../../Features/DashBoard/useIamRoles";
-import { useEffect, useState } from "react";
 import SelectFilter from "./SelectFilter";
 import Spinner from "../Spinner";
 import { useUserContext } from "../../context/UserProvider";
 import useGetBillingData from "../../Features/DashBoard/useGetBillingData";
+import { useEffect } from "react";
 
 
 const AllCharts = () => {
-	const {isLoading:billingDataLoading} = useGetBillingData();
 	const navigate = useNavigate();
-	const { IamRoles, isLoading:IamRolesLoading } = useIamRoles();
-	const [iamRolesName, setIAMRoleName] = useState<string[]>([]);
-	const {selectedRole , setSelectedRole} = useUserContext() ;
+	const {isLoading:billingDataLoading} = useGetBillingData();
+	const {selectedRole , setSelectedRole , iamRolesArn , setIAmRolesArn} = useUserContext() ;
+	const { IamRoles, isLoading: IamRolesLoading } = useIamRoles();
+
 	useEffect(() => {
 		if (IamRolesLoading) return;
 		let handleIamRoles: string[] = [];
 		IamRoles?.map((role: any) => handleIamRoles.push(role?.arn));
-		setIAMRoleName(handleIamRoles);
+		setIAmRolesArn(handleIamRoles);
 		setSelectedRole(handleIamRoles[0]);
 	}, [IamRoles, IamRolesLoading]);
+
 	if (IamRolesLoading || billingDataLoading) return <Spinner />;
 
 	return (
@@ -30,8 +31,8 @@ const AllCharts = () => {
 			<SelectFilter
 				value={selectedRole}
 				setValue={setSelectedRole}
-				options={iamRolesName}
-				defaultValue={iamRolesName?.[0]}
+				options={iamRolesArn}
+				defaultValue={selectedRole === "" || undefined ? "I Am Role Arn"  : selectedRole}
 			/>
 			<div className="grid grid-cols-2 grid-rows-2 gap-x-4 mobile:flex  mobile:flex-col mobile:gap-4 mobile:overflow-y-auto mobile:overflow-x-hidden tablet:flex tablet:flex-col tablet:gap-4 tablet:overflow-y-auto tablet:overflow-x-hidden">
 				<div

@@ -7,6 +7,7 @@ export const useLogout = (to: string, message: string) => {
 	const navigate = useNavigate();
 	const logout = () => {
 		setTokens(null);
+		localStorage.clear();
 		navigate(to);
 		handleToastMessage(message, "success");
 	};

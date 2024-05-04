@@ -22,6 +22,7 @@ import AllCharts from "./ui/DashBoard/AllCharts";
 import PieChart from "./Features/DashBoard/PieChart";
 import ColumnChart from "./Features/DashBoard/ColumnChart";
 import LineChart from "./Features/DashBoard/LineChart";
+import BubbleChart from "./Features/DashBoard/BubbleChart";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -85,7 +86,7 @@ export default function App() {
 												/>
 												<Route
 													path="bubbleChart"
-													element={<div>bubble chart</div>}
+													element={<BubbleChart type="full"/>}
 												/>
 												<Route
 													path="notification"

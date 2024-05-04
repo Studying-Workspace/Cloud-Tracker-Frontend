@@ -6,6 +6,8 @@ import { BurgerSpin } from "react-burger-icons";
 import { useParams } from "react-router-dom";
 import { useUser } from "../Features/authentication/useUser";
 import ProfileTab from "./Profile/ProfileTab";
+import { useUserContext } from "../context/UserProvider";
+// import { useUserContext } from "../context/UserProvider";
 
 const NavBar = () => {
 	const navigate = useNavigate();
@@ -18,6 +20,11 @@ const NavBar = () => {
 	// need this state in mobile design only
 	const [showNav, setShowNav] = useState<boolean>(false);
 	const { isAuth } = useUser();
+
+	const { iamRolesArn } = useUserContext();
+
+	console.log(iamRolesArn) ; 
+
 	useEffect(
 		function () {
 			setStartPostion(currentPage);
@@ -71,7 +78,7 @@ const NavBar = () => {
 					</NavLink>
 
 					<NavLink
-						to="/dashboard"
+						to={`${iamRolesArn.length === 0 ? "/dashboard" : "/dashboard/charts"}`}
 						className="peer/item3 z-10 w-[150px] text-center tablet:w-[100px]"
 					>
 						Dashboard
