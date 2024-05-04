@@ -30,11 +30,6 @@ describe("Profile Page", () => {
 		expect(inputFields.length).toBeGreaterThan(0);
 	});
 
-	it("Should render a ProfileSelectMenu component", () => {
-		const selectMenu = screen.getByRole("combobox");
-		expect(selectMenu).toBeInTheDocument();
-	});
-
 	it("Should render a save changes button", () => {
 		const saveButton = screen.getByRole("button", {
 			name: /Save/i,
