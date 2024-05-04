@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import useGetElementWidth from "../../hooks/useGetElementWidth";
 import useGetBillingData from "./useGetBillingData";
-import { formatDashboardData } from "../../utils/billingDataHandling";
+import { defaultDates, formatDashboardData } from "../../utils/billingDataHandling";
+import FilterDate from "../../ui/DashBoard/FilterDate";
 
 interface ChartData {
 	series: { name: string; data: number[] }[];
@@ -12,11 +13,26 @@ interface ChartData {
 }
 
 const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
-	const {BillingData} = useGetBillingData();
-	const {datesArray , seriesData} = formatDashboardData(BillingData) ;
+	const { BillingData } = useGetBillingData();
+	const { startDate, endDate } = defaultDates(BillingData);
+	const [granularity, setGranularity] = useState<string>("d");
+	const [inputStartDate, setInputStartDate] = useState<string>(
+		startDate == undefined ? new Date().toLocaleDateString() : startDate,
+	);
+	const [inputEndDate, setInputEndDate] = useState<string>(
+		endDate == undefined ? new Date().toLocaleDateString() : endDate,
+	);
+
+	const [region, setRegion] = useState<string>("");
+	const [zones, setZones] = useState<string>("");
+	const [pricing, setPricing] = useState<string>("");
+	
+
+	const [datesArray, setDatesArray] = useState<any[]>([]);
+	const [seriesData, setSeriesData] = useState<{ name: string; data: number[] }[]>([]);
 	const { containerRef, width } = useGetElementWidth();
 
-	const [miniChartData] = useState<ChartData>({
+	const [chartData, setChartData] = useState<ChartData>({
 		series: seriesData,
 		options: {
 			chart: {
@@ -59,6 +75,22 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 			},
 		},
 	});
+	useEffect(() => {
+		const {datesArray , seriesData} = formatDashboardData(BillingData, granularity, inputStartDate, inputEndDate);
+		setSeriesData(seriesData);
+		setDatesArray(datesArray);
+		console.log(seriesData);
+		const newChartData = {
+			series : seriesData,
+			options : {
+				...chartData.options, 
+				xaxis : {
+					categories : datesArray,
+				}
+			}
+		}
+		setChartData(newChartData);
+	},[BillingData, inputStartDate, inputEndDate])
 
 	if (type === "mini") {
 		return (
@@ -67,19 +99,15 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 				className="desktop:w-[500px] transtion-all flex h-[300px] w-[600px] cursor-pointer items-center justify-center bg-white shadow-xl duration-300 hover:bg-stone-50 mobile:w-[350px]"
 			>
 				<ReactApexChart
-					options={miniChartData.options}
-					series={miniChartData.series}
-					type={miniChartData.options.chart?.type}
+					options={chartData.options}
+					series={chartData.series}
+					type={chartData.options.chart?.type}
 					height={250}
 					width={width}
 				/>
 			</div>
 		);
 	}
-
-	const [region, setRegion] = useState<string>("");
-	const [zones, setZones] = useState<string>("");
-	const [pricing, setPricing] = useState<string>("");
 
 	return (
 		<div
@@ -94,10 +122,18 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 				pricing={pricing}
 				setPricing={setPricing}
 			/>
+			<FilterDate
+				granularity={granularity}
+				setInputStartDate={setInputStartDate}
+				setInputEndDate={setInputEndDate}
+				inputStartDate={inputStartDate}
+				inputEndDate={inputEndDate}
+				setGranularity={setGranularity}
+			/>
 			<ReactApexChart
-				options={miniChartData.options}
-				series={miniChartData.series}
-				type={miniChartData.options.chart?.type}
+				options={chartData.options}
+				series={chartData.series}
+				type={chartData.options.chart?.type}
 				height={350}
 				width={width}
 			/>

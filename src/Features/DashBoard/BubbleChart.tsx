@@ -146,7 +146,7 @@ const BubbleChart = ({ type }: { type: "full" | "mini" }) => {
 					pricing={pricing}
 					setPricing={setPricing}
 				/>
-				<FilterDate />
+				{/* <FilterDate /> */}
 				<ReactApexChart
 					options={ChartData.options}
 					series={ChartData.series}

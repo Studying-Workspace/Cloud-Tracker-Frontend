@@ -1,22 +1,19 @@
 import { SlCalender } from "react-icons/sl";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
-import useGetBillingData from "../../Features/DashBoard/useGetBillingData";
-import { defaultDates } from "../../utils/billingDataHandling";
-const FilterDate = () => {
-	const { BillingData } = useGetBillingData();
-	const { startDate, endDate } = defaultDates(BillingData);
 
-	const [inputStartDate, setInputStartDate] = useState<Date | null>(
-		new Date(startDate),
-	);
+interface props{
+	inputStartDate:string;
+	setInputStartDate:Function;
 
-	const [inputEndDate, setInputEndDate] = useState<Date | null>(
-		new Date(endDate),
-	);
+	inputEndDate:string;
+	setInputEndDate:Function;
 
-	const [granularity , setGranularity] = useState<string>("m") ;
+	granularity:string;
+	setGranularity:Function;
+}
+
+const FilterDate = ({inputStartDate, setInputStartDate, inputEndDate, setInputEndDate, granularity, setGranularity }:props) => {
 
 	return (
 		<div className="flex items-center justify-between gap-40">
@@ -30,12 +27,12 @@ const FilterDate = () => {
 				</span>
 				<div className="flex flex-col">
 					<DatePicker
-						selected={inputStartDate}
-						onChange={(date) => setInputStartDate(date)}
+						selected={new Date(inputStartDate)}
+						onChange={(date) => setInputStartDate(date?.toLocaleDateString())}
 					/>
 					<DatePicker
-						selected={inputEndDate}
-						onChange={(date) => setInputEndDate(date)}
+						selected={new Date(inputEndDate)}
+						onChange={(date) => setInputEndDate(date?.toLocaleDateString())}
 					/>
 				</div>
 			</div>

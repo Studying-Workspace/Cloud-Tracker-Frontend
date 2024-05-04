@@ -1,13 +1,58 @@
 
-export const formatDashboardData = (chartData:any[])=>{
+export const formatDashboardData = (chartData:any[], granularity:string, startDate:string, endDate:string)=>{
 	let service = new Set() ;
 	let dates = new Set()  ;
 
 
 	let serviceDateAndCost = new Map<string , number>() ;
+	let yearFirst = true;
+	if(startDate.includes("/")){
+		yearFirst = false;
+	}
+	let formattedStartDate = startDate.replace(/-/g, "/");
+	let formattedEndDate = endDate.replace(/-/g, "/");
 
+	let [startYear, startMonth, startDay] = ["1","2","3"];
+	let [endYear, endMonth, endDay] = ["1","2","3"];
 
-	chartData?.map((el:any)=>{
+	if(yearFirst){
+		[startYear, startMonth, startDay] = formattedStartDate.split("/");
+		[endYear, endMonth, endDay] = formattedEndDate.split("/");	
+	}
+	else{
+	    [startDay, startMonth, startYear] = formattedStartDate.split("/");
+		[endDay, endMonth, endYear] = formattedEndDate.split("/");	
+	}
+
+	
+
+	let chartDataWithinDate = []
+
+	// console.log(endMonth);
+
+	if(granularity === "d"){
+		for (let i = 0; i < chartData?.length; i++) {
+			let element = chartData[i];
+			let currentDate = element.date.split("-");
+			
+			let year = currentDate[0];
+			let month = currentDate[1];
+			let day = currentDate[2];
+			
+			let dateToCheck = new Date(year, month - 1, day);
+			let newstartDate = new Date(startDate);
+			let newEndDate = new Date(endDate);
+			// console.log(newstartDate);
+
+			if (dateToCheck >= newstartDate && dateToCheck <= newEndDate) {
+				chartDataWithinDate.push(chartData[i]);
+			}
+		}
+	}
+	
+	// console.log(chartDataWithinDate.length);
+	// console.log(chartDataWithinDate);
+	chartDataWithinDate?.map((el:any)=>{
 		service.add(el.service)
 		dates.add(el.date)
 		serviceDateAndCost.set(JSON.stringify({name:el.service , date:el.date}) , el.cost)
@@ -17,7 +62,8 @@ export const formatDashboardData = (chartData:any[])=>{
 	let datesArray = Array.from(dates) ;
 	let servicesArray = Array.from(service) ;
 
-
+	// 2024/07/11
+	// if(year == Datayear and month == Datamonth and day >= Dataday)
 	servicesArray?.forEach((service)=>{
 		let data:any = [] ;
 		datesArray.forEach((date)=>{
@@ -72,8 +118,7 @@ export const formatPieChart = (chartData:any[])=>{
 }
 
 export const defaultDates = (chartData:any[]|undefined)=>{
-	let startDate = new Date() , endDate = new Date() ;
-
+	let startDate = new Date()?.toLocaleDateString(), endDate = new Date()?.toLocaleDateString() ;
 	if(chartData!==undefined && chartData?.length!==0){
 		startDate = chartData?.[0].date ;
 		endDate = chartData?.[chartData.length-1].date ;
