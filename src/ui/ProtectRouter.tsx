@@ -1,17 +1,13 @@
 import { ReactNode, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../Features/authentication/useUser";
-// import useGetRouterPath from "../hooks/useGetRouterPath";
+import { useUserContext } from "../context/UserProvider";
 
-const ProtectRouter = ({
-	children,
-}: {
-	children: ReactNode;
-}) => {
+const ProtectRouter = ({ children }: { children: ReactNode }) => {
 	const navigate = useNavigate();
 	const { isLoading, isAuth } = useUser();
-	const currentPage = window.location.href ;
-	console.log(currentPage) ;
+	const { selectedRole } = useUserContext();
+	const currentPage = useLocation().pathname;
 
 	useEffect(() => {
 		if (
@@ -23,11 +19,17 @@ const ProtectRouter = ({
 
 		if (
 			currentPage.includes("/profile") ||
-			currentPage.includes("/dashboard")
+			currentPage === "/dashboard"
 		) {
 			if (!isLoading && !isAuth) navigate("/signIn");
 		}
-	}, [navigate, isAuth, isLoading]);
+
+		if (currentPage.includes("/charts")) {
+			console.log(selectedRole) ;
+			if(!isLoading && !isAuth) navigate("/signIn");
+			else if (selectedRole === "" || selectedRole === undefined) navigate("/dashboard");
+		}
+	}, [navigate, isAuth, isLoading , selectedRole]);
 
 	return children;
 };
