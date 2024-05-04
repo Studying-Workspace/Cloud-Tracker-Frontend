@@ -14,7 +14,7 @@ const useAddARN = () => {
 			token: string | undefined;
 		}) => addARN(ARN, token),
 		onSuccess: () => {
-			handleToastMessage("ARN is successfully!", "success");
+			handleToastMessage("ARN is Added successfully!", "success");
 			navigate("/dashboard/charts");
 		},
 		onError: (error) => {

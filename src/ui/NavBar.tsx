@@ -23,8 +23,6 @@ const NavBar = () => {
 
 	const { iamRolesArn } = useUserContext();
 
-	console.log(iamRolesArn) ; 
-
 	useEffect(
 		function () {
 			setStartPostion(currentPage);

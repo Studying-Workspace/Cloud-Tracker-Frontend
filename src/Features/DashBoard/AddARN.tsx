@@ -7,6 +7,7 @@ import { Form, Formik } from "formik";
 import { useAddARN } from "./useAddArn";
 import { useUserContext } from "../../context/UserProvider";
 import { BeatLoader } from "react-spinners";
+import { addArnFormValidationSchema } from "../../utils/validationSchema";
 
 interface MyFormValues {
 	ARN: string;
@@ -29,6 +30,7 @@ const AddARN = () => {
 	return (
 		<Formik
 			initialValues={initialValues}
+			validationSchema={addArnFormValidationSchema}
 			onSubmit={(values) => {
 				handleSubmit(values);
 			}}
@@ -65,19 +67,6 @@ const AddARN = () => {
 				</Form>
 			)}
 		</Formik>
-		// <div className="flex flex-col items-center space-y-4">
-		// 	<p className="text-3xl font-semibold mobile:text-xl">
-		// 		Enter Your ARN
-		// 	</p>
-		// 	<input
-		// 		type="text"
-		// 		placeholder="arn:aws:iam::123456789012:role/MyRole"
-		// 		className="h-[60px] w-[450px] rounded-full border border-gray-300 p-4 shadow-md transition-all
-		// 						 duration-300 hover:shadow-lg focus:border-transparent focus:outline-none focus:ring-2
-		// 						 focus:ring-linearOrange-200 mobile:w-[200px] mobile:text-sm"
-		// 	/>
-		// 	<Button size="2xl"> Submit </Button>
-		// </div>
 	);
 };
 

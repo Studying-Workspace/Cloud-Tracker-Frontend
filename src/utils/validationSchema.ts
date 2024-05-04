@@ -1,5 +1,7 @@
 import * as Yup from "yup";
 
+const ArnRegexPattern = /arn:aws:iam::(\d+):role\/(\w+)/;
+
 export const loginFormValidationSchema = Yup.object({
 	email: Yup.string()
 		.email("Invalid Email Format")
@@ -45,10 +47,13 @@ export const EditPasswordFormValidationSchema = Yup.object().shape({
 		.min(8, "Your Password Must Be At Least 8 Characters")
 		.required("Please Enter Your New Password"),
 
-
 	confirmNewPassword: Yup.string()
 
 		.min(8, "Your Password Must Be At Least 8 Characters")
 		.required("Please Confirm Your New Password")
 		.oneOf([Yup.ref("newPassword")], "Passwords Must Match"),
+});
+
+export const addArnFormValidationSchema = Yup.object().shape({
+	ARN: Yup.string().matches(ArnRegexPattern , "Invalid ARN Pattern").required("Please Enter ARN"),
 });
