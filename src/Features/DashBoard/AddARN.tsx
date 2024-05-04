@@ -1,6 +1,7 @@
 import InputField from "../../ui/Form/InputField";
 import Button from "../../ui/Button";
 import HandleMessageForm from "../../ui/Form/HandleMessageForm";
+import { RiErrorWarningFill } from "react-icons/ri";
 import { MdLockOutline } from "react-icons/md";
 import { useState } from "react";
 import { Form, Formik } from "formik";
@@ -57,13 +58,16 @@ const AddARN = () => {
 							touched={touched.ARN}
 						/>
 					</div>
-					<Button role="submit" size="2xl" disabled={isLoading}>
-						{isLoading ? (
-							<BeatLoader color="#fff" size={8} />
-						) : (
-							"Submit"
-						)}
-					</Button>
+					<div className="flex w-full items-center justify-between space-x-2">
+						<Button role="submit" size="3xl" disabled={isLoading}>
+							{isLoading ? (
+								<BeatLoader color="#fff" size={8} />
+							) : (
+								"Submit"
+							)}
+						</Button>
+						<RiErrorWarningFill className="text-4xl mobile:text-xl text-white" />
+					</div>
 				</Form>
 			)}
 		</Formik>
