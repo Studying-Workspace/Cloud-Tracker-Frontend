@@ -1,10 +1,10 @@
 import { getBlog } from "./useBlogs";
-import { useParams } from "react-router-dom";
-import NotFound from "../../pages/NotFound";
+import { useNavigate, useParams } from "react-router-dom";
 import BlogContent from "../../ui/Blog/BlogDetails/BlogContent";
-import blogImg from "../../assets/blogImg.png";
+import Spinner from "../../ui/Spinner";
 
 const BlogInfo = () => {
+	const navigate = useNavigate();
 	const { id } = useParams<{ id: string }>();
 	const blogId = parseInt(id || "0");
 
@@ -16,16 +16,10 @@ const BlogInfo = () => {
 	if (isLoading)
 		return (
 			<div className="h-{500px} flex items-center justify-center">
-				<div className="mt-24 h-96 w-96 animate-spin rounded-full border-b-8 border-t-8 border-orange-200" />
-				<img
-					src={blogImg}
-					alt="loading"
-					className="h-46 absolute mt-24 w-56"
-				/>
+				<Spinner />
 			</div>
 		);
-	if (!data) return <NotFound />;
-	// if(data instanceof Error) return <div>Blog not found</div>;
+	if (!data) navigate("/not-found");
 
 	return <BlogContent data={data} />;
 };
