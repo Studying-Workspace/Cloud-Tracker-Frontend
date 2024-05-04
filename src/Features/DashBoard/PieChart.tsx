@@ -4,7 +4,6 @@ import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import { formatPieChart } from "../../utils/billingDataHandling";
 import useGetBillingData from "./useGetBillingData";
-import FilterDate from "../../ui/DashBoard/FilterDate";
 
 interface ChartData {
 	series: number[];

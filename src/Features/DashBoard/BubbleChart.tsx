@@ -7,7 +7,6 @@ import SelectFilter from "../../ui/DashBoard/SelectFilter";
 import { useUserContext } from "../../context/UserProvider";
 import useIamRoles from "./useIamRoles";
 import Spinner from "../../ui/Spinner";
-import FilterDate from "../../ui/DashBoard/FilterDate";
 
 interface ChartData {
 	series: { name: string; data: number[][] }[];
