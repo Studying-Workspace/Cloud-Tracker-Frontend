@@ -5,10 +5,6 @@ export const formatDashboardData = (chartData:any[], granularity:string, startDa
 
 
 	let serviceDateAndCost = new Map<string , number>() ;
-	let yearFirst = true;
-	if(startDate.includes("/")){
-		yearFirst = false;
-	}
 	
 
 	let chartDataWithinDate = []
