@@ -27,7 +27,7 @@ export default {
       },
 
       screens: {
-        mobile: { max: "768px" },
+        mobile: { max: "769px" },
         tablet: { min: "769px", max: "1024px" },
       },
     },

@@ -1,6 +1,5 @@
 import Button from "../../ui/Button";
 import ProfileInputField from "../../ui/Profile/ProfileInputField";
-import ProfileSelectMenu from "../../ui/Profile/ProfileSelectMenu";
 import UploadPhoto from "../../ui/Profile/UploadPhoto";
 import { Form, Formik } from "formik";
 import { profileFormValidationSchema } from "../../utils/validationSchema";
@@ -77,8 +76,8 @@ const ProfileForm = () => {
 			{({ errors, touched, setFieldValue, resetForm }) => (
 				<Form className="flex min-h-screen w-fit flex-col gap-8 pb-[300px]">
 					<div className="relative mt-[100px] flex  items-start justify-center ">
-						<div className="relative bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px] ">
-							<div className="flex h-[450px] w-[1000px] content-between items-center justify-start gap-16 bg-white px-[100px] mobile:h-[550px] mobile:w-[330px] mobile:flex-col mobile:justify-center mobile:gap-8 tablet:h-[650px] tablet:w-[400px] tablet:flex-col tablet:justify-center tablet:gap-10">
+						{/* <div className="relative bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-[4px] "> */}
+							<div className="border-4 border-gradient-br-mixcolor flex h-[450px] w-[800px] content-between items-center justify-between gap-16 bg-white px-[100px] mobile:h-[550px] mobile:w-[330px] mobile:flex-col mobile:justify-center mobile:gap-8 tablet:h-[650px] tablet:w-[400px] tablet:flex-col tablet:justify-center tablet:gap-10">
 								{/* Profile Image */}
 								<UploadPhoto
 									name="image"
@@ -89,7 +88,7 @@ const ProfileForm = () => {
 								/>
 
 								{/* Input fields */}
-								<div className="grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-16 mobile:flex mobile:flex-col mobile:gap-6 tablet:flex tablet:flex-col tablet:gap-8">
+								<div className="grid grid-cols-1 grid-rows-3 gap-y-10 mobile:flex mobile:flex-col mobile:gap-6 tablet:flex tablet:flex-col tablet:gap-8">
 									<div className="flex w-full items-center justify-between">
 										<ProfileInputField
 											type="text"
@@ -113,10 +112,9 @@ const ProfileForm = () => {
 										error={touched.email ? errors.email : undefined}
 										touched={touched.email}
 									/>
-									<ProfileSelectMenu />
 								</div>
 							</div>
-						</div>
+						{/* </div> */}
 					</div>
 					<div className="flex gap-2 self-end">
 						<Button
@@ -142,7 +140,7 @@ const ProfileForm = () => {
 									setImageFile(
 										user.image === "" ? null : user.image,
 									);
-									console.log(status) ;
+									console.log(status);
 								}}
 							>
 								Reset
