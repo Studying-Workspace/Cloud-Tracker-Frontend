@@ -9,21 +9,6 @@ export const formatDashboardData = (chartData:any[], granularity:string, startDa
 	if(startDate.includes("/")){
 		yearFirst = false;
 	}
-	let formattedStartDate = startDate.replace(/-/g, "/");
-	let formattedEndDate = endDate.replace(/-/g, "/");
-
-	let [startYear, startMonth, startDay] = ["1","2","3"];
-	let [endYear, endMonth, endDay] = ["1","2","3"];
-
-	if(yearFirst){
-		[startYear, startMonth, startDay] = formattedStartDate.split("/");
-		[endYear, endMonth, endDay] = formattedEndDate.split("/");	
-	}
-	else{
-	    [startDay, startMonth, startYear] = formattedStartDate.split("/");
-		[endDay, endMonth, endYear] = formattedEndDate.split("/");	
-	}
-
 	
 
 	let chartDataWithinDate = []
