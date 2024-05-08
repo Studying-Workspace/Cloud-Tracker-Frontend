@@ -4,19 +4,13 @@ import Spinner from "./Spinner";
 
 import { Outlet, useLocation } from "react-router-dom";
 import { useUser } from "../Features/authentication/useUser";
-import { useEffect } from "react";
-import { useLogout } from "../Features/authentication/useLogout";
 
 const Applayout = () => {
 	const loacation = useLocation();
 	const currentPage = loacation.pathname;
 	const setFooter = currentPage === "/" || currentPage === "/profile";
 	const { isLoading, isAuth } = useUser();
-	const {logout} = useLogout("/" , "") ;
 
-	useEffect(()=>{
-		// if(!isLoading && !isAuth) logout()
-	} , [isLoading , isAuth])
 
 	return isAuth && isLoading ? (
 		<Spinner />
