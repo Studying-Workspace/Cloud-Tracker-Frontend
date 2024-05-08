@@ -27,7 +27,6 @@ export const register = async (user: user) => {
 
 		return data;
 	} catch (error: any) {
-
 		throw new Error(error.response.data);
 	}
 };
@@ -52,6 +51,8 @@ export const login = async (user: user) => {
 export const getUser = async (token: string | undefined) => {
 	try {
 		if (token === undefined) return null;
+		const isTokenValid = await validationToken(token);
+		if (!isTokenValid) return null;
 		const response = await axios.get(`${serverBaseUrl}/me/profile`, {
 			headers: {
 				"Access-Control-Allow-Origin": "*",
@@ -64,7 +65,6 @@ export const getUser = async (token: string | undefined) => {
 
 		return data;
 	} catch (error: any) {
-
 		throw new Error(error.response.data);
 	}
 };
@@ -114,5 +114,31 @@ export const editPassword = async (
 	}
 };
 
+export const validationToken = async (token: string | undefined) => {
+	if (token === undefined) return false;
+	try {
+		const response = await axios.post(
+			`${serverBaseUrl}/validate-token`,
+			{ token: token },
+			{
+				headers: {
+					"Access-Control-Allow-Origin": "*",
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+			},
+		);
 
+		const data = await response.data;
 
+		return data;
+	} catch (error: any) {
+		if (
+			error.response.data.status === 401 ||
+			error.response.data.status === 500
+		) {
+			return false;
+		}
+		throw new Error(error.response.data);
+	}
+};

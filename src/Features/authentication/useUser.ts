@@ -4,11 +4,10 @@ import { getUser } from "../../services/authenication";
 
 export const useUser = () => {
 	const { tokens } = useUserContext();
-
 	const { data: user, isLoading } = useQuery({
 		queryKey: ["user"],
 		queryFn: () => getUser(tokens?.token),
 	});
 
-	return { user, isLoading, isAuth: tokens !== null };
+	return { user, isLoading, isAuth: tokens !== null && user !== null };
 };

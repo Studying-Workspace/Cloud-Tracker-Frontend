@@ -9,7 +9,7 @@ export const useLogout = (to: string, message: string) => {
 		setTokens(null);
 		localStorage.clear();
 		navigate(to);
-		handleToastMessage(message, "success");
+		if(message.length !== 0) handleToastMessage(message, "success");
 	};
 
 	return { logout };
