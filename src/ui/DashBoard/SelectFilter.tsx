@@ -2,8 +2,8 @@ import { orange } from "@mui/material/colors";
 import { MenuItem, Select } from "@mui/material";
 
 interface Prop {
-	value: string;
-	defaultValue: string;
+	value: string | File;
+	defaultValue: string |File ;
 	setValue: Function;
 	options: any[];
 	title ?: string ;
@@ -17,7 +17,7 @@ const SelectFilter = ({ value, defaultValue, setValue, options , title}: Prop) =
 				labelId="label"
 				id="select"
 				onChange={(e) => setValue(e.target.value)}
-				value={value}
+				value={typeof(value) === "string" ? value : undefined}
 				displayEmpty
 				className="w-full"
 				sx={{
@@ -49,7 +49,7 @@ const SelectFilter = ({ value, defaultValue, setValue, options , title}: Prop) =
 							fontSize: "1.1rem",
 						}}
 					>
-						{value === "" ? defaultValue : value}
+						{value === "" ? typeof(defaultValue) === "string" ? defaultValue : "" : value}
 					</span>
 				)}
 			>
