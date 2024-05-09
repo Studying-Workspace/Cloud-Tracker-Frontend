@@ -15,7 +15,7 @@ interface ChartData {
 const LineChart = ({ type }: { type: "full" | "mini" }) => {
 	const { BillingData } = useGetBillingData();
 	const { startDate, endDate } = defaultDates(BillingData);
-	const [granularity, setGranularity] = useState<string>("d");
+	const [granularity, setGranularity] = useState<string>("m");
 	const [inputStartDate, setInputStartDate] = useState<string>(
 		startDate == undefined ? new Date().toLocaleDateString() : startDate,
 	);
@@ -83,6 +83,7 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 		const {datesArray , seriesData} = formatDashboardData(BillingData, granularity, inputStartDate, inputEndDate);
 		setSeriesData(seriesData);
 		setDatesArray(datesArray);
+		// setGranularity(granularity);
 		const newChartData = {
 			series : seriesData,
 			options : {
@@ -94,7 +95,7 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 		}
 		setChartData(newChartData);
 		// console.log(seriesData);
-	},[BillingData, inputStartDate, inputEndDate])
+	},[BillingData, inputStartDate, inputEndDate, granularity])
 
 
 	if (type === "mini") {
