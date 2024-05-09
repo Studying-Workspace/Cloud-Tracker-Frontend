@@ -15,7 +15,7 @@ interface ChartData {
 const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 	const { BillingData } = useGetBillingData();
 	const { startDate, endDate } = defaultDates(BillingData);
-	const [granularity, setGranularity] = useState<string>("d");
+	const [granularity, setGranularity] = useState<string>("m");
 	const [inputStartDate, setInputStartDate] = useState<string>(
 		startDate == undefined ? new Date().toLocaleDateString() : startDate,
 	);
@@ -90,7 +90,7 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 			}
 		}
 		setChartData(newChartData);
-	},[BillingData, inputStartDate, inputEndDate])
+	},[BillingData, inputStartDate, inputEndDate, granularity])
 
 	if (type === "mini") {
 		return (
