@@ -11,6 +11,7 @@ const Applayout = () => {
 	const setFooter = currentPage === "/" || currentPage === "/profile";
 	const { isLoading, isAuth } = useUser();
 
+
 	return isAuth && isLoading ? (
 		<Spinner />
 	) : (
