@@ -5,7 +5,7 @@ export const formatDashboardData = (chartData:any[], granularity:string, startDa
 
 
 	let serviceDateAndCost = new Map<string , number>() ;
-	
+
 
 	let chartDataWithinDate = []
 
@@ -23,15 +23,15 @@ export const formatDashboardData = (chartData:any[], granularity:string, startDa
 		"11": "Nov",
 		"12": "Dec"
 	};
-		
+
 	for (let i = 0; i < chartData?.length; i++) {
 		let element = chartData[i];
 		let currentDate = element.date?.split("-");
-		
+
 		let year = currentDate[0];
 		let month = currentDate[1];
 		let day = currentDate[2];
-		
+
 		let dateToCheck = new Date(year, month - 1, day);
 		let newstartDate = new Date(startDate);
 		let newEndDate = new Date(endDate);
@@ -50,32 +50,27 @@ export const formatDashboardData = (chartData:any[], granularity:string, startDa
 			let month = el.date?.split("-")[1];
 
 			dates.add(monthMapping[month]);
-			// console.log(monthMapping[month]);
 			let serviceDate = {
 				name : el.service,
 				date : monthMapping[month]
 			}
 			let cost = serviceDateAndCost.get(JSON.stringify(serviceDate));
-			// console.log(serviceDate);
 			cost = (cost === undefined ? 0 : cost);
-			
+
 			cost += el.cost;
-			
+
 			serviceDateAndCost.set(JSON.stringify(serviceDate), cost);
-		}	
+		}
 	});
 
 	let seriesData:any = [] ;
 	let datesArray = Array.from(dates) ;
-	console.log(datesArray);
 	let servicesArray = Array.from(service) ;
 
 	servicesArray?.forEach((service)=>{
 		let data:any = [] ;
 		datesArray.forEach((date)=>{
 			const cost = serviceDateAndCost.get(JSON.stringify({name:service , date:date}))
-			// console.log(date);
-			
 			data.push( cost === undefined ? 0 : Number(cost.toFixed(2))) ;
 		})
 		let obj = {
@@ -84,7 +79,6 @@ export const formatDashboardData = (chartData:any[], granularity:string, startDa
 		}
 		seriesData.push(obj) ;
 	})
-	console.log(seriesData);
 	return {datesArray , seriesData}  ;
 }
 

@@ -5,13 +5,24 @@ import { FaTerminal } from "react-icons/fa6";
 import { TbTool } from "react-icons/tb";
 import { GoCode } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { handleToastMessage } from "../../../utils/helper";
+import useUploadCSVFile from "../../../Features/DashBoard/useUploadCSVFile";
+import { useUserContext } from "../../../context/UserProvider";
 
 const AllMethodes = () => {
+	const {uploadCSVFile} = useUploadCSVFile() ;
+	const {setCSVFile , setSelectedRole} = useUserContext() ;
 	const fileInputRef = useRef<HTMLInputElement>(null);
-	const handleFileChange = () => {
-		const selectedFile = fileInputRef.current?.files?.[0];
-		if (selectedFile) {
-			console.log("Selected file:", selectedFile.name);
+	const handleFileChange = (e:any) => {
+		const selectedFile = e.target.files[0] ;
+		let formData = new FormData() ;
+		setCSVFile(selectedFile) ;
+		setSelectedRole(selectedFile) ;
+		formData.append('file' ,  selectedFile) ;
+		if (selectedFile?.type !== "text/csv")
+			handleToastMessage("Please Select CSV File", "warning");
+		else {
+			uploadCSVFile(formData) ;
 		}
 	};
 
@@ -43,7 +54,8 @@ const AllMethodes = () => {
 				<div className="w-fit rounded-3xl bg-gradient-to-br from-linearBlue-2 to-linearOrange-100 p-1">
 					<button
 						className="flex w-[192px] justify-center rounded-3xl bg-white py-1 mobile:w-[154px] mobile:text-sm"
-						onClick={toPage("instruction")} data-testid="show-instructions"
+						onClick={toPage("instruction")}
+						data-testid="show-instructions"
 					>
 						Show Instructions
 					</button>
@@ -54,8 +66,9 @@ const AllMethodes = () => {
 			</div>
 			<div className="mx-14 flex flex-wrap justify-center gap-16 pt-8">
 				<div
-					className="flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 shadow-3xl hover:h-[200px] hover:w-[215px] hover:shadow-4xl"
-					onClick={toPage("manual")} data-testid="manual-onboarding"
+					className="shadow-3xl hover:shadow-4xl flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 hover:h-[200px] hover:w-[215px]"
+					onClick={toPage("manual")}
+					data-testid="manual-onboarding"
 				>
 					<TbTool className="h-16 w-16 text-blue-800" />
 					<div className=" text-lg font-medium text-blue-800">
@@ -63,8 +76,9 @@ const AllMethodes = () => {
 					</div>
 				</div>
 				<div
-					className="flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 shadow-3xl hover:h-[200px] hover:w-[215px] hover:shadow-4xl"
-					onClick={toPage("terminal")} data-testid="terminal"
+					className="shadow-3xl hover:shadow-4xl flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 hover:h-[200px] hover:w-[215px]"
+					onClick={toPage("terminal")}
+					data-testid="terminal"
 				>
 					<FaTerminal className="h-16 w-16 text-blue-800" />
 					<div className=" text-lg font-medium text-blue-800">
@@ -72,8 +86,9 @@ const AllMethodes = () => {
 					</div>
 				</div>
 				<div
-					className="flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 shadow-3xl hover:h-[200px] hover:w-[215px] hover:shadow-4xl"
-					onClick={toPage("cloudFormation")} data-testid="cloudFormation"
+					className="shadow-3xl hover:shadow-4xl flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 hover:h-[200px] hover:w-[215px]"
+					onClick={toPage("cloudFormation")}
+					data-testid="cloudFormation"
 				>
 					<IoCloudOutline className="h-16 w-16 text-blue-800" />
 					<div className=" text-lg font-medium text-blue-800">
@@ -81,8 +96,9 @@ const AllMethodes = () => {
 					</div>
 				</div>
 				<div
-					className="flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 shadow-3xl hover:h-[200px] hover:w-[215px] hover:shadow-4xl"
-					onClick={toPage("cdk")} data-testid="cdk"
+					className="shadow-3xl hover:shadow-4xl flex h-48 w-52 flex-col place-items-center space-y-5 rounded-3xl border-4 pt-8 hover:h-[200px] hover:w-[215px]"
+					onClick={toPage("cdk")}
+					data-testid="cdk"
 				>
 					<GoCode className="h-16 w-16 text-blue-800" />
 					<div className=" text-lg font-medium text-blue-800">CDK</div>
