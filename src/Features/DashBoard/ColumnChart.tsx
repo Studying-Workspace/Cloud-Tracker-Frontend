@@ -26,7 +26,7 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 	const [region, setRegion] = useState<string>("");
 	const [zones, setZones] = useState<string>("");
 	const [pricing, setPricing] = useState<string>("");
-	
+
 
 	const [datesArray, setDatesArray] = useState<any[]>([]);
 	const [seriesData, setSeriesData] = useState<{ name: string; data: number[] }[]>([]);
@@ -79,11 +79,10 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 		const {datesArray , seriesData} = formatDashboardData(BillingData, granularity, inputStartDate, inputEndDate);
 		setSeriesData(seriesData);
 		setDatesArray(datesArray);
-		console.log(seriesData);
 		const newChartData = {
 			series : seriesData,
 			options : {
-				...chartData.options, 
+				...chartData.options,
 				xaxis : {
 					categories : datesArray,
 				}

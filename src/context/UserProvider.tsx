@@ -9,17 +9,20 @@ interface tokenType {
 interface userContextType {
 	tokens: tokenType | null;
 	setTokens: Function;
-	selectedRole: string;
+	selectedRole: string | File;
 	setSelectedRole: Function;
 	iamRolesArn: string[];
 	setIAmRolesArn: Function;
+	csvFile : File;
+	setCSVFile: Function;
 }
 
 const UserContext = createContext<userContextType | undefined>(undefined);
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
-	const [selectedRole, setSelectedRole] = useState<string>("");
+	const [selectedRole, setSelectedRole] = useState<string|File>("");
 	const [tokens, setTokens] = useLocalStorageState(null, "tokens");
+	const [csvFile , setCSVFile] = useLocalStorageState(null , "csvFile") ;
 	const [iamRolesArn, setIAmRolesArn] = useState<string[]>([]);
 
 	const contextValues: userContextType = {
@@ -29,6 +32,8 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
 		setSelectedRole,
 		iamRolesArn,
 		setIAmRolesArn,
+		csvFile,
+		setCSVFile
 	};
 	return (
 		<UserContext.Provider value={contextValues}>
