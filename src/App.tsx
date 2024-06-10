@@ -24,6 +24,7 @@ import ColumnChart from "./Features/DashBoard/ColumnChart";
 import LineChart from "./Features/DashBoard/LineChart";
 import BubbleChart from "./Features/DashBoard/BubbleChart";
 import CsvInstructions from "./pages/Dashboard/CsvInstructions";
+import Notifications from "./pages/Notifications";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -91,7 +92,7 @@ export default function App() {
 												/>
 												<Route
 													path="notification"
-													element={<div>notification</div>}
+													element={<Notifications/>}
 												/>
 											</Route>
 										</Route>
