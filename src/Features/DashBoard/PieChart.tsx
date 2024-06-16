@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import ChartFilter from "../../ui/DashBoard/ChartFilter";
+// import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import { formatPieChart } from "../../utils/billingDataHandling";
 import useGetBillingData from "./useGetBillingData";
 import ExpectedPrice from "./ExpectedPrice";
@@ -48,9 +48,9 @@ const PieChart = ({ type }: { type: "full" | "mini" }) => {
 		);
 	}
 
-	const [region, setRegion] = useState<string>("");
-	const [zones, setZones] = useState<string>("");
-	const [pricing, setPricing] = useState<string>("");
+	// const [region, setRegion] = useState<string>("");
+	// const [zones, setZones] = useState<string>("");
+	// const [pricing, setPricing] = useState<string>("");
 
 	return (
 		<div className="transtion-all flex  h-full w-[70%] flex-col items-center justify-between bg-white py-10 shadow-xl duration-300 mobile:w-full mobile:h-fit  mobile:gap-8 tablet:w-full tablet:gap-8">

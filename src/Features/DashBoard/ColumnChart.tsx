@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
-import ChartFilter from "../../ui/DashBoard/ChartFilter";
+// import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import useGetElementWidth from "../../hooks/useGetElementWidth";
 import useGetBillingData from "./useGetBillingData";
 import { defaultDates, formatDashboardData } from "../../utils/billingDataHandling";
@@ -24,9 +24,9 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 		endDate == undefined ? new Date().toLocaleDateString() : endDate,
 	);
 
-	const [region, setRegion] = useState<string>("");
-	const [zones, setZones] = useState<string>("");
-	const [pricing, setPricing] = useState<string>("");
+	// const [region, setRegion] = useState<string>("");
+	// const [zones, setZones] = useState<string>("");
+	// const [pricing, setPricing] = useState<string>("");
 
 
 	const [datesArray, setDatesArray] = useState<any[]>([]);
