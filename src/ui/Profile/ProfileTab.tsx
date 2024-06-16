@@ -19,7 +19,7 @@ const ProfileTab = () => {
 					<button
 						className={`px-4 transition-all duration-300 ${currentPage === "/profile" ? "rounded-full border-4 border-linearOrange-200" : "border-none"}`}
 					>
-						Profile
+						{user.name}
 					</button>
 				</Menus.Toggle>
 				<Menus.List id="profile">

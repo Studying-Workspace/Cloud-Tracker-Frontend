@@ -4,8 +4,12 @@ import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import useGetElementWidth from "../../hooks/useGetElementWidth";
 import useGetBillingData from "./useGetBillingData";
-import { defaultDates, formatDashboardData } from "../../utils/billingDataHandling";
+import {
+	defaultDates,
+	formatDashboardData,
+} from "../../utils/billingDataHandling";
 import FilterDate from "../../ui/DashBoard/FilterDate";
+import ExpectedPrice from "./ExpectedPrice";
 
 interface ChartData {
 	series: { name: string; data: number[] }[];
@@ -28,8 +32,10 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 	const [pricing, setPricing] = useState<string>("");
 
 	const [datesArray, setDatesArray] = useState<any[]>([]);
-	const [seriesData, setSeriesData] = useState<{ name: string; data: number[] }[]>([]);
-	const {containerRef, width } = useGetElementWidth();
+	const [seriesData, setSeriesData] = useState<
+		{ name: string; data: number[] }[]
+	>([]);
+	const { containerRef, width } = useGetElementWidth();
 
 	const [chartData, setChartData] = useState<ChartData>({
 		series: seriesData,
@@ -67,36 +73,37 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 			xaxis: {
 				categories: datesArray,
 			},
-			yaxis:{
-				title:{
+			yaxis: {
+				title: {
 					text: "Price in $",
-					style:{
-						fontSize: '16px' ,
-						fontWeight : "normal"
-					}
-				}
-			}
+					style: {
+						fontSize: "16px",
+						fontWeight: "normal",
+					},
+				},
+			},
 		},
 	});
 	useEffect(() => {
-		// console.log(inputStartDate);
-		const {datesArray , seriesData} = formatDashboardData(BillingData, granularity, inputStartDate, inputEndDate);
+		const { datesArray, seriesData } = formatDashboardData(
+			BillingData,
+			granularity,
+			inputStartDate,
+			inputEndDate,
+		);
 		setSeriesData(seriesData);
 		setDatesArray(datesArray);
-		// setGranularity(granularity);
 		const newChartData = {
-			series : seriesData,
-			options : {
-				...chartData.options, 
-				xaxis : {
-					categories : datesArray
-				}
-			}
-		}
+			series: seriesData,
+			options: {
+				...chartData.options,
+				xaxis: {
+					categories: datesArray,
+				},
+			},
+		};
 		setChartData(newChartData);
-		// console.log(seriesData);
-	},[BillingData, inputStartDate, inputEndDate, granularity])
-
+	}, [BillingData, inputStartDate, inputEndDate, granularity]);
 
 	if (type === "mini") {
 		return (
@@ -118,16 +125,16 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 	return (
 		<div
 			ref={containerRef}
-			className=" transtion-all flex h-full w-[70%] flex-col items-center justify-between bg-white py-20 shadow-xl duration-300 mobile:w-full mobile:gap-8 tablet:w-full tablet:gap-8"
+			className=" transtion-all flex h-full w-[70%] flex-col items-center justify-between bg-white py-10 shadow-xl duration-300 mobile:h-fit mobile:w-full mobile:gap-8 tablet:w-full tablet:gap-8"
 		>
-			<ChartFilter
+			{/* <ChartFilter
 				region={region}
 				setRegion={setRegion}
 				zones={zones}
 				setZones={setZones}
 				pricing={pricing}
 				setPricing={setPricing}
-			/>
+			/> */}
 			<FilterDate
 				granularity={granularity}
 				setInputStartDate={setInputStartDate}
@@ -135,7 +142,6 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 				inputStartDate={inputStartDate}
 				inputEndDate={inputEndDate}
 				setGranularity={setGranularity}
-
 			/>
 			<ReactApexChart
 				options={chartData.options}
@@ -144,6 +150,7 @@ const LineChart = ({ type }: { type: "full" | "mini" }) => {
 				height={350}
 				width={width}
 			/>
+			<ExpectedPrice />
 		</div>
 	);
 };

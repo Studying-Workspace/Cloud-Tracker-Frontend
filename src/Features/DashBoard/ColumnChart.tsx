@@ -6,6 +6,7 @@ import useGetElementWidth from "../../hooks/useGetElementWidth";
 import useGetBillingData from "./useGetBillingData";
 import { defaultDates, formatDashboardData } from "../../utils/billingDataHandling";
 import FilterDate from "../../ui/DashBoard/FilterDate";
+import ExpectedPrice from "./ExpectedPrice";
 
 interface ChartData {
 	series: { name: string; data: number[] }[];
@@ -111,16 +112,16 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 	return (
 		<div
 			ref={containerRef}
-			className="transtion-all flex  h-full w-[90%] flex-col items-center justify-between bg-white py-20 shadow-xl duration-300 mobile:w-full mobile:gap-8 tablet:w-full tablet:gap-8"
+			className="transtion-all flex  h-full w-[90%] flex-col items-center justify-between bg-white py-10 shadow-xl duration-300 mobile:w-full mobile:h-fit mobile:gap-8 tablet:w-full tablet:gap-8"
 		>
-			<ChartFilter
+			{/* <ChartFilter
 				region={region}
 				setRegion={setRegion}
 				zones={zones}
 				setZones={setZones}
 				pricing={pricing}
 				setPricing={setPricing}
-			/>
+			/> */}
 			<FilterDate
 				granularity={granularity}
 				setInputStartDate={setInputStartDate}
@@ -136,6 +137,7 @@ const ColumnChart = ({ type }: { type: "full" | "mini" }) => {
 				height={350}
 				width={width}
 			/>
+			<ExpectedPrice/>
 		</div>
 	);
 };

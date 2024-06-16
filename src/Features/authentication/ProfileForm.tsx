@@ -41,7 +41,7 @@ const ProfileForm = () => {
 			handleToastMessage("There Is No Changes In Profile Data", "warning");
 			return;
 		}
-		if (typeof values.image === "string") {
+		if (typeof values.image === "string" || values.image === null) {
 			editProfile(
 				{ user: values, token: tokens?.token },
 				{

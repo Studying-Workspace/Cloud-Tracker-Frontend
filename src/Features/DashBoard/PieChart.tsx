@@ -4,6 +4,7 @@ import { ApexOptions } from "apexcharts";
 import ChartFilter from "../../ui/DashBoard/ChartFilter";
 import { formatPieChart } from "../../utils/billingDataHandling";
 import useGetBillingData from "./useGetBillingData";
+import ExpectedPrice from "./ExpectedPrice";
 
 interface ChartData {
 	series: number[];
@@ -11,8 +12,8 @@ interface ChartData {
 }
 
 const PieChart = ({ type }: { type: "full" | "mini" }) => {
-	const {BillingData} = useGetBillingData();
-	const {servicesArray , pieChartData} = formatPieChart(BillingData) ;
+	const { BillingData } = useGetBillingData();
+	const { servicesArray, pieChartData } = formatPieChart(BillingData);
 
 	const [miniChartData] = useState<ChartData>({
 		series: pieChartData,
@@ -33,12 +34,9 @@ const PieChart = ({ type }: { type: "full" | "mini" }) => {
 		},
 	});
 
-
 	if (type === "mini") {
 		return (
-			<div
-				className="desktop:w-[485px] transtion-all flex h-[300px] w-[600px] cursor-pointer items-center justify-center bg-white shadow-xl duration-300 hover:bg-stone-50 mobile:w-[350px]"
-			>
+			<div className="desktop:w-[485px] transtion-all flex h-[300px] w-[600px] cursor-pointer items-center justify-center bg-white shadow-xl duration-300 hover:bg-stone-50 mobile:w-[350px]">
 				<ReactApexChart
 					options={miniChartData.options}
 					series={miniChartData.series}
@@ -55,15 +53,15 @@ const PieChart = ({ type }: { type: "full" | "mini" }) => {
 	const [pricing, setPricing] = useState<string>("");
 
 	return (
-		<div className="transtion-all flex  h-full w-[70%] flex-col items-center justify-between bg-white py-20 shadow-xl duration-300 mobile:w-full mobile:gap-8 tablet:w-full tablet:gap-8">
-			<ChartFilter
+		<div className="transtion-all flex  h-full w-[70%] flex-col items-center justify-between bg-white py-10 shadow-xl duration-300 mobile:w-full mobile:h-fit  mobile:gap-8 tablet:w-full tablet:gap-8">
+			{/* <ChartFilter
 				region={region}
 				setRegion={setRegion}
 				zones={zones}
 				setZones={setZones}
 				pricing={pricing}
 				setPricing={setPricing}
-			/>
+			/> */}
 			{/* <FilterDate/> */}
 
 			<ReactApexChart
@@ -73,6 +71,7 @@ const PieChart = ({ type }: { type: "full" | "mini" }) => {
 				height={400}
 				width={600}
 			/>
+			<ExpectedPrice />
 		</div>
 	);
 };

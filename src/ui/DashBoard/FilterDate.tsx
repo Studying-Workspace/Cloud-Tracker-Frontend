@@ -16,8 +16,8 @@ interface props{
 const FilterDate = ({inputStartDate, setInputStartDate, inputEndDate, setInputEndDate, granularity, setGranularity }:props) => {
 
 	return (
-		<div className="flex items-center justify-between gap-40">
-			<div className="flex items-center gap-6 text-linearOrange-200">
+		<div className="flex items-center justify-between gap-40 mobile:gap-10">
+			<div className="flex mobile:flex-col mobile:items-start items-center gap-6 text-linearOrange-200">
 				<button onClick={()=>setGranularity("d")} className={`${granularity === "d" ? " font-bold text-lg" : ""}`}>Daily</button>
 				<button onClick={()=>setGranularity("m")} className={`${granularity === "m" ? " font-bold text-lg" : ""}`}>Monthly</button>
 			</div>
