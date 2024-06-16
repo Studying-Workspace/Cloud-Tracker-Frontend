@@ -1,5 +1,3 @@
-import { duration } from "@mui/material";
-
 const NotificationDetail = () => {
 	const mockData = [
 		{
