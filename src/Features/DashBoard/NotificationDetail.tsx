@@ -27,7 +27,7 @@ const NotificationDetail = () => {
 	];
 
 	return (
-		<table className="w-full table-auto mobile:text-xs">
+		<table className="w-full table-auto mobile:text-xs" data-testid="table">
 			<tbody>
 				<tr className="bg-linearBlue-1 font-semibold text-white">
 					<td className="text-center py-2">Instance Type</td>

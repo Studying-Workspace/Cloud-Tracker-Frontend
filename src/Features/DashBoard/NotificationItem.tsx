@@ -26,10 +26,10 @@ const NotificationItem = ({
 						alt="img"
 					/>
 					<div className="flex w-[80%] flex-col">
-						<p className="text-2xl font-bold tracking-widest mobile:text-lg mobile:tracking-wider">
+						<p className="text-2xl font-bold tracking-widest mobile:text-lg mobile:tracking-wider" data-testid="title">
 							{instanceName}
 						</p>
-						<p className="w-[70%] text-xl mobile:w-full mobile:text-xs">
+						<p className="w-[70%] text-xl mobile:w-full mobile:text-xs"  data-testid="description">
 							Save{" "}
 							<span className="font-semibold text-linearOrange-100">
 								${priceReservedInstance}
