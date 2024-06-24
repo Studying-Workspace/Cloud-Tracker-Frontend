@@ -79,6 +79,41 @@ const getBillingDataByERN = async (arn:string , token:string) => {
 	}
 };
 
+export const getForecastData = async (
+	arn: string  | File | undefined,
+	token: string | undefined,
+) => {
+	if (!arn || !token) return;
+	if(typeof arn === "string" ){
+		const req = await getForecastCostByARN(arn , token);
+		// console.log("Forecast data response:", req); 
+
+		return req;
+	}
+	const req = 0;
+	return req ;
+};
+
+const getForecastCostByARN = async (arn: string, token: string) => {
+	try {
+		const response = await axios.get(
+			`${serverBaseUrl}/role/forecast?arn=${arn}`,
+			{
+				headers: {
+					"Access-Control-Allow-Origin": "*",
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+			},
+		);
+
+		const data = await response.data;
+		return data;
+	} catch (error: any) {
+		throw new Error(error.response.data);
+	}
+};
+
 const getBillingDataByCSVFile = async (token:string) => {
 	try {
 		const response = await axios.get(
