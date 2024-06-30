@@ -4,12 +4,12 @@ import { useUserContext } from "../../context/UserProvider";
 
 const useGetOfferingsData = () => {
   const { tokens, selectedRole } = useUserContext();
-  const { data: OfferingsData, isLoading } = useQuery({
+  const { data: offeringsData, isLoading } = useQuery({
     queryKey: ["OfferingsData", selectedRole],
     queryFn: () => getOfferingsData(selectedRole, tokens?.token),
   });
   
-  return { OfferingsData, isLoading };
+  return { offeringsData, isLoading };
 };
 
 export default useGetOfferingsData;
