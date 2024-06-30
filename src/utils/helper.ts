@@ -1,48 +1,52 @@
 import { Slide, toast } from "react-toastify";
 
 export function scrollToTop(): void {
-	window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 }
 
 export const handleToastMessage = (
-	message: string | undefined,
-	type: "warning" | "success",
+  message: string | undefined,
+  type: "warning" | "success",
 ) => {
-	switch (type) {
-		case "warning":
-			toast.warning(message, {
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: false,
-				draggable: false,
-				progress: undefined,
-				theme: "light",
-				transition: Slide,
-			});
-			break;
-		case "success":
-			toast.success(message, {
-				position: "top-right",
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: false,
-				draggable: false,
-				progress: undefined,
-				theme: "light",
-				transition: Slide,
-			});
-			break;
-	}
+  switch (type) {
+    case "warning":
+      toast.warning(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+      break;
+    case "success":
+      toast.success(message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+      break;
+  }
 };
 
 export const convertImageToBase64 = (file: File, callback: Function) => {
-	const reader = new FileReader();
-	reader.readAsDataURL(file);
-	reader.onload = () => {
-		callback?.(reader?.result?.toString());
-	};
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => {
+    callback?.(reader?.result?.toString());
+  };
+};
 
+export const convertSecondsToMonths = (seconds: number) => {
+  const secondsInAMonth: number = 60 * 60 * 24 * 30.44;
+  return seconds / secondsInAMonth;
 };
