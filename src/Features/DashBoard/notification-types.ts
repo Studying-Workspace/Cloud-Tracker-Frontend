@@ -1,4 +1,4 @@
-interface usedInstanceInterface {
+interface UsedInstanceInterface {
   instanceType: string;
   cost: number;
   os: string;
@@ -12,13 +12,13 @@ interface RIInterface {
   duration: number;
 }
 
-interface instanceInfoInterface {
-  instance: usedInstanceInterface;
+interface InstanceInfoInterface {
+  instance: UsedInstanceInterface;
   ridtos: RIInterface[];
 }
 
-interface notificationItemProps {
-  instanceInfo: instanceInfoInterface;
+interface NotificationItemProps {
+  instanceInfo: InstanceInfoInterface;
 }
 
 interface NotificationDetailsProps {
@@ -26,9 +26,9 @@ interface NotificationDetailsProps {
 }
 
 export type {
-  usedInstanceInterface,
+  UsedInstanceInterface,
   RIInterface,
-  instanceInfoInterface,
-  notificationItemProps,
-  NotificationDetailsProps
+  InstanceInfoInterface,
+  NotificationItemProps,
+  NotificationDetailsProps,
 };
