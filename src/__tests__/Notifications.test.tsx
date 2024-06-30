@@ -14,6 +14,25 @@ const queryClient = new QueryClient({
   },
 });
 
+const notificationItemProps: NotificationItemProps = {
+  instanceInfo: {
+    instance: {
+      instanceType: "test-used-instance",
+      region: "test-used-region",
+      os: "test-used-os",
+      cost: 10.0,
+    },
+    ridtos: [
+      {
+        instanceType: "test-ri-type",
+        os: "test-ri-os",
+        duration: 20,
+        price: 30.0,
+      },
+    ],
+  },
+};
+
 describe("Notifications page", () => {
   beforeEach(() => {
     render(
@@ -28,35 +47,17 @@ describe("Notifications page", () => {
   });
 
   it("should render correctly", () => {
-    expect(screen.getByTestId("notification-container")).toBeInTheDocument();
+    expect(screen.getByTestId("notification-page")).toBeInTheDocument();
   });
 });
 
 describe("Notification Item", () => {
   beforeEach(() => {
-    const notificationItemProps: NotificationItemProps = {
-      instanceInfo: {
-        instance: {
-          instanceType: "test-used-instance",
-          region: "test-used-region",
-          os: "test-used-os",
-          cost: 10.0,
-        },
-        ridtos: [
-          {
-            instanceType: "test-ri-type",
-            os: "test-ri-os",
-            duration: 20,
-            price: 30.0,
-          },
-        ],
-      },
-    };
     render(
       <HashRouter>
         <UserProvider>
           <QueryClientProvider client={queryClient}>
-            <NotificationItem notificationItemProps={notificationItemProps} />
+            <NotificationItem {...notificationItemProps} />
           </QueryClientProvider>
         </UserProvider>
       </HashRouter>,
