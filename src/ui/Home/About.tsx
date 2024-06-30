@@ -41,7 +41,7 @@ const About = () => {
 							What is{" "}
 							<span className="text-linearOrange-200 ">
 								{" "}
-								Cloud Tracker{" "}
+								Cloud Tracker
 							</span>
 							?
 						</p>
