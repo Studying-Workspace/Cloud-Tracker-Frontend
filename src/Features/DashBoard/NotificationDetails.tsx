@@ -17,7 +17,7 @@ const NotificationDetails = ({ RIList }: NotificationDetailsProps) => {
             <td className="py-2 text-center">{RI.instanceType}</td>
             <td className="py-2 text-center">{RI.os}</td>
             <td className="py-2 text-center">{RI.price}</td>
-            <td className="py-2 text-center">{convertSecondsToMonths(RI.duration)} months</td>
+            <td className="py-2 text-center">{convertSecondsToMonths(RI.duration).toFixed(1)} months</td>
           </tr>
         ))}
       </tbody>
