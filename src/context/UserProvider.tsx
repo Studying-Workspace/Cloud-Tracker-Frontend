@@ -20,11 +20,10 @@ interface userContextType {
 const UserContext = createContext<userContextType | undefined>(undefined);
 
 const UserProvider = ({ children }: { children: ReactNode }) => {
-	const [selectedRole, setSelectedRole] = useState<string|File>("");
+	const [selectedRole, setSelectedRole] = useLocalStorageState(null, "role");
 	const [tokens, setTokens] = useLocalStorageState(null, "tokens");
 	const [csvFile , setCSVFile] = useLocalStorageState(null , "csvFile") ;
 	const [iamRolesArn, setIAmRolesArn] = useState<string[]>([]);
-
 	const contextValues: userContextType = {
 		tokens,
 		setTokens,

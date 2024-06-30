@@ -84,14 +84,14 @@ export const getForecastData = async (
 	token: string | undefined,
 ) => {
 	if (!arn || !token) return;
-	if(typeof arn === "string" ){
-		const req = await getForecastCostByARN(arn , token);
-		// console.log("Forecast data response:", req); 
+	if(typeof arn === "string"){
+		const response = await getForecastCostByARN(arn , token);
+		console.log("Forecast data response:", response); 
 
-		return req;
+		return response;
 	}
-	const req = 0;
-	return req ;
+	const response = 0;
+	return response ;
 };
 
 const getForecastCostByARN = async (arn: string, token: string) => {
@@ -157,4 +157,32 @@ export const uploadCSVFile = async (
 	} catch (error: any) {
 		throw new Error(error.response.data);
 	}
+};
+export const getOfferingsDataWithARN = async (arn: string, token: string) => {
+	const response = await axios.get(
+	  `${serverBaseUrl}/role/offerings?arn=${arn}`,
+	  {
+		headers: {
+		  "Access-Control-Allow-Origin": "*",
+		  "Content-Type": "application/json",
+		  Authorization: `Bearer ${token}`,
+		},
+	  }
+	);
+	return response.data;
+  };
+
+  export const getOfferingsData = async (
+	arn: string  | File | undefined,
+	token: string | undefined,) => {
+	if (!arn || !token) {
+		console.log(arn, token);
+		return;
+	}
+	if(typeof arn === "string" ){
+		const req = await getOfferingsDataWithARN(arn , token);
+		return req;
+	}
+	const req = 0;
+	return req ;
 };

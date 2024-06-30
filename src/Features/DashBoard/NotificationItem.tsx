@@ -4,15 +4,11 @@ import { useState } from "react";
 import NotificationDetail from "./NotificationDetail";
 
 interface Props {
-	instanceName:string;
-	priceOnDemand: string;
-	priceReservedInstance: string;
+	instances: any;
 }
 
 const NotificationItem = ({
-	instanceName,
-	priceOnDemand,
-	priceReservedInstance,
+	instances
 }:Props) => {
 	const [showDetails, setShowDetails] = useState(false);
 	return (
@@ -27,17 +23,17 @@ const NotificationItem = ({
 					/>
 					<div className="flex w-[80%] flex-col">
 						<p className="text-2xl font-bold tracking-widest mobile:text-lg mobile:tracking-wider" data-testid="title">
-							{instanceName}
+							{instances.instance.instanceType}
 						</p>
 						<p className="w-[70%] text-xl mobile:w-full mobile:text-xs"  data-testid="description">
 							Save{" "}
 							<span className="font-semibold text-linearOrange-100">
-								${priceReservedInstance}
+								${instances.instance.cost}
 							</span>{" "}
 							by opting for reserving the instance! Paying as you go
 							costs{" "}
 							<span className="font-semibold text-linearOrange-100">
-								${priceOnDemand}
+								${"0"}
 							</span>
 							. Choose wisely and keep more money in your pocket.
 						</p>

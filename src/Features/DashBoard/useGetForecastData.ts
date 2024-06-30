@@ -5,13 +5,13 @@ import { useUserContext } from "../../context/UserProvider";
 const useGetForecastData = () => {
 	const { tokens, selectedRole } = useUserContext();
 
-	const { data: ForecastData, isLoading } = useQuery({
-		queryKey: ["ForecastData", selectedRole],
+	const { data: forecastData, isLoading } = useQuery({
+		queryKey: ["forecastData", selectedRole],
 		queryFn: () => getForecastData(selectedRole, tokens?.token),
 		enabled: !!tokens?.token && !!selectedRole,  
 	});
 
-	return { ForecastData, isLoading };
+	return { forecastData, isLoading };
 };
 
 export default useGetForecastData;
