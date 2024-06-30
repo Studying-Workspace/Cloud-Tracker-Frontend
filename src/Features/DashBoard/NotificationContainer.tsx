@@ -1,7 +1,7 @@
 import Spinner from "../../ui/Spinner";
 import NotificationItem from "./NotificationItem";
 import useGetOfferingsData from "./useGetOfferingsData";
-import { instanceInfoInterface } from "./notification-types";
+import { InstanceInfoInterface } from "./notification-types";
 
 const NotificationsContainer = () => {
   const { offeringsData, isLoading } = useGetOfferingsData();
@@ -11,9 +11,8 @@ const NotificationsContainer = () => {
   return (
     <div
       className="flex flex-col items-center justify-center gap-8"
-      data-testid="NotificationPage"
     >
-      {offeringsData.map((instance: instanceInfoInterface, index: number) => (
+      {offeringsData.map((instance: InstanceInfoInterface, index: number) => (
         <NotificationItem
           instanceInfo={instance}
           key={index}
