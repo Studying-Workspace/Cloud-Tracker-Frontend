@@ -2,9 +2,9 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import notificationImg from "../../assets/notificationImg.png";
 import { useState } from "react";
 import NotificationDetails from "./NotificationDetails";
-import { notificationItemProps } from "./notification-types";
+import { NotificationItemProps } from "./notification-types";
 
-const NotificationItem = ({ instanceInfo }: notificationItemProps) => {
+const NotificationItem = ({ instanceInfo }: NotificationItemProps) => {
   const { instance: usedInstance, ridtos: RIList } = instanceInfo;
   const [showDetails, setShowDetails] = useState(false);
   return (
