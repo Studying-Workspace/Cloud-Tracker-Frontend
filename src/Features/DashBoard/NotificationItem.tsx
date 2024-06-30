@@ -28,9 +28,8 @@ const NotificationItem = ({ instanceInfo }: NotificationItemProps) => {
               className="w-[70%] text-xl mobile:w-full mobile:text-xs"
               data-testid="description"
             >
-              The current instance running on `${usedInstance.os}` in the `$
-              {usedInstance.region}` costs `${usedInstance.cost} USD` Let's
-              explore alternatives with Reserved Instances to optimize costs.
+              {`The current instance running on ${usedInstance.os} in the ${usedInstance.region} costs ${usedInstance.cost} USD Let's
+              explore alternatives with Reserved Instances to optimize costs.`}
             </p>
           </div>
         </div>
