@@ -107,7 +107,7 @@ const Section2 = () => {
 					<div className="space-y-4">
 						<p className="z-40 text-4xl font-semibold leading-[50px] tracking-[5px] mobile:text-center mobile:text-2xl mobile:tracking-wide tablet:text-center tablet:text-3xl">
 							{" "}
-							Cost & usage tracking{" "}
+							Cost & Usage Tracking{" "}
 						</p>
 						<p className=" text-xl text-stone-500 mobile:text-sm">
 							Optimize your AWS expenses effortlessly with Cloud

@@ -29,7 +29,7 @@ const Intro = () => {
 							{" "}
 							AWS{" "}
 						</span>
-						services !
+						services!
 					</p>
 					<p className=" text-lg text-stone-500 mobile:text-sm">
 						Track and manage your AWS service usage effortlessly.{" "}
