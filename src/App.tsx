@@ -27,90 +27,75 @@ import CsvInstructions from "./pages/Dashboard/CsvInstructions";
 import Notifications from "./pages/Notifications";
 
 const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			staleTime: 0,
-		},
-	},
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
 });
 
 export default function App() {
-	return (
-		<>
-			<HashRouter>
-				<UserProvider>
-					<QueryClientProvider client={queryClient}>
-						<ScrollToTop>
-							<ProtectRouter>
-								<Routes>
-									<Route path="/" element={<Applayout />}>
-										<Route index element={<Home />} />
-										<Route path="blog" element={<Blog />} />
-										<Route
-											path="blog/:id"
-											element={<BlogDetails />}
-										/>
-										<Route path="dashboard">
-											<Route index element={<Onboarding />} />
-											<Route
-												path="instruction"
-												element={<CsvInstructions />}
-											/>
-											<Route
-												path="manual"
-												element={<ManualMethod />}
-											/>
-											<Route
-												path="terminal"
-												element={<AWSCLIMethod />}
-											/>
-											<Route
-												path="cloudFormation"
-												element={<CloudFormationMEthod />}
-											/>
-											<Route
-												path="cdk"
-												element={<div>fourth</div>}
-											/>
-											<Route path="charts" element={<Dashboard />}>
-												<Route index element={<AllCharts />} />
-												<Route
-													path="pieChart"
-													element={<PieChart type="full" />}
-												/>
-												<Route
-													path="columnChart"
-													element={<ColumnChart type="full" />}
-												/>
-												<Route
-													path="lineChart"
-													element={<LineChart type="full" />}
-												/>
-												<Route
-													path="bubbleChart"
-													element={<BubbleChart type="full" />}
-												/>
-												<Route
-													path="notification"
-													element={<Notifications/>}
-												/>
-											</Route>
-										</Route>
-										<Route path="profile" element={<Profile />} />
-									</Route>
+  return (
+    <>
+      <HashRouter>
+        <UserProvider>
+          <QueryClientProvider client={queryClient}>
+            <ScrollToTop>
+              <ProtectRouter>
+                <Routes>
+                  <Route path="/" element={<Applayout />}>
+                    <Route index element={<Home />} />
+                    <Route path="blog" element={<Blog />} />
+                    <Route path="blog/:id" element={<BlogDetails />} />
+                    <Route path="dashboard">
+                      <Route index element={<Onboarding />} />
+                      <Route path="instruction" element={<CsvInstructions />} />
+                      <Route path="manual" element={<ManualMethod />} />
+                      <Route path="terminal" element={<AWSCLIMethod />} />
+                      <Route
+                        path="cloudFormation"
+                        element={<CloudFormationMEthod />}
+                      />
+                      <Route path="cdk" element={<div>fourth</div>} />
+                      <Route path="charts" element={<Dashboard />}>
+                        <Route index element={<AllCharts />} />
+                        <Route
+                          path="pieChart"
+                          element={<PieChart type="full" />}
+                        />
+                        <Route
+                          path="columnChart"
+                          element={<ColumnChart type="full" />}
+                        />
+                        <Route
+                          path="lineChart"
+                          element={<LineChart type="full" />}
+                        />
+                        <Route
+                          path="bubbleChart"
+                          element={<BubbleChart type="full" />}
+                        />
+                        <Route
+                          path="notification"
+                          element={<Notifications />}
+                        />
+                      </Route>
+                    </Route>
+                    <Route path="profile" element={<Profile />} />
+                  </Route>
 
-									<Route path="signIn" element={<SignIn />} />
+                  <Route path="signIn" element={<SignIn />} />
 
-									<Route path="signUp" element={<SignUp />} />
+                  <Route path="signUp" element={<SignUp />} />
 
-									<Route path="*" element={<NotFound />} />
-								</Routes>
-							</ProtectRouter>
-						</ScrollToTop>
-					</QueryClientProvider>
-				</UserProvider>
-			</HashRouter>
-			<ToastContainer />
-		</>
-	);
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </ProtectRouter>
+            </ScrollToTop>
+          </QueryClientProvider>
+        </UserProvider>
+      </HashRouter>
+      <ToastContainer />
+    </>
+  );
 }
